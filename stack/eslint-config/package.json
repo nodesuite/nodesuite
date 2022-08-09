@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@nodesuite/eslint-config",
+  "version": "0.0.0",
+  "private": false,
+  "description": "NodeSuite ESLint config.",
+  "keywords": [
+    "eslint",
+    "linting",
+    "nodesuite"
+  ],
+  "homepage": "https://github.com/nodesuite/nodesuite",
+  "bugs": "https://github.com/nodesuite/nodesuite/issues",
+  "repository": "https://github.com/nodesuite/nodesuite",
+  "license": "ISC",
+  "author": "@nodesuite",
+  "main": "src/configs/node.js",
+  "files": [
+    "src/configs/node.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "",
+    "clean": "",
+    "lint": "run-s lint:*",
+    "lint:sort": "sort-package-json",
+    "upgrade": "ncu -u --packageFile package.json"
+  },
+  "dependencies": {
+    "@rushstack/eslint-config": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-tsdoc": "^0.2.16"
+  },
+  "devDependencies": {
+    "@nodesuite/node-rig": "workspace:*",
+    "@rushstack/heft": "^0.47.0",
+    "@types/node": "^18.6.4",
+    "npm-check-updates": "^16.0.5",
+    "npm-run-all": "^4.1.5",
+    "sort-package-json": "^1.57.0",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
