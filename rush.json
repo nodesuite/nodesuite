@@ -38,7 +38,7 @@
       "packageName": "@nodesuite/node-rig",
       "projectFolder": "rigs/node-rig",
       "reviewCategory": "rigs",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     },
     {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/node-rig",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "NodeSuite Heft rigging.",
   "keywords": [
@@ -12,7 +12,7 @@
   "homepage": "https://github.com/nodesuite/nodesuite",
   "bugs": "https://github.com/nodesuite/nodesuite/issues",
   "repository": "https://github.com/nodesuite/nodesuite",
-  "license": "MIT",
+  "license": "ISC",
   "author": "@nodesuite",
   "files": [
     "profiles",
