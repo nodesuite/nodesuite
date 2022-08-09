@@ -45,35 +45,35 @@
       "packageName": "@nodesuite/eslint-config",
       "projectFolder": "stack/eslint-config",
       "reviewCategory": "stack",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/defer",
       "projectFolder": "libraries/defer",
       "reviewCategory": "libraries",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/delay",
       "projectFolder": "libraries/delay",
       "reviewCategory": "libraries",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/is",
       "projectFolder": "libraries/is",
       "reviewCategory": "libraries",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/timer",
       "projectFolder": "libraries/timer",
       "reviewCategory": "libraries",
-      "versionPolicyName": "individualVersion",
+      "versionPolicyName": "public",
       "shouldPublish": true
     }
   ]
