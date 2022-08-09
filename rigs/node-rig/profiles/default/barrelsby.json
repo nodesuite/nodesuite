@@ -1,0 +1,18 @@
+{
+  "directory": [
+    "src"
+  ],
+  "delete": true,
+  "location": "all",
+  "name": "index",
+  "structure": "flat",
+  "verbose": false,
+  "noSemicolon": true,
+  "include": [
+    "\\.ts$"
+  ],
+  "exclude": [
+    "\\.js$",
+    "\\.d\\.ts$"
+  ]
+}
