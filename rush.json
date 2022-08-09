@@ -52,28 +52,28 @@
       "packageName": "@nodesuite/defer",
       "projectFolder": "libraries/defer",
       "reviewCategory": "libraries",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/delay",
       "projectFolder": "libraries/delay",
       "reviewCategory": "libraries",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/is",
       "projectFolder": "libraries/is",
       "reviewCategory": "libraries",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/timer",
       "projectFolder": "libraries/timer",
       "reviewCategory": "libraries",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     }
   ]

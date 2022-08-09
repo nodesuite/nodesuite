@@ -3,5 +3,11 @@
     "policyName": "public",
     "definitionName": "individualVersion",
     "lockedMajor": 0
+  },
+  {
+    "definitionName": "lockStepVersion",
+    "policyName": "suite",
+    "version": "0.0.1",
+    "nextBump": "patch"
   }
 ]
