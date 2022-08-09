@@ -1,0 +1,94 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@microsoft/api-extractor",
+      "allowedCategories": [ "rigs" ]
+    },
+    {
+      "name": "@nodesuite/eslint-config",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nodesuite/node-rig",
+      "allowedCategories": [ "libraries", "stack" ]
+    },
+    {
+      "name": "@rushstack/eslint-config",
+      "allowedCategories": [ "libraries", "stack" ]
+    },
+    {
+      "name": "@rushstack/heft",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "@typescript-eslint/eslint-plugin",
+      "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "allowedCategories": [ "libraries", "stack" ]
+    },
+    {
+      "name": "ava",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "barrelsby",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "c8",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "dpdm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "eslint-plugin-prefer-arrow",
+      "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "eslint-plugin-simple-import-sort",
+      "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "eslint-plugin-tsdoc",
+      "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "npm-check-updates",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "npm-run-all",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "sort-package-json",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "tslib",
+      "allowedCategories": [ "libraries", "rigs" ]
+    },
+    {
+      "name": "tsup",
+      "allowedCategories": [ "libraries", "rigs" ]
+    },
+    {
+      "name": "type-fest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "typescript",
+      "allowedCategories": [ "libraries", "rigs", "stack" ]
+    }
+  ]
+}
