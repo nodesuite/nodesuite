@@ -1,0 +1,63 @@
+name: Build packages
+
+on:
+  push:
+    branches: main
+    paths-ignore:
+      - "**/*.md"
+      - "**/.gitignore"
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Build/publish packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+        with:
+          platforms: arm64
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Cache Rush
+        uses: actions/cache@v2
+        with:
+          path: |
+            common/temp/install-run
+            ~/.rush
+          key: ${{ runner.os }}-rush-${{ hashFiles('rush.json') }}
+          restore-keys: ${{ runner.os }}-rush
+      - name: Cache pnpm
+        uses: actions/cache@v2
+        with:
+          path: common/temp/pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm
+      - name: Check consistent dependencies
+        run: node common/scripts/install-run-rush.js check
+      - name: Check if changes have been provided
+        run: node common/scripts/install-run-rush.js change -v
+      - name: Rush update
+        run: node common/scripts/install-run-rush.js update
+      - name: Rush prettier
+        run: node common/scripts/install-run-rush.js prettier
+      - name: Rush lint
+        run: node common/scripts/install-run-rush.js lint
+      - name: Rush rebuild
+        run: node common/scripts/install-run-rush.js rebuild --verbose
+      - name: Rush test
+        run: node common/scripts/install-run-rush.js test
+      - name: Publish packages
+        run: |
+          git config user.email "github-action@users.noreply.github.com"
+          git config user.name "GitHub Action"
+          node common/scripts/install-run-rush.js version --bump --target-branch main
+          node common/scripts/install-run-rush.js publish -a -b main -p --include-all
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
