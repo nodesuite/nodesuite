@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  "commands": [
+    {
+      "name": "prettier",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. Invokes Prettier to reformat staged changes.",
+      "autoinstallerName": "rush-prettier",
+      "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "lint",
+      "commandKind": "bulk",
+      "summary": "Runs eslint with --fix on all TypesScript files.",
+      "enableParallelism": true,
+      "incremental": true
+    },
+    {
+      "name": "upgrade",
+      "commandKind": "bulk",
+      "summary": "Upgrades all project package.json files to latest versions.",
+      "allowWarningsInSuccessfulBuild": true,
+      "enableParallelism": true
+    },
+    {
+      "name": "lint:sort",
+      "commandKind": "bulk",
+      "summary": "Sorts all project package.json files alphabetically.",
+      "allowWarningsInSuccessfulBuild": true,
+      "enableParallelism": true
+    },
+    {
+      "name": "barrels",
+      "commandKind": "bulk",
+      "summary": "Runs barrelsby to generate barrel export index files.",
+      "allowWarningsInSuccessfulBuild": true,
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "clean",
+      "commandKind": "bulk",
+      "summary": "Uses Heft to clean all compiler caches.",
+      "enableParallelism": true
+    },
+    {
+      "name": "circular",
+      "commandKind": "bulk",
+      "summary": "Check for circular dependencies with dpdm.",
+      "allowWarningsInSuccessfulBuild": true,
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "test",
+      "commandKind": "bulk",
+      "summary": "Run tests on all packages with ava.",
+      "enableParallelism": true,
+      "ignoreMissingScript": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
+      "name": "coverage",
+      "commandKind": "bulk",
+      "summary": "Run test coverage reports on all packages with c8.",
+      "enableParallelism": true,
+      "ignoreMissingScript": true,
+      "allowWarningsInSuccessfulBuild": true
+    }
+  ],
+  "parameters": [
+  ]
+}

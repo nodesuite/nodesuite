@@ -1,0 +1,172 @@
+#-------------------------------------------------------------------------------------------------------------------
+# Keep this section in sync with .gitignore
+#-------------------------------------------------------------------------------------------------------------------
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log\*
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Unit test and coverage files
+.nyc_output
+lib-cov
+coverage/
+cypress/screenshots/
+cypress/videos/
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components/
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Yarn files
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Environment variables files
+.env
+.env.local
+.token
+
+# Optional eslint cache
+.eslintcache/
+temp/
+
+# Optional REPL history
+.node_repl_history
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# Output of 'npm pack'
+*.tgz
+
+# TernJS port file
+.tern-port
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# Gatsby files
+.cache/
+
+# next.js build output
+.next
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+
+# OS X temporary files
+.DS_Store
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# TypeScript cache
+\*.tsbuildinfo
+
+# Rush temporary files
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+.rush/
+.heft/
+
+# IDE files
+.idea/
+.vscode/
+.vscode-test/
+
+# SSG cache
+.vite-ssg-temp/
+
+# Build outputs
+lib/
+dist/
+doc/
+tmp/
+var/
+
+# Template files
+*:Zone.Identifier
+.template/
+*.pdf
+*.zip
+
+# Misc artifacts
+*/RECOVER_*.fla
+
+# Misc ignores
+.backlog/
+
+#-------------------------------------------------------------------------------------------------------------------
+# Linting-specific overrides
+#-------------------------------------------------------------------------------------------------------------------
+
+# Rush files
+common/changes/
+common/scripts/
+common/config/
+CHANGELOG.*
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+shrinkwrap.json
+
+# Packages
+**/logs/
+**/resources/
+
+# Prettier reformats code blocks inside Markdown, which affects rendered output
+*.md
+
+# Zod
+**/*/schemas/*.ts
+
+# Configs
+*eslint.js
+*prettierrc.js

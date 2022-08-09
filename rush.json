@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.75.0",
+  "pnpmVersion": "7.8.0",
+  "pnpmOptions": {
+    "pnpmStore": "local",
+    "preventManualShrinkwrapChanges": true,
+    "resolutionStrategy": "fewer-dependencies",
+    "useWorkspaces": true
+  },
+  "nodeSupportedVersionRange": ">=16.13.0",
+  "suppressNodeLtsWarning": false,
+  "ensureConsistentVersions": true,
+  "projectFolderMaxDepth": 3,
+  "allowMostlyStandardPackageNames": false,
+  "approvedPackagesPolicy": {
+    "reviewCategories": ["rigs", "stack", "libraries", "apps"],
+    "ignoredNpmScopes": ["@types"]
+  },
+  "gitPolicy": {
+    "versionBumpCommitMessage": "rush: bump versions [skip ci]",
+    "changeLogUpdateCommitMessage": "rush: update changelogs [skip ci]"
+  },
+  "repository": {
+    "url": "https://github.com/nodesuite/nodesuite",
+    "defaultBranch": "main",
+    "defaultRemote": "origin"
+  },
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "variants": [],
+  "projects": [
+    {
+      "packageName": "@nodesuite/node-rig",
+      "projectFolder": "rigs/node-rig",
+      "reviewCategory": "rigs",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/eslint-config",
+      "projectFolder": "stack/eslint-config",
+      "reviewCategory": "stack",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/defer",
+      "projectFolder": "libraries/defer",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/delay",
+      "projectFolder": "libraries/delay",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/is",
+      "projectFolder": "libraries/is",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/timer",
+      "projectFolder": "libraries/timer",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "individualVersion",
+      "shouldPublish": true
+    }
+  ]
+}

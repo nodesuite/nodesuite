@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/artifactory.schema.json",
+  "packageRegistry": {
+    "enabled": false,
+    "registryUrl": "",
+    "userNpmrcLinesToAdd": [
+    ],
+    "artifactoryWebsiteUrl": "",
+    "messageOverrides": {
+    }
+  }
+}
