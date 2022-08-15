@@ -49,6 +49,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/case",
+      "projectFolder": "libraries/case",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/defer",
       "projectFolder": "libraries/defer",
       "reviewCategory": "libraries",

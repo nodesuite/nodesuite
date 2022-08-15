@@ -43,6 +43,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "change-case",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "dpdm",
       "allowedCategories": [ "libraries" ]
     },
