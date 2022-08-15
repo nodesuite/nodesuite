@@ -2,9 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./node_modules/@nodesuite/node-rig/profiles/default/tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
+    "outDir": "lib",
     "rootDir": "src"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["node_modules", "lib"]
 }
