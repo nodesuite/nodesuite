@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/case
 
-This log was last generated on Tue, 16 Aug 2022 02:03:43 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Aug 2022 02:36:49 GMT and should not be manually modified.
+
+## 0.0.6
+Tue, 16 Aug 2022 02:36:49 GMT
+
+_Version update only_
 
 ## 0.0.5
 Tue, 16 Aug 2022 02:03:43 GMT

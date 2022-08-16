@@ -2,6 +2,12 @@
   "name": "@nodesuite/is",
   "entries": [
     {
+      "version": "0.0.6",
+      "tag": "@nodesuite/is_v0.0.6",
+      "date": "Tue, 16 Aug 2022 02:36:49 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.5",
       "tag": "@nodesuite/is_v0.0.5",
       "date": "Tue, 16 Aug 2022 02:03:43 GMT",
