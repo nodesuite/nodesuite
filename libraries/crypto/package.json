@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@nodesuite/crypto",
+  "version": "0.0.6",
+  "description": "Encryption and decryption library.",
+  "keywords": [
+    "crypto",
+    "decrypt",
+    "decryption",
+    "encrypt",
+    "encryption",
+    "nodesuite"
+  ],
+  "homepage": "https://github.com/nodesuite/nodesuite",
+  "bugs": "https://github.com/nodesuite/nodesuite/issues",
+  "repository": "https://github.com/nodesuite/nodesuite",
+  "license": "ISC",
+  "author": "@nodesuite",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "barrels": "run-s barrels:*",
+    "barrels:generate": "barrelsby -d src -c node_modules/@nodesuite/node-rig/profiles/default/barrelsby.json",
+    "barrels:lint": "eslint src/**/index.ts --fix",
+    "build": "heft build --clean",
+    "circular": "dpdm --ext ts --circular --output coverage/circular.json src",
+    "clean": "run-p clean:*",
+    "clean:heft": "heft clean --clear-cache",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint src --ext .ts --fix",
+    "lint:sort": "sort-package-json",
+    "typecheck": "tsc --noemit",
+    "upgrade": "ncu -u --packageFile package.json"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@nodesuite/eslint-config": "workspace:*",
+    "@nodesuite/node-rig": "workspace:*",
+    "@rushstack/eslint-config": "^3.0.0",
+    "@rushstack/heft": "^0.47.2",
+    "@types/node": "^18.7.5",
+    "@typescript-eslint/parser": "^5.33.1",
+    "ava": "^4.3.1",
+    "barrelsby": "^2.4.0",
+    "dpdm": "^3.10.0",
+    "eslint": "^8.22.0",
+    "npm-check-updates": "^16.0.5",
+    "npm-run-all": "^4.1.5",
+    "sort-package-json": "^1.57.0",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

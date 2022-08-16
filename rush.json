@@ -56,6 +56,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/crypto",
+      "projectFolder": "libraries/crypto",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/defer",
       "projectFolder": "libraries/defer",
       "reviewCategory": "libraries",

@@ -46,6 +46,41 @@ importers:
       sort-package-json: 1.57.0
       typescript: 4.7.4
 
+  ../../libraries/crypto:
+    specifiers:
+      '@nodesuite/eslint-config': workspace:*
+      '@nodesuite/node-rig': workspace:*
+      '@rushstack/eslint-config': ^3.0.0
+      '@rushstack/heft': ^0.47.2
+      '@types/node': ^18.7.5
+      '@typescript-eslint/parser': ^5.33.1
+      ava: ^4.3.1
+      barrelsby: ^2.4.0
+      dpdm: ^3.10.0
+      eslint: ^8.22.0
+      npm-check-updates: ^16.0.5
+      npm-run-all: ^4.1.5
+      sort-package-json: ^1.57.0
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+    dependencies:
+      tslib: 2.4.0
+    devDependencies:
+      '@nodesuite/eslint-config': link:../../stack/eslint-config
+      '@nodesuite/node-rig': link:../../rigs/node-rig
+      '@rushstack/eslint-config': 3.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@rushstack/heft': 0.47.2
+      '@types/node': 18.7.5
+      '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
+      ava: 4.3.1
+      barrelsby: 2.4.0
+      dpdm: 3.10.0
+      eslint: 8.22.0
+      npm-check-updates: 16.0.5
+      npm-run-all: 4.1.5
+      sort-package-json: 1.57.0
+      typescript: 4.7.4
+
   ../../libraries/defer:
     specifiers:
       '@nodesuite/eslint-config': workspace:*
