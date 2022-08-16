@@ -22,6 +22,8 @@ import type {
  * Converts all top level keys of an object to `camelCase`.
  *
  * @param input - Object containing keys to convert to `camelCase`.
+ *
+ * @public
  */
 export const camelCaseKeys = <T extends Record<string, any>>(
   input: T
@@ -34,6 +36,8 @@ export const camelCaseKeys = <T extends Record<string, any>>(
  * Converts all top level keys of an object to `camelCase`.
  *
  * @param input - Object containing keys to convert to `camelCase`.
+ *
+ * @public
  */
 export const constantCaseKeys = <T extends Record<string, any>>(
   input: T
@@ -45,6 +49,7 @@ export const constantCaseKeys = <T extends Record<string, any>>(
 /**
  * Converts all top level keys of an object to `--param-case`.
  *
+ * @public
  */
 export const paramCaseKeys = <
   T extends Input,
@@ -60,6 +65,7 @@ export const paramCaseKeys = <
 /**
  * Removes `--param-case` dash prefix from keys.
  *
+ * @public
  */
 export const stripParamCaseKeys = <T extends Input>(
   input: KebabCaseKeys<T>
@@ -72,6 +78,8 @@ export const stripParamCaseKeys = <T extends Input>(
  * Converts all top level keys of an object to `PascalCase`.
  *
  * @param input - Object containing keys to convert to `PascalCase`.
+ *
+ * @public
  */
 export const pascalCaseKeys = <T extends Input>(input: T): PascalCaseKeys<T> =>
   Object.fromEntries(
@@ -82,6 +90,8 @@ export const pascalCaseKeys = <T extends Input>(input: T): PascalCaseKeys<T> =>
  * Converts all top level keys of an object to `kebab-case`.
  *
  * @param input - Object containing keys to convert to `kebab-case`.
+ *
+ * @public
  */
 export const kebabCaseKeys = <T extends Input>(input: T): KebabCaseKeys<T> =>
   Object.fromEntries(
@@ -92,6 +102,8 @@ export const kebabCaseKeys = <T extends Input>(input: T): KebabCaseKeys<T> =>
  * Converts all top level keys of an object to `snake_case`.
  *
  * @param input - Object containing keys to convert to `snake_case`.
+ *
+ * @public
  */
 export const snakeCaseKeys = <T extends Input>(input: T): SnakeCaseKeys<T> =>
   Object.fromEntries(
