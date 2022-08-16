@@ -13,8 +13,7 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "off",
         "@rushstack/no-new-null": "off",
         "@typescript-eslint/typedef": "off",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/ban-types": "off"
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
   ]
