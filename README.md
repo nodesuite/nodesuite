@@ -4,7 +4,7 @@
 
 ## Summary
 
-A collection of utility packages for developing NodeJS applications.
+A collection of utility packages for developing NodeJS TypeScript applications.
 
 ## Packages
 
@@ -13,6 +13,9 @@ A collection of utility packages for developing NodeJS applications.
 - `@nodesuite/is` Runtime type checking with type guards.
 - `@nodesuite/timer` Simple performance timer utility.
 
+
+## Compatibility
+Packages are intended for consumption by Node-based TypeScript projects and may not function as intended within a vanilla JavaScript or ESM-based project.
 
 ## Warning
  
