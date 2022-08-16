@@ -9,13 +9,10 @@ export const _toString = (value: unknown): string =>
   Object.prototype.toString.call(value)
 
 /**
- * Attempts to cast an unknown value as a number.
+ * Attempts to cast an unknown value as a boolean value.
  *
  * @remarks
  * - Numbers are returned as is.
- * - Strings and Bigint values are parsed through `parseInt`.
- * - Booleans will check for truthy or falsy-ness and return `1` or `0`, else `undefined`.
- * - All other values will return the `defaultValue` provided or `undefined`.
  *
  * @public
  */
@@ -29,6 +26,37 @@ export const asBoolean = (
     case "string":
     case "boolean":
       return isTruthy(value) ? true : isFalsy(value) ? false : undefined
+    case "undefined":
+    default:
+      return defaultValue
+  }
+}
+
+/**
+ * Union type for binary values.
+ *
+ * @public
+ */
+export type Binary = 0 | 1
+
+/**
+ * Attempts to cast an unknown value as a binary value (0 or 1).
+ *
+ * @remarks
+ * - Numbers are returned as is.
+ *
+ * @public
+ */
+export const asBinary = (
+  value: unknown,
+  defaultValue: Binary | undefined = undefined
+): Binary | typeof defaultValue => {
+  // Pass through serializable values.
+  switch (typeof value) {
+    case "number":
+    case "string":
+    case "boolean":
+      return isTruthy(value) ? 1 : isFalsy(value) ? 0 : undefined
     case "undefined":
     default:
       return defaultValue
