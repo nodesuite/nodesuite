@@ -11,6 +11,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nodesuite/is",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nodesuite/node-rig",
       "allowedCategories": [ "libraries", "stack" ]
     },
@@ -93,6 +97,10 @@
     {
       "name": "typescript",
       "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "zod",
+      "allowedCategories": [ "libraries" ]
     }
   ]
 }
