@@ -266,6 +266,47 @@ importers:
       sort-package-json: 1.57.0
       typescript: 4.7.4
 
+  ../../libraries/websocket:
+    specifiers:
+      '@nodesuite/eslint-config': workspace:*
+      '@nodesuite/node-rig': workspace:*
+      '@rushstack/eslint-config': ^3.0.0
+      '@rushstack/heft': ^0.47.2
+      '@types/node': ^18.7.5
+      '@types/ws': ^8.5.3
+      '@typescript-eslint/parser': ^5.33.1
+      ava: ^4.3.1
+      barrelsby: ^2.4.0
+      c8: ^7.12.0
+      dpdm: ^3.10.0
+      eslint: ^8.22.0
+      npm-check-updates: ^16.0.5
+      npm-run-all: ^4.1.5
+      sort-package-json: ^1.57.0
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+      ws: ^8.8.1
+    dependencies:
+      tslib: 2.4.0
+      ws: 8.8.1
+    devDependencies:
+      '@nodesuite/eslint-config': link:../../stack/eslint-config
+      '@nodesuite/node-rig': link:../../rigs/node-rig
+      '@rushstack/eslint-config': 3.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@rushstack/heft': 0.47.2
+      '@types/node': 18.7.5
+      '@types/ws': 8.5.3
+      '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
+      ava: 4.3.1
+      barrelsby: 2.4.0
+      c8: 7.12.0
+      dpdm: 3.10.0
+      eslint: 8.22.0
+      npm-check-updates: 16.0.5
+      npm-run-all: 4.1.5
+      sort-package-json: 1.57.0
+      typescript: 4.7.4
+
   ../../rigs/node-rig:
     specifiers:
       '@microsoft/api-extractor': ^7.29.2
@@ -710,6 +751,12 @@ packages:
 
   /@types/tapable/1.0.6:
     resolution: {integrity: sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==}
+
+  /@types/ws/8.5.3:
+    resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
+    dependencies:
+      '@types/node': 18.7.5
+    dev: true
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
@@ -4905,6 +4952,19 @@ packages:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
+
+  /ws/8.8.1:
+    resolution: {integrity: sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /xdg-basedir/5.1.0:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}

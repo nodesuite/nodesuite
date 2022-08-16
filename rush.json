@@ -96,6 +96,13 @@
       "reviewCategory": "libraries",
       "versionPolicyName": "suite",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/websocket",
+      "projectFolder": "libraries/websocket",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
     }
   ]
 }

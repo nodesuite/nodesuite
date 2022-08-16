@@ -99,6 +99,10 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
+      "name": "ws",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "zod",
       "allowedCategories": [ "libraries" ]
     }
