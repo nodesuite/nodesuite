@@ -2,14 +2,14 @@
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/schemas",
   "version": "0.0.6",
-  "description": "JavaScript runtime type inference utilities.",
+  "description": "A collection of common constants and validation schemas.",
   "keywords": [
-    "infer-types",
-    "is",
+    "constants",
+    "country-codes",
+    "node-env",
     "nodesuite",
-    "runtime-checks",
-    "type-guards",
-    "type-inference"
+    "validation",
+    "zod"
   ],
   "homepage": "https://github.com/nodesuite/nodesuite",
   "bugs": "https://github.com/nodesuite/nodesuite/issues",
