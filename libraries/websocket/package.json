@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/websocket",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Asynchronous augmentations to WebSocket library.",
   "keywords": [
     "ws",
