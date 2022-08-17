@@ -7,6 +7,10 @@
       "allowedCategories": [ "rigs" ]
     },
     {
+      "name": "@nodesuite/case",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nodesuite/eslint-config",
       "allowedCategories": [ "libraries" ]
     },
