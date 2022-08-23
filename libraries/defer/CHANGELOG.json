@@ -2,6 +2,12 @@
   "name": "@nodesuite/defer",
   "entries": [
     {
+      "version": "0.0.16",
+      "tag": "@nodesuite/defer_v0.0.16",
+      "date": "Tue, 23 Aug 2022 03:12:22 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.15",
       "tag": "@nodesuite/defer_v0.0.15",
       "date": "Tue, 23 Aug 2022 03:04:32 GMT",
