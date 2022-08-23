@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@nodesuite/timer": "workspace:*",
+    "arg": "^5.0.2",
     "dotenv-defaults": "^5.0.2",
     "tslib": "^2.4.0"
   },
