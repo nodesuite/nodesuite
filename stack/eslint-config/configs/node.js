@@ -1,31 +1,42 @@
 require("@rushstack/eslint-config/patch/modern-module-resolution")
 
+const { ignorePatterns, parserOptions } = require("../options")
+
 const {
   linesAroundComment,
   preferArrowFunctions,
-  tsNamingConvention
+  tsNamingConvention,
+  simpleImportSort
 } = require("../rules")
 
-const when = (env) => (process.env.NODE_ENV === env ? "error" : "off")
+const {
+  anyInTypes,
+  barrels,
+  javascript,
+  markdown,
+  schemas,
+  typescript
+} = require("../overrides")
 
+const { when } = require("../utils")
+
+/**
+ * Node Eslint Config
+ *
+ * @public
+ */
 module.exports = {
+  // Environment linter should expect.
   env: {
     node: true
   },
-  ignorePatterns: [
-    "**/*.d.ts",
-    "bin",
-    "dist",
-    "lib",
-    "test",
-    "vite",
-    "tsup.config.ts"
-  ],
-
-  parserOptions: {
-    parser: "@typescript-eslint/parser"
-  },
+  // List of patterns to ignore.
+  ignorePatterns,
+  // Default parser options for TypeScript.
+  parserOptions,
+  // Third-party plugins to load.
   plugins: ["simple-import-sort", "prefer-arrow", "eslint-plugin-tsdoc"],
+  // Main rules definitions across all included files.
   rules: {
     "@rushstack/no-new-null": "off",
     "@typescript-eslint/member-ordering": "error",
@@ -45,71 +56,9 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
     "simple-import-sort/exports": "error",
-    "simple-import-sort/imports": [
-      "error",
-      {
-        groups: [
-          ["^\\u0000"],
-          ["^node:\\w", "^@?\\w", "^@?\\w.*\\u0000$"],
-          ["(?<!\\u0000)$", "(?<=\\u0000)$"],
-          ["^\\.", "^\\..*\\u0000$"]
-        ]
-      }
-    ],
+    "simple-import-sort/imports": ["error", simpleImportSort],
     "tsdoc/syntax": "error"
   },
-  overrides: [
-    {
-      files: ["*.md"],
-      parser: "markdown-eslint-parser"
-    },
-    {
-      files: [
-        "**/*-schema.ts",
-        "**/schema.ts",
-        "**/env.ts",
-        "**/env/*.ts",
-        "**/schemas.ts",
-        "**/schemas/*.ts"
-      ],
-      rules: {
-        "@rushstack/typedef-var": "off",
-        "@rushstack/no-new-null": "off",
-        "@typescript-eslint/typedef": "off"
-      }
-    },
-    {
-      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
-      parser: "espree",
-      parserOptions: {
-        ecmaVersion: 6
-      },
-      rules: {
-        "@typescript-eslint/naming-convention": "off",
-        "tsdoc/syntax": "off"
-      }
-    },
-    {
-      files: ["**/*.ts"],
-      parserOptions: {
-        project: ["./tsconfig.json"]
-      },
-      rules: {
-        "@typescript-eslint/consistent-type-imports": ["error", { }],
-        "@typescript-eslint/consistent-type-exports": ["error", { fixMixedExportsWithInlineTypeSpecifier: true }],
-      }
-    },
-    {
-      files: ["**/index.ts"],
-      rules: {
-        "tsdoc/syntax": "off"
-      }
-    },
-    {
-      files: ["**/types.ts", "**/types/*.ts"],
-      rules: {
-        "@typescript-eslint/no-explicit-any": "off"
-      }
-    }
-  ]
+  // Pattern specific overrides.
+  overrides: [anyInTypes, barrels, javascript, markdown, schemas, typescript]
 }
