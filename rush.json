@@ -38,14 +38,14 @@
       "packageName": "@nodesuite/node-rig",
       "projectFolder": "rigs/node-rig",
       "reviewCategory": "rigs",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     },
     {
       "packageName": "@nodesuite/eslint-config",
       "projectFolder": "stack/eslint-config",
       "reviewCategory": "stack",
-      "versionPolicyName": "public",
+      "versionPolicyName": "suite",
       "shouldPublish": true
     },
     {
