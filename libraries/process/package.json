@@ -2,13 +2,12 @@
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/process",
   "version": "0.0.14",
-  "description": "Light-weight performance timer.",
+  "description": "Enhanced Node child-process management.",
   "keywords": [
-    "clock",
+    "child-process",
+    "exec",
     "nodesuite",
-    "performance",
-    "performance-timer",
-    "timer"
+    "spawn"
   ],
   "homepage": "https://github.com/nodesuite/nodesuite",
   "bugs": "https://github.com/nodesuite/nodesuite/issues",

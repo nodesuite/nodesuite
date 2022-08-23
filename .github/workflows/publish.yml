@@ -59,3 +59,4 @@ jobs:
           node common/scripts/install-run-rush.js publish -a -b main -p --include-all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
