@@ -23,6 +23,10 @@
       "allowedCategories": [ "libraries", "stack" ]
     },
     {
+      "name": "@nodesuite/timer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@rushstack/eslint-config",
       "allowedCategories": [ "libraries", "stack" ]
     },
@@ -52,6 +56,10 @@
     },
     {
       "name": "change-case",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "dotenv-defaults",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -85,6 +93,10 @@
     {
       "name": "sort-package-json",
       "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "spectypes",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tslib",

@@ -46,6 +46,45 @@ importers:
       sort-package-json: 1.57.0
       typescript: 4.7.4
 
+  ../../libraries/cli:
+    specifiers:
+      '@nodesuite/eslint-config': workspace:*
+      '@nodesuite/node-rig': workspace:*
+      '@nodesuite/timer': workspace:*
+      '@rushstack/eslint-config': ^3.0.0
+      '@rushstack/heft': ^0.47.2
+      '@types/node': ^18.7.5
+      '@typescript-eslint/parser': ^5.33.1
+      ava: ^4.3.1
+      barrelsby: ^2.4.0
+      dotenv-defaults: ^5.0.2
+      dpdm: ^3.10.0
+      eslint: ^8.22.0
+      npm-check-updates: ^16.0.5
+      npm-run-all: ^4.1.5
+      sort-package-json: ^1.57.0
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+    dependencies:
+      '@nodesuite/timer': link:../timer
+      dotenv-defaults: 5.0.2
+      tslib: 2.4.0
+    devDependencies:
+      '@nodesuite/eslint-config': link:../../stack/eslint-config
+      '@nodesuite/node-rig': link:../../rigs/node-rig
+      '@rushstack/eslint-config': 3.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@rushstack/heft': 0.47.2
+      '@types/node': 18.7.5
+      '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
+      ava: 4.3.1
+      barrelsby: 2.4.0
+      dpdm: 3.10.0
+      eslint: 8.22.0
+      npm-check-updates: 16.0.5
+      npm-run-all: 4.1.5
+      sort-package-json: 1.57.0
+      typescript: 4.7.4
+
   ../../libraries/crypto:
     specifiers:
       '@nodesuite/eslint-config': workspace:*
@@ -222,6 +261,43 @@ importers:
       '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       ava: 4.3.1
       barrelsby: 2.4.0
+      dpdm: 3.10.0
+      eslint: 8.22.0
+      npm-check-updates: 16.0.5
+      npm-run-all: 4.1.5
+      sort-package-json: 1.57.0
+      typescript: 4.7.4
+
+  ../../libraries/process:
+    specifiers:
+      '@nodesuite/eslint-config': workspace:*
+      '@nodesuite/node-rig': workspace:*
+      '@rushstack/eslint-config': ^3.0.0
+      '@rushstack/heft': ^0.47.2
+      '@types/node': ^18.7.5
+      '@typescript-eslint/parser': ^5.33.1
+      ava: ^4.3.1
+      barrelsby: ^2.4.0
+      c8: ^7.12.0
+      dpdm: ^3.10.0
+      eslint: ^8.22.0
+      npm-check-updates: ^16.0.5
+      npm-run-all: ^4.1.5
+      sort-package-json: ^1.57.0
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+    dependencies:
+      tslib: 2.4.0
+    devDependencies:
+      '@nodesuite/eslint-config': link:../../stack/eslint-config
+      '@nodesuite/node-rig': link:../../rigs/node-rig
+      '@rushstack/eslint-config': 3.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@rushstack/heft': 0.47.2
+      '@types/node': 18.7.5
+      '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
+      ava: 4.3.1
+      barrelsby: 2.4.0
+      c8: 7.12.0
       dpdm: 3.10.0
       eslint: 8.22.0
       npm-check-updates: 16.0.5
@@ -1861,6 +1937,17 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
+
+  /dotenv-defaults/5.0.2:
+    resolution: {integrity: sha512-y5z4NhblzwNk8XBIYVzjLcFkANK0rxbRDO6kGOfH9QrVYIGVEX52IqwSprKVsaLHM9pnNkCSxazZF/JPydDPvA==}
+    dependencies:
+      dotenv: 14.3.2
+    dev: false
+
+  /dotenv/14.3.2:
+    resolution: {integrity: sha512-vwEppIphpFdvaMCaHfCEv9IgwcxMljMw2TnAQBB4VWPvzXQLTb82jwmdOKzlEVUL3gNFT4l4TPKO+Bn+sqcrVQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /dpdm/3.10.0:
     resolution: {integrity: sha512-b/nWOl4Bf9Qmq4Mh38wxBpMyFb8YkuKQaaPFdaTFkCmfTQNFJl8jPlnm1xtBPtPzID92UUO6TVbCD4pBD/Msww==}
