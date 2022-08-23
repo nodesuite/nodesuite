@@ -15,8 +15,11 @@
   "author": "@nodesuite",
   "main": "configs/node.js",
   "files": [
-    "rules/*.js",
-    "configs/*.js",
+    "configs",
+    "options",
+    "overrides",
+    "rules",
+    "utils",
     "README.md"
   ],
   "scripts": {
