@@ -13,9 +13,10 @@
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "main": "src/configs/node.js",
+  "main": "configs/node.js",
   "files": [
-    "src",
+    "rules/*.js",
+    "configs/*.js",
     "README.md"
   ],
   "scripts": {
