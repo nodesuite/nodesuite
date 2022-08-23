@@ -5,5 +5,13 @@ module.exports = {
     "@rushstack/eslint-config/profile/node",
     "@rushstack/eslint-config/mixins/friendly-locals",
     "@nodesuite/eslint-config"
+  ],
+  overrides: [
+    {
+      files: ["src/**/*.ts"],
+      rules: {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
   ]
 }
