@@ -56,6 +56,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/cli",
+      "projectFolder": "libraries/cli",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/crypto",
       "projectFolder": "libraries/crypto",
       "reviewCategory": "libraries",
@@ -86,6 +93,13 @@
     {
       "packageName": "@nodesuite/is",
       "projectFolder": "libraries/is",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@nodesuite/process",
+      "projectFolder": "libraries/process",
       "reviewCategory": "libraries",
       "versionPolicyName": "suite",
       "shouldPublish": true
