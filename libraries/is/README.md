@@ -7,6 +7,12 @@
 Runtime checking of JavaScript variable types with TypeScript
 [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
 
+## Installation
+
+```shell
+pnpm install @nodesuite/is
+```
+
 ## Credit
 
 Many of the definitions within this package are sourced or modified from the
