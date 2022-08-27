@@ -47,13 +47,9 @@ export interface Encrypt {
  *
  * @internal
  */
-export const isBuffer = (value: unknown): value is ArrayBuffer | Uint8Array =>
+export const isBuffer = (value: unknown): value is Uint8Array =>
   typeof value === "object" &&
   value !== null &&
-  [
-    "ArrayBuffer",
-    "Buffer",
-    "Int8Array",
-    "Uint8Array",
-    "Uint8ClampedArray"
-  ].includes(Object.prototype.toString.call(value).slice(8, -1))
+  ["Int8Array", "Uint8Array", "Uint8ClampedArray"].includes(
+    Object.prototype.toString.call(value).slice(8, -1)
+  )

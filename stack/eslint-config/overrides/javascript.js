@@ -2,7 +2,7 @@ module.exports = {
   files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
   parser: "espree",
   parserOptions: {
-    ecmaVersion: 6
+    ecmaVersion: 11
   },
   rules: {
     "@typescript-eslint/naming-convention": "off",

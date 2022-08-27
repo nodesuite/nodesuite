@@ -1,6 +1,6 @@
 require("@rushstack/eslint-config/patch/modern-module-resolution")
 
-const { ignorePatterns, parserOptions } = require("../options")
+const { ignorePatterns, parserOptions, plugins } = require("../options")
 
 const {
   linesAroundComment,
@@ -35,7 +35,7 @@ module.exports = {
   // Default parser options for TypeScript.
   parserOptions,
   // Third-party plugins to load.
-  plugins: ["simple-import-sort", "prefer-arrow", "eslint-plugin-tsdoc"],
+  plugins,
   // Main rules definitions across all included files.
   rules: {
     "@rushstack/no-new-null": "off",

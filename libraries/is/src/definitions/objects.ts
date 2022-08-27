@@ -53,8 +53,10 @@ export const isKeyOf = <O extends object>(
 /**
  * Verifies if a value is a keyed value of a reference object.
  */
-export const isValueOf = <O>(obj: O, value: unknown): value is O[keyof O] =>
-  Object.values(obj).includes(value)
+export const isValueOf = <O extends object>(
+  obj: O,
+  value: unknown
+): value is O[keyof O] => Object.values(obj).includes(value)
 
 type CommonKeys<O extends object, P extends Partial<O>> = Extract<
   keyof O,

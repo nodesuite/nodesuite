@@ -64,7 +64,7 @@
     },
     {
       "name": "dotenv-defaults",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "stack" ]
     },
     {
       "name": "dpdm",
@@ -85,6 +85,10 @@
     {
       "name": "eslint-plugin-tsdoc",
       "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "fs-extra",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "npm-check-updates",

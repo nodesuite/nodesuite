@@ -41,5 +41,5 @@ export const encode = (data: object | string | Uint8Array): Uint8Array => {
  *
  * @public
  */
-export const decode = (data: Uint8Array | ArrayBuffer) =>
+export const decode = <T>(data: Uint8Array | ArrayBuffer): T =>
   JSON.parse(_decoder.decode(data))

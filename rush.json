@@ -91,6 +91,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/options",
+      "projectFolder": "libraries/options",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/process",
       "projectFolder": "libraries/process",
       "reviewCategory": "libraries",

@@ -1,13 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "@nodesuite/case",
+  "name": "@nodesuite/options",
   "version": "0.0.16",
-  "description": "Typed string and object key case transformers.",
+  "description": "Universal options parser for cli argument, environment variables, and configuration files.",
   "keywords": [
-    "case",
-    "change-case",
-    "key-case",
-    "nodesuite"
+    "cli",
+    "config",
+    "env",
+    "nodesuite",
+    "options",
+    "parser"
   ],
   "homepage": "https://github.com/nodesuite/nodesuite",
   "bugs": "https://github.com/nodesuite/nodesuite/issues",
@@ -35,9 +37,12 @@
     "upgrade": "ncu -u --packageFile package.json"
   },
   "dependencies": {
-    "change-case": "^4.1.2",
-    "tslib": "^2.4.0",
-    "type-fest": "^2.19.0"
+    "@nodesuite/case": "workspace:*",
+    "@nodesuite/is": "workspace:*",
+    "dotenv-defaults": "^5.0.2",
+    "arg": "^5.0.2",
+    "fs-extra": "^10.1.0",
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@nodesuite/eslint-config": "workspace:*",
