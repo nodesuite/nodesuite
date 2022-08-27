@@ -2,6 +2,12 @@
   "name": "@nodesuite/node-rig",
   "entries": [
     {
+      "version": "0.0.17",
+      "tag": "@nodesuite/node-rig_v0.0.17",
+      "date": "Sat, 27 Aug 2022 02:26:55 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.16",
       "tag": "@nodesuite/node-rig_v0.0.16",
       "date": "Tue, 23 Aug 2022 03:12:22 GMT",
