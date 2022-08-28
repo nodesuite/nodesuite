@@ -118,10 +118,7 @@ export type Serializable =
  *
  * @public
  */
-export const asString = (
-  value: unknown,
-  defaultValue?: string
-): undefined extends typeof value ? typeof defaultValue : string => {
+export const asString = (value: unknown, defaultValue?: string): string => {
   // Pass through serializable values.
   switch (typeof value) {
     case "string":
@@ -132,12 +129,12 @@ export const asString = (
     case "bigint":
       return value.toString()
     case "undefined":
-      return defaultValue
+      return defaultValue ?? ""
   }
 
   // Flatten arrays using the global array separator.
   if (isArray(value)) {
-    return value.map((v) => asString(v)).join(" ")
+    return value.map((v) => asString(v, undefined)).join(",")
   }
 
   // Attempt to convert complex objects or functions.

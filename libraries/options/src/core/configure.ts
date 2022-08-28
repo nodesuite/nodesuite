@@ -1,3 +1,4 @@
+import { asString } from "@nodesuite/is"
 import type { KeyOf } from "@nodesuite/is"
 
 import { readCliOptions, readEnvOptions, readFileOptions } from "../sources"
@@ -30,11 +31,12 @@ export const configure = <
   // Each level is stripped of empty values to ensure key is explicitly free for next level.
   const cliOptions: Raw = readCliOptions(keys)
   const envOptions: Raw = readEnvOptions(keys)
+
+  // Existing options are searched for a "config" property.
   const filePath: string | undefined = extractConfigPath([
     cliOptions,
     envOptions
   ])
-
   const fileOptions: Raw = readFileOptions(keys, filePath)
 
   // Merge options in order of priority.
@@ -51,7 +53,11 @@ export const configure = <
       // The current "raw options" stack is passed as the starting state for the map, so all values are available unparsed as strings.
       const value: Serializable | undefined = map.get(key)
       // Use the keyed parser from the source schema to parse each value.
-      const parsed: Serializable | undefined = parse(key, value, parser)
+      const parsed: Serializable | undefined = parse(
+        asString(key),
+        value,
+        parser
+      )
       // Replace the unparsed value within the map.
       return map.set(key, parsed)
     },

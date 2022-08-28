@@ -22,13 +22,13 @@ import type { Cast, Handler, Serializable } from "../types"
  * @internal
  */
 export const parse = <T extends Serializable, C extends Cast<T> | Handler<T>>(
-  key: PropertyKey,
+  key: string,
   value: Serializable | undefined,
   cast: C
 ): T | undefined => {
   // Handle via handler function if provided.
   if (isHandler<T>(cast)) {
-    console.debug(`Using function handler for ${key.toString()}.`)
+    console.debug(`Using function handler for "${key}".`)
     return cast(value)
   }
 
@@ -37,17 +37,13 @@ export const parse = <T extends Serializable, C extends Cast<T> | Handler<T>>(
     if (cast.optional) {
       // If undefined but optional, allow it through.
       console.debug(
-        `Optional value ${key.toString()} was undefined, using default value "${
-          cast.defaultValue
-        }".`
+        `Optional value "${key}" was undefined, using default value "${cast.defaultValue}".`
       )
       return cast.defaultValue ?? undefined
     } else if (isNotNullish(cast.defaultValue)) {
       // If undefined and required, only allow if default value is provided.
       console.debug(
-        `Required value ${key.toString()} was undefined, using default value "${
-          cast.defaultValue
-        }".`
+        `Required value "${key}" was undefined, using default value "${cast.defaultValue}".`
       )
       return cast.defaultValue
     } else {
@@ -57,6 +53,7 @@ export const parse = <T extends Serializable, C extends Cast<T> | Handler<T>>(
   }
 
   // Handle using regular cast parser.
+  console.debug(`Parsing "${key}" as "${cast.type}"`)
   switch (cast.type) {
     case "string":
       return asString(value) as T
