@@ -1,4 +1,4 @@
-import { isArray, isFalsy, isTruthy } from "../definitions"
+import { isArray, isFalsy, isObject, isTruthy } from "../definitions"
 
 /**
  * Converts an unknown value to its string format.
@@ -163,3 +163,24 @@ export const serialize = asString
  */
 export const stringify = (obj: object): string =>
   JSON.stringify(obj, undefined, 2)
+
+/**
+ * Attempts to return an unknown value as object.
+ *
+ * @public
+ */
+export const asObject = (value: unknown, defaultValue?: object | undefined) => {
+  // Pass through serializable values.
+  switch (typeof value) {
+    case "object":
+      return isObject(value) ? value : defaultValue
+    case "string":
+      return JSON.parse(value)
+    case "number":
+    case "boolean":
+    case "symbol":
+    case "bigint":
+    case "undefined":
+      return defaultValue
+  }
+}

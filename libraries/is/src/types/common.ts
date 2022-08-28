@@ -64,6 +64,13 @@ export type Nullish = null | undefined
 export type KeyOf<O extends object> = Extract<keyof O, string>
 
 /**
+ * Union of object value for all string keys.
+ *
+ * @public
+ */
+export type ValueOf<O extends object> = O[KeyOf<O>]
+
+/**
  * Only allow string keys.
  *
  * @public

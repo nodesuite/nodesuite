@@ -241,6 +241,7 @@ importers:
       '@nodesuite/node-rig': workspace:*
       '@rushstack/eslint-config': ^3.0.0
       '@rushstack/heft': ^0.47.5
+      '@types/fs-extra': ^9.0.13
       '@types/node': ^18.7.13
       '@typescript-eslint/parser': ^5.35.1
       arg: ^5.0.2
@@ -256,6 +257,7 @@ importers:
       sort-package-json: ^1.57.0
       tslib: ^2.4.0
       typescript: ^4.8.2
+      yaml: ^2.1.1
     dependencies:
       '@nodesuite/case': link:../case
       '@nodesuite/is': link:../is
@@ -263,11 +265,13 @@ importers:
       dotenv-defaults: 5.0.2
       fs-extra: 10.1.0
       tslib: 2.4.0
+      yaml: 2.1.1
     devDependencies:
       '@nodesuite/eslint-config': link:../../stack/eslint-config
       '@nodesuite/node-rig': link:../../rigs/node-rig
       '@rushstack/eslint-config': 3.0.0_shit3uhl6a7megkzgoz6xssnfa
       '@rushstack/heft': 0.47.5
+      '@types/fs-extra': 9.0.13
       '@types/node': 18.7.13
       '@typescript-eslint/parser': 5.35.1_shit3uhl6a7megkzgoz6xssnfa
       ava: 4.3.3

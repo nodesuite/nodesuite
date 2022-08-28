@@ -107,6 +107,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "ts-pattern",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "tslib",
       "allowedCategories": [ "libraries", "rigs" ]
     },
@@ -124,6 +128,10 @@
     },
     {
       "name": "ws",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "yaml",
       "allowedCategories": [ "libraries" ]
     },
     {
