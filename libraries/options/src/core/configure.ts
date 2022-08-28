@@ -58,6 +58,7 @@ export const configure = <
         value,
         parser
       )
+      console.debug(`Resolved "${asString(key)}" as "${parsed}".`)
       // Replace the unparsed value within the map.
       return map.set(key, parsed)
     },
