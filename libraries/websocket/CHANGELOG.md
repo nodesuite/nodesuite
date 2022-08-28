@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/websocket
 
-This log was last generated on Sun, 28 Aug 2022 08:14:16 GMT and should not be manually modified.
+This log was last generated on Sun, 28 Aug 2022 11:08:50 GMT and should not be manually modified.
+
+## 0.0.21
+Sun, 28 Aug 2022 11:08:50 GMT
+
+_Version update only_
 
 ## 0.0.20
 Sun, 28 Aug 2022 08:14:16 GMT
