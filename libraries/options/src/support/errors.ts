@@ -1,15 +1,30 @@
+/**
+ * Throws if deserialization fails for any reason.
+ *
+ * @public
+ */
 export class DeserializationError extends Error {
   public constructor() {
     super(`Deserialization failed.`)
   }
 }
 
+/**
+ * Throws if a value marked as non-optional is undefined and has no default value.
+ *
+ * @public
+ */
 export class MissingRequiredValueError extends Error {
   public constructor() {
     super(`Missing required option value.`)
   }
 }
 
+/**
+ * Throws if a value other than an object is passed to the filter function.
+ *
+ * @public
+ */
 export class UnfilterableValueError extends Error {
   public readonly value: unknown
 
@@ -19,6 +34,11 @@ export class UnfilterableValueError extends Error {
   }
 }
 
+/**
+ * Throws if an empty or invalid path is provided to a filesystem function.
+ *
+ * @public
+ */
 export class InvalidFilePathError extends Error {
   public readonly filePath?: string
   public readonly extensions: string[]
@@ -34,8 +54,19 @@ export class InvalidFilePathError extends Error {
   }
 }
 
+/**
+ * Throws if file system read function fails for any reason.
+ *
+ * @public
+ */
 export class FileReadError extends Error {
-  public constructor() {
-    super()
+  public readonly filePath: string
+
+  public constructor(filePath: string, cause: Error) {
+    super(
+      `Encountered error while attempting to read file "${filePath}": ${cause.message}`,
+      { cause }
+    )
+    this.filePath = filePath
   }
 }

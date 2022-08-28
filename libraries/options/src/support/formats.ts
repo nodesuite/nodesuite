@@ -2,7 +2,7 @@ import { asString } from "@nodesuite/is"
 import { parse } from "yaml"
 import type { AnyRecord } from "@nodesuite/is"
 
-import type { Reviver } from "../types"
+import type { Reviver, ValidExtension } from "../types"
 
 /**
  * JSON reviver that forces all values to strings.
@@ -12,7 +12,7 @@ import type { Reviver } from "../types"
  *
  * @internal
  */
-const reviver: Reviver = (_k: unknown, value: unknown) => {
+const reviver: Reviver = (_k: unknown, value: unknown): string | undefined => {
   try {
     return asString(value)
   } catch (error) {
@@ -29,8 +29,10 @@ const reviver: Reviver = (_k: unknown, value: unknown) => {
  *
  * @public
  */
-export const hasExtension = (path: string, extensions: string[]): boolean =>
-  extensions.some((extension) => path.endsWith(extension))
+export const hasExtension = (
+  path: string,
+  extensions: ValidExtension[]
+): boolean => extensions.some((extension) => path.endsWith(extension))
 
 /**
  * Parses JSON file with the string value reviver.

@@ -3,7 +3,7 @@ import arg from "arg"
 import type { Spec } from "arg"
 
 import { filter } from "../support"
-import type { RawOptions, SerializedRecord } from "../types"
+import type { RawOptions } from "../types"
 
 /**
  * Extracts any command line arguments from argv.
@@ -35,10 +35,8 @@ export const readCliOptions = <K extends string>(
   const { _, ...rawArgs } = arg(spec, { permissive: true })
 
   // Convert from --param-case to camelCase and filter nullish values.
-  const args: SerializedRecord<K> = camelCaseKeys(
-    rawArgs
-  ) as SerializedRecord<K>
+  const args: RawOptions<K> = camelCaseKeys(rawArgs)
 
   // Append all unexpected keys.
-  return { ...filter(args, keys), _ } as RawOptions<K>
+  return { ...filter(args, keys), _ }
 }

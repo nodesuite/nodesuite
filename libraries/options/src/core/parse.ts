@@ -3,6 +3,7 @@ import {
   asNumber,
   asObject,
   asString,
+  asStringArray,
   isNotNullish,
   isUndefined
 } from "@nodesuite/is"
@@ -50,6 +51,8 @@ export const parse = <T extends Serializable, C extends Cast<T> | Handler<T>>(
       return asNumber(value) as T
     case "boolean":
       return asBoolean(value) as T
+    case "array":
+      return asStringArray(value) as T
     case "object":
       return asObject(value) as T
     default:

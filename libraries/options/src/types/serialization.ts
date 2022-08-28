@@ -1,33 +1,43 @@
-export type Type = "string" | "number" | "boolean" | "object"
-export type Serializable = string | number | boolean | object
+export type Type = "string" | "number" | "boolean" | "object" | "array"
+export type Serializable = string | number | boolean | object | string[]
 
-export type Deserialize<T extends Type> = Extract<
-  T extends "string"
-    ? string | undefined
-    : T extends "number"
-    ? number | undefined
-    : T extends "boolean"
-    ? boolean | undefined
-    : T extends "object"
-    ? object | undefined
-    : never,
-  Serializable | undefined
->
+/**
+ * Converts string representation to native type.
+ *
+ * @public
+ */
+export type Deserialize<T extends Type> = T extends "string"
+  ? string | undefined
+  : T extends "number"
+  ? number | undefined
+  : T extends "boolean"
+  ? boolean | undefined
+  : T extends "array"
+  ? string[]
+  : T extends "object"
+  ? object | undefined
+  : never
 
-export type Serialize<T extends Serializable> = Extract<
-  T extends string
-    ? "string"
-    : T extends number
-    ? "number"
-    : T extends boolean
-    ? "boolean"
-    : T extends object
-    ? "object"
-    : never,
-  Type
->
+/**
+ * Converts native type to string representation.
+ *
+ * @public
+ */
+export type Serialize<T extends Serializable> = T extends string
+  ? "string"
+  : T extends number
+  ? "number"
+  : T extends boolean
+  ? "boolean"
+  : T extends string[]
+  ? "array"
+  : T extends object
+  ? "object"
+  : never
 
-export type SerializedRecord<K extends string = string> = Record<
-  K,
-  Serializable | undefined
->
+/**
+ * Abstract JSON river shape.
+ *
+ * @internal
+ */
+export type Reviver = (key: unknown, value: unknown) => string | undefined

@@ -4,6 +4,13 @@ import type { AnyRecord, KeyOf } from "@nodesuite/is"
 import { UnfilterableValueError } from "./errors"
 import type { FilteredObject } from "../types"
 
+/**
+ * Extracts string keys from a source object.
+ *
+ * @param source - Source object to extract typed keys from.
+ *
+ * @public
+ */
 export const extractKeys = <O extends object>(source: O): KeyOf<O>[] =>
   Object.keys(source) as KeyOf<O>[]
 

@@ -1,8 +1,9 @@
 import { readFileSync } from "fs-extra"
 import type { AnyRecord } from "@nodesuite/is"
 
-import { InvalidFilePathError } from "./errors"
+import { FileReadError, InvalidFilePathError } from "./errors"
 import { hasExtension, parseJson, parseYaml } from "./formats"
+import type { ValidExtension } from "../types"
 
 /**
  * Reads a file as text from the filesystem.
@@ -11,8 +12,13 @@ import { hasExtension, parseJson, parseYaml } from "./formats"
  *
  * @internal
  */
-const readFile = (filePath: string): string =>
-  readFileSync(filePath).toString("utf8")
+const readFile = (filePath: string): string => {
+  try {
+    return readFileSync(filePath).toString("utf8")
+  } catch (error) {
+    throw new FileReadError(filePath, error as Error)
+  }
+}
 
 /**
  * Reads a raw json file from the filesystem.
@@ -24,7 +30,7 @@ const readFile = (filePath: string): string =>
  */
 const readRawJsonFile = <R extends AnyRecord>(
   filePath?: string,
-  extensions: string[] = [".json"]
+  extensions: ValidExtension[] = [".json"]
 ): Partial<R> => {
   if (filePath && hasExtension(filePath, extensions)) {
     return parseJson(readFile(filePath))
@@ -43,7 +49,7 @@ const readRawJsonFile = <R extends AnyRecord>(
  */
 export const readRawYamlFile = <R extends AnyRecord>(
   filePath?: string,
-  extensions: string[] = [".yml", ".yaml"]
+  extensions: ValidExtension[] = [".yml", ".yaml"]
 ): Partial<R> => {
   if (filePath && hasExtension(filePath, extensions)) {
     return parseYaml(readFile(filePath))

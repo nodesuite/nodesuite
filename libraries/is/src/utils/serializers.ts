@@ -145,6 +145,66 @@ export const asString = (
 }
 
 /**
+ * Parses a possible json string and tests if array before returning.
+ *
+ * @param value - Possible json string.
+ *
+ * @internal
+ */
+const parseJsonArray = <T extends Serializable>(
+  value: string
+): T[] | undefined => {
+  try {
+    const content: unknown = JSON.parse(value)
+    if (isArray<T>(content)) {
+      return content
+    }
+  } catch (_) {
+    // Ignore errors from JSON.parse().
+  }
+
+  return undefined
+}
+
+/**
+ * Attempts to return an unknown value as a string array.
+ *
+ * @remarks
+ *
+ * @param value - Any value to deserialize as a string array.
+ * @param defaultValue - Fallback value if value is undefined.
+ */
+export const asStringArray = (
+  value: unknown,
+  defaultValue?: string[]
+): string[] | undefined => {
+  // Pass through serializable values.
+  switch (typeof value) {
+    case "string":
+      // Attempt to parse string as json and test if string array.
+      const json: string[] | undefined = parseJsonArray<string>(value)
+      if (json) {
+        return json
+      }
+      // Attempt to split comma separated string.
+      if (value.includes(",")) {
+        return value.split(",")
+      }
+      // If no matches, return default value.
+      return defaultValue
+    case "object":
+      return isArray<string>(value) ? value : defaultValue
+    case "number":
+    case "boolean":
+    case "symbol":
+    case "bigint":
+    case "undefined":
+    default:
+      return defaultValue
+  }
+}
+
+/**
  * Serializes an unknown value to string.
  *
  * @remarks

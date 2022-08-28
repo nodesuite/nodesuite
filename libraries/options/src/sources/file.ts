@@ -1,6 +1,4 @@
 import { camelCaseKeys } from "@nodesuite/case"
-import { isNotNullish } from "@nodesuite/is"
-import type { AnyRecord } from "@nodesuite/is"
 
 import { filter, readRawConfigFile } from "../support"
 import type { RawOptions } from "../types"
@@ -8,6 +6,10 @@ import type { RawOptions } from "../types"
 /**
  * Extracts options from a target json file in filesystem.
  *
+ * @param keys - String array of keys from schema.
+ * @param path - Path to file config if available.
+ *
+ * @public
  */
 export const readFileOptions = <K extends string>(
   keys: K[],
@@ -19,7 +21,7 @@ export const readFileOptions = <K extends string>(
       const content: RawOptions<K> = camelCaseKeys(readRawConfigFile(path))
 
       // Read the source file and ensure all keys are camelCase.
-      return filter(content, keys) as RawOptions<K>
+      return filter(content, keys)
     }
   } catch (error) {
     // Report errors as warnings.
@@ -29,21 +31,4 @@ export const readFileOptions = <K extends string>(
   // If no path was provided, or reading failed, return empty partial.
   console.debug(`No config file provided, skipping.`)
   return {}
-}
-
-const hasFilePath = <O extends RawOptions<string>>(
-  options: O
-): options is O & { config: string } =>
-  Object.keys(options).includes("config") &&
-  isNotNullish((options as AnyRecord).config)
-
-export const findFilePath = (
-  ...allOptions: RawOptions<string>[]
-): string | undefined => {
-  for (const options of allOptions) {
-    if (hasFilePath(options)) {
-      return options.config
-    }
-  }
-  return undefined
 }

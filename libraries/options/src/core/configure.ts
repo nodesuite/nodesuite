@@ -1,42 +1,57 @@
 import type { KeyOf } from "@nodesuite/is"
 
-import {
-  findFilePath,
-  readCliOptions,
-  readEnvOptions,
-  readFileOptions
-} from "../sources"
-import { extractKeys, pipe } from "../support"
+import { readCliOptions, readEnvOptions, readFileOptions } from "../sources"
+import { extractConfigPath, extractKeys } from "../support"
 import { parse } from "./parse"
-import type { Options, RawOptions, Schema, Serializable } from "../types"
+import { pipe } from "./pipe"
+import type { InferSchema, Options, RawOptions, Serializable } from "../types"
 
 /**
  * Reads options from all sources in order of priority.
  *
  * @param schema - Deserialization schema for parsing options.
+ *
+ * @public
  */
-export const configure = <S extends Schema>(schema: S): Options<S> => {
+export const configure = <O extends Options, S extends InferSchema<O>>(
+  schema: S
+): O => {
+  // Define internal types.
+  type Key = KeyOf<S>
+  type Raw = RawOptions<Key>
+
   // Extract keys from schema.
-  const keys: KeyOf<S>[] = extractKeys(schema)
+  const keys: Key[] = extractKeys(schema)
 
   // Read from all available sources as `camelCase` objects.
   // Each level is stripped of empty values to ensure key is explicitly free for next level.
-  const cliOptions: RawOptions<KeyOf<S>> = readCliOptions(keys)
-  const envOptions: RawOptions<KeyOf<S>> = readEnvOptions(keys)
-  const filePath: string | undefined = findFilePath(cliOptions, envOptions)
-  const fileOptions: RawOptions<KeyOf<S>> = readFileOptions(keys, filePath)
+  const cliOptions: Raw = readCliOptions(keys)
+  const envOptions: Raw = readEnvOptions(keys)
+  const filePath: string | undefined = extractConfigPath([
+    cliOptions,
+    envOptions
+  ])
+
+  const fileOptions: Raw = readFileOptions(keys, filePath)
 
   // Merge options in order of priority.
-  const rawOptions: RawOptions<KeyOf<S>> = {
+  const initialState: Raw = {
     ...fileOptions,
     ...envOptions,
     ...cliOptions
   }
 
   // Build and parse each value according to the `Cast` or `Handler` defined in the schema.
-  return pipe<S, Options<S>>(schema, (map, [key, cast]) => {
-    // Avoid parsing inline to make debugging type errors clearer.
-    const parsed: Serializable | undefined = parse(rawOptions[key], cast)
-    return map.set(key, parsed)
-  })
+  return pipe<S, O>(
+    schema,
+    (map, [key, parser]) => {
+      // The current "raw options" stack is passed as the starting state for the map, so all values are available unparsed as strings.
+      const value: Serializable | undefined = map.get(key)
+      // Use the keyed parser from the source schema to parse each value.
+      const parsed: Serializable | undefined = parse(value, parser)
+      // Replace the unparsed value within the map.
+      return map.set(key, parsed)
+    },
+    initialState
+  )
 }

@@ -1,16 +1,13 @@
 import type { AnyRecord } from "@nodesuite/is"
 
-import type { Serializable } from "./serialization"
-
 /**
  * Strips undefined or null values from an object.
  *
  * @public
  */
-export type StrippedObject<O extends Record<string, Serializable | undefined>> =
-  {
-    [Key in keyof O]-?: NonNullable<O[Key]>
-  }
+export type StrippedObject<O extends AnyRecord> = {
+  [Key in keyof O]-?: NonNullable<O[Key]>
+}
 
 /**
  * Strips keys not present in filter array from object.
