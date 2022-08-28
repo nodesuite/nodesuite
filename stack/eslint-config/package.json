@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/eslint-config",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "NodeSuite ESLint config.",
   "keywords": [
     "eslint",
