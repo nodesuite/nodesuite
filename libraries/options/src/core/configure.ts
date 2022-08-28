@@ -13,7 +13,10 @@ import type { InferSchema, Options, RawOptions, Serializable } from "../types"
  *
  * @public
  */
-export const configure = <O extends Options, S extends InferSchema<O>>(
+export const configure = <
+  O extends Options,
+  S extends InferSchema<O> = InferSchema<O>
+>(
   schema: S
 ): O => {
   // Define internal types.
@@ -48,7 +51,7 @@ export const configure = <O extends Options, S extends InferSchema<O>>(
       // The current "raw options" stack is passed as the starting state for the map, so all values are available unparsed as strings.
       const value: Serializable | undefined = map.get(key)
       // Use the keyed parser from the source schema to parse each value.
-      const parsed: Serializable | undefined = parse(value, parser)
+      const parsed: Serializable | undefined = parse(key, value, parser)
       // Replace the unparsed value within the map.
       return map.set(key, parsed)
     },

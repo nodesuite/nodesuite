@@ -7,7 +7,7 @@ Universal options parser for cli argument, environment variables, and configurat
 
 ## Reference
 
-Options key resolution and precendence follows the [AWS Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#precedence) style guide:
+Options key resolution and precedence follows the [AWS Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#precedence) style guide:
 
 https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
