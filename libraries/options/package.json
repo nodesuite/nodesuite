@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/options",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Universal options parser for cli argument, environment variables, and configuration files.",
   "keywords": [
     "cli",
@@ -42,8 +42,8 @@
     "arg": "^5.0.2",
     "dotenv-defaults": "^5.0.2",
     "fs-extra": "^10.1.0",
-    "yaml": "^2.1.1",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.0",
+    "yaml": "^2.1.1"
   },
   "devDependencies": {
     "@nodesuite/eslint-config": "workspace:*",
