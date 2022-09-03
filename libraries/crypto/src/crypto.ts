@@ -2,7 +2,7 @@ import { subtle } from "node:crypto"
 
 import { decode, encode } from "./encoding"
 import { generateSecureIv } from "./iv"
-import type { Decrypted, Encrypt, Encrypted } from "./types"
+import type { AesGcmParams, Decrypted, Encrypt, Encrypted } from "./types"
 
 /**
  * Current AES params.

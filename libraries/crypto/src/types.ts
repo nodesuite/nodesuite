@@ -1,3 +1,5 @@
+import type { webcrypto } from "node:crypto"
+
 /**
  * Return type from an encryption call.
  *
@@ -53,3 +55,48 @@ export const isBuffer = (value: unknown): value is Uint8Array =>
   ["Int8Array", "Uint8Array", "Uint8ClampedArray"].includes(
     Object.prototype.toString.call(value).slice(8, -1)
   )
+
+/**
+ * Node `webcrypto` AesGcmParams type.
+ *
+ * @see https://nodejs.org/api/webcrypto.html
+ *
+ * @public
+ */
+export type AesGcmParams = webcrypto.AesGcmParams
+
+/**
+ * Node `webcrypto` CryptoKey type.
+ *
+ * @see https://nodejs.org/api/webcrypto.html
+ *
+ * @public
+ */
+export type CryptoKey = webcrypto.CryptoKey
+
+/**
+ * Node `webcrypto` BufferSource type.
+ *
+ * @see https://nodejs.org/api/webcrypto.html
+ *
+ * @public
+ */
+export type BufferSource = webcrypto.BufferSource
+
+/**
+ * Node `webcrypto` AesKeyAlgorithm type.
+ *
+ * @see https://nodejs.org/api/webcrypto.html
+ *
+ * @public
+ */
+export type AesKeyAlgorithm = webcrypto.AesKeyAlgorithm
+
+/**
+ * Node `webcrypto` JsonWebKey type.
+ *
+ * @see https://nodejs.org/api/webcrypto.html
+ *
+ * @public
+ */
+export type JsonWebKey = webcrypto.JsonWebKey

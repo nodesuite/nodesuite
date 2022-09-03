@@ -1,5 +1,7 @@
 import { subtle } from "node:crypto"
 
+import type { AesKeyAlgorithm, CryptoKey, JsonWebKey } from "./types"
+
 /**
  * Current key generation / import params.
  *
@@ -46,7 +48,7 @@ export const generateJsonWebKey = async (): Promise<JsonWebKey> =>
 export const importJsonWebKey = async (
   privateKey: string | JsonWebKey
 ): Promise<CryptoKey> =>
-  crypto.subtle.importKey(
+  subtle.importKey(
     format,
     typeof privateKey === "string"
       ? {
