@@ -1,13 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/options",
-<<<<<<< Updated upstream
   "version": "0.0.22",
   "description": "Universal options parser for cli argument, environment variables, and configuration files.",
-=======
-  "version": "0.0.21",
-  "description": "Universal options parser for cli arguments, environment variables, and configuration files.",
->>>>>>> Stashed changes
   "keywords": [
     "cli",
     "config",
