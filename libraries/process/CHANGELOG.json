@@ -2,6 +2,12 @@
   "name": "@nodesuite/process",
   "entries": [
     {
+      "version": "0.0.23",
+      "tag": "@nodesuite/process_v0.0.23",
+      "date": "Sat, 03 Sep 2022 12:07:03 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.22",
       "tag": "@nodesuite/process_v0.0.22",
       "date": "Sun, 28 Aug 2022 22:47:25 GMT",

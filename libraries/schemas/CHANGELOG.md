@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/schemas
 
-This log was last generated on Sun, 28 Aug 2022 22:47:25 GMT and should not be manually modified.
+This log was last generated on Sat, 03 Sep 2022 12:07:03 GMT and should not be manually modified.
+
+## 0.0.23
+Sat, 03 Sep 2022 12:07:03 GMT
+
+_Version update only_
 
 ## 0.0.22
 Sun, 28 Aug 2022 22:47:25 GMT
