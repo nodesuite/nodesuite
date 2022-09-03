@@ -6,14 +6,12 @@ import {
   pascalCase,
   snakeCase
 } from "./transformers"
-import { DOUBLE_PREFIX } from "./types"
 import type {
   CAMEL_CASE,
   Case,
   CONSTANT_CASE,
   PARAM_CASE,
   PASCAL_CASE,
-  Prefix,
   SNAKE_CASE,
   ToCase
 } from "./types"
@@ -59,18 +57,12 @@ export const mapToConstantCase = <V extends string>(
  * Maps an array of values to `--param-case`.
  *
  * @param values - Array of strings to transform.
- * @param prefix - Prefix to expect for params. Defaults to `--`.
  *
  * @public
  */
-export const mapToParamCase = <
-  V extends string,
-  P extends Prefix = typeof DOUBLE_PREFIX
->(
-  values: V[],
-  prefix: P = DOUBLE_PREFIX as P
-): ToCase<V, typeof PARAM_CASE, P>[] =>
-  values.map((value) => paramCase(value, prefix))
+export const mapToParamCase = <V extends string>(
+  values: V[]
+): ToCase<V, typeof PARAM_CASE>[] => values.map((value) => paramCase(value))
 
 /**
  * Maps an array of values to `PascalCase`.

@@ -5,7 +5,7 @@ import { pathExistsSync } from "fs-extra"
 import type { AnyRecord } from "@nodesuite/is"
 
 import { validExtensions } from "../types"
-import { hasExtension } from "./formats"
+import { hasExtension } from "./serializaton"
 import type { RawOptions } from "../types"
 
 /**
@@ -18,7 +18,7 @@ import type { RawOptions } from "../types"
  *
  * @internal
  */
-const hasFilePath = <O extends RawOptions<string>>(
+const hasFilePath = <O extends RawOptions>(
   options: O
 ): options is O & { config: string } =>
   Object.keys(options).includes("config") &&
@@ -31,9 +31,7 @@ const hasFilePath = <O extends RawOptions<string>>(
  *
  * @internal
  */
-export const extractConfigPath = (
-  stack: RawOptions<string>[]
-): string | undefined => {
+export const extractConfigPath = (stack: RawOptions[]): string | undefined => {
   for (const options of stack) {
     if (
       hasFilePath(options) &&

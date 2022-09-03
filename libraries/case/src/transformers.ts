@@ -11,11 +11,37 @@ import type {
   CamelCase,
   ConstantCase,
   KebabCase,
+  Normalize,
   ParamCase,
   PascalCase,
-  Prefix,
-  SnakeCase
+  SnakeCase,
+  StripPrefix
 } from "./types"
+
+/**
+ * Removes leading dashes from a string.
+ *
+ * @param value - String value to strip.
+ *
+ * @public
+ */
+export const stripPrefix = <V extends string>(value: V): StripPrefix<V> =>
+  value.replace(/^--/, "") as StripPrefix<V>
+
+/**
+ * Normalizes value prior to recasting.
+ *
+ * @param original - String value to normalize.
+ *
+ * @public
+ */
+export const normalize = <V extends string>(original: V): Normalize<V> => {
+  let value: string = stripPrefix(original)
+  if (value === value.toUpperCase()) {
+    value = value.toLowerCase()
+  }
+  return `${value}` as Normalize<V>
+}
 
 /**
  * Convert string to `camelCase`.
@@ -25,7 +51,7 @@ import type {
  * @public
  */
 export const camelCase = <V extends string>(value: V): CamelCase<V> =>
-  _camelCase(value) as CamelCase<V>
+  _camelCase(normalize(value)) as CamelCase<V>
 
 /**
  * Convert string to `CONSTANT_CASE`.
@@ -35,7 +61,7 @@ export const camelCase = <V extends string>(value: V): CamelCase<V> =>
  * @public
  */
 export const constantCase = <V extends string>(value: V): ConstantCase<V> =>
-  _constantCase(value) as ConstantCase<V>
+  _constantCase(normalize(value)) as ConstantCase<V>
 
 /**
  * Convert string to `kebab-case`.
@@ -45,7 +71,7 @@ export const constantCase = <V extends string>(value: V): ConstantCase<V> =>
  * @public
  */
 export const kebabCase = <V extends string>(value: V): KebabCase<V> =>
-  _kebabCase(value) as KebabCase<V>
+  _kebabCase(normalize(value)) as KebabCase<V>
 
 /**
  * Convert string to `PascalCase`.
@@ -55,7 +81,7 @@ export const kebabCase = <V extends string>(value: V): KebabCase<V> =>
  * @public
  */
 export const pascalCase = <V extends string>(value: V): PascalCase<V> =>
-  _pascalCase(value) as PascalCase<V>
+  _pascalCase(normalize(value)) as PascalCase<V>
 
 /**
  * Convert string to `snake_case`.
@@ -65,42 +91,24 @@ export const pascalCase = <V extends string>(value: V): PascalCase<V> =>
  * @public
  */
 export const snakeCase = <V extends string>(value: V): SnakeCase<V> =>
-  _snakeCase(value) as SnakeCase<V>
+  _snakeCase(normalize(value)) as SnakeCase<V>
 
 /**
- * Removes leading dashes from a string.
+ * Type guard to test if a value is already cast as param case.
  *
- * @param value - String value to strip.
+ * @param value- String value to test.
  *
  * @public
  */
-export const removePrefix = (value: string): string =>
-  value.replace(/^(-){1,2}/, "")
-
-/**
- * Adds leading dash(es) to a string.
- *
- * @param value - String value to prefix.
- * @param prefix - Single or double dash to use as prefix.
- *
- * @public
- */
-export const addPrefix = (value: string, prefix: Prefix): string =>
-  prefix + removePrefix(value)
+export const isParamCase = (value: string): value is ParamCase<typeof value> =>
+  !!value && value.startsWith(DOUBLE_PREFIX) && value.toLowerCase() === value
 
 /**
  * Convert string to `--param-case`.
  *
  * @param value - String value to convert.
- * @param prefix - Single or double dash to use as prefix.
  *
  * @public
  */
-export const paramCase = <
-  V extends string,
-  P extends Prefix = typeof DOUBLE_PREFIX
->(
-  value: V,
-  prefix: P = DOUBLE_PREFIX as P
-): ParamCase<V, P> =>
-  `${prefix}${kebabCase(removePrefix(value))}` as ParamCase<V, P>
+export const paramCase = <V extends string>(value: V): ParamCase<V> =>
+  `${DOUBLE_PREFIX}${kebabCase(normalize(value))}`

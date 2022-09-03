@@ -1,15 +1,10 @@
 import type {
-  CamelCase,
-  KebabCase,
-  PascalCase,
-  ScreamingSnakeCase as ConstantCase,
-  SnakeCase
+  CamelCase as _CamelCase,
+  KebabCase as _KebabCase,
+  PascalCase as _PascalCase,
+  ScreamingSnakeCase as _ConstantCase,
+  SnakeCase as _SnakeCase
 } from "type-fest"
-
-/**
- * Export type utilities from `type-fest`.
- */
-export type { CamelCase, ConstantCase, KebabCase, PascalCase, SnakeCase }
 
 /**
  * Define the default prefix values for `--param-case`.
@@ -21,15 +16,73 @@ export const prefixes = [SINGLE_PREFIX, DOUBLE_PREFIX] as const
 export type Prefix = typeof prefixes[number]
 
 /**
- * Type utility for converting to `--param-case`.
+ * Utility type to remove a known prefix if present.
+ */
+export type StripPrefix<T extends string> = T extends `--${infer R}` ? R : T
+
+/**
+ * Normalizes previous value before recasting.
+ *
+ * @remarks
+ * This fixes a bug where `CONSTANT_CASE` values were incorrectly cast as `c-o-n-s-t-a-n-t-c-a-s-e`.
+ * Additionally strips leading prefix from `--param-case` values to avoid recursive duplication.
+ *
+ * @internal
+ */
+export type Normalize<T extends string> = StripPrefix<
+  Uppercase<T> extends T ? Lowercase<T> : T
+>
+
+/**
+ * Convert a string value to `camelCase`.
  *
  * @public
  */
-export type ParamCase<
-  V extends string,
-  P extends Prefix
-> = `${P}${KebabCase<V>}`
+export type CamelCase<T extends string> = _CamelCase<Normalize<T>>
 
+/**
+ * Convert a string value to `kebab-case`.
+ *
+ * @public
+ */
+export type KebabCase<T extends string> = _KebabCase<Normalize<T>>
+
+/**
+ * Convert a string value to `PascalCase`.
+ *
+ * @public
+ */
+export type PascalCase<T extends string> = _PascalCase<Normalize<T>>
+
+/**
+ * Convert a string value to `CONSTANT_CASE`.
+ *
+ * @public
+ */
+export type ConstantCase<T extends string> = _ConstantCase<Normalize<T>>
+
+/**
+ * Convert a string value to `snake_case`.
+ *
+ * @public
+ */
+export type SnakeCase<T extends string> = _SnakeCase<Normalize<T>>
+
+/**
+ * Convert a string value to `--param-case`.
+ *
+ * @remarks
+ * Existing prefixes are stripped to avoid duplication.
+ *
+ * @public
+ */
+export type ParamCase<T extends string> = `--${KebabCase<Normalize<T>>}`
+
+/**
+ * Provide all valid case names as constants.
+ *
+ * @public
+ */
 export const [
   CAMEL_CASE,
   CONSTANT_CASE,
@@ -39,6 +92,11 @@ export const [
   SNAKE_CASE
 ] = ["camel", "constant", "kebab", "param", "pascal", "snake"] as const
 
+/**
+ * Provide all valid case names in array.
+ *
+ * @public
+ */
 export const caseFormats = [
   CAMEL_CASE,
   CONSTANT_CASE,
@@ -48,8 +106,18 @@ export const caseFormats = [
   SNAKE_CASE
 ] as const
 
-export type KeyOf<T extends object> = Extract<keyof T, string>
+/**
+ * Utility type for extracting string keys from generic object keys.
+ *
+ * @internal
+ */
+type KeyOf<T extends object> = Extract<keyof T, string>
 
+/**
+ * Union type of all value case names.
+ *
+ * @public
+ */
 export type Case = typeof caseFormats[number]
 
 /**
@@ -64,14 +132,11 @@ export type Input = Record<string, any>
  *
  * @internal
  */
-export interface Transformers<
-  V extends string = string,
-  P extends Prefix = Prefix
-> {
+export interface Transformers<V extends string = string> {
   [CAMEL_CASE]: CamelCase<V>
   [CONSTANT_CASE]: ConstantCase<V>
   [KEBAB_CASE]: KebabCase<V>
-  [PARAM_CASE]: ParamCase<V, P>
+  [PARAM_CASE]: ParamCase<V>
   [PASCAL_CASE]: PascalCase<V>
   [SNAKE_CASE]: SnakeCase<V>
 }
@@ -81,24 +146,16 @@ export interface Transformers<
  *
  * @public
  */
-export type ToCase<
-  V extends string,
-  C extends Case,
-  P extends Prefix = Prefix
-> = Transformers<V, P>[C]
+export type ToCase<V extends string, C extends Case> = Transformers<V>[C]
 
 /**
  * Shape of an abstract case transformation function.
  *
  * @internal
  */
-export type CaseFunction<C extends Case> = <
-  V extends string,
-  P extends Prefix = Prefix
->(
-  value: V,
-  prefix?: P
-) => ToCase<V, C, P>
+export type CaseFunction<C extends Case> = <V extends string>(
+  value: V
+) => ToCase<V, C>
 
 /**
  * Mapping of transformer function types.
@@ -128,11 +185,7 @@ export type StringKeys<O extends Input> = {
  *
  * @public
  */
-export type ArrayToCase<
-  V extends string,
-  C extends Case,
-  P extends Prefix = Prefix
-> = ToCase<V, C, P>[]
+export type ArrayToCase<V extends string, C extends Case> = ToCase<V, C>[]
 
 /**
  * Setup optional keys check.
@@ -140,7 +193,7 @@ export type ArrayToCase<
  * @internal
  */
 type Undefined<T extends Input> = {
-  [P in keyof T]: P extends undefined ? T[P] : never
+  [K in keyof T]: K extends undefined ? T[K] : never
 }
 
 /**
@@ -149,7 +202,7 @@ type Undefined<T extends Input> = {
  * @internal
  */
 type FilterFlags<Base extends Input, Condition> = {
-  [Key in keyof Base]: Base[Key] extends Condition ? Key : never
+  [K in keyof Base]: Base[K] extends Condition ? K : never
 }
 
 /**
@@ -187,8 +240,8 @@ type OptionalKeys<T extends Input> = Exclude<
  *
  * @internal
  */
-type ConvertKeys<T extends Input, C extends Case, P extends Prefix = Prefix> = {
-  [K in KeyOf<T> as ToCase<K, C, P>]: T[K]
+type ConvertKeys<T extends Input, C extends Case> = {
+  [K in KeyOf<T> as ToCase<K, C>]: T[K]
 }
 
 /**
@@ -196,44 +249,80 @@ type ConvertKeys<T extends Input, C extends Case, P extends Prefix = Prefix> = {
  *
  * @internal
  */
-type ConvertOptional<
-  T extends Input,
-  C extends Case,
-  P extends Prefix = Prefix
-> = Partial<ConvertKeys<Pick<T, OptionalKeys<T>>, C, P>>
+type ConvertOptional<T extends Input, C extends Case> = Partial<
+  ConvertKeys<Pick<T, OptionalKeys<T>>, C>
+>
 
 /**
  * Convert only non-optional keys.
  *
  * @internal
  */
-type ConvertRequired<
-  T extends Input,
-  C extends Case,
-  P extends Prefix = Prefix
-> = ConvertKeys<Omit<T, OptionalKeys<T>>, C, P>
+type ConvertRequired<T extends Input, C extends Case> = ConvertKeys<
+  Omit<T, OptionalKeys<T>>,
+  C
+>
 
 /**
  * Preserve optional properties during conversion.
  *
  * @internal
  */
-type KeysToCase<
-  T extends Input,
-  C extends Case,
-  P extends Prefix = Prefix
-> = ConvertRequired<T, C, P> & ConvertOptional<T, C, P>
+type KeysToCase<T extends Input, C extends Case> = ConvertRequired<T, C> &
+  ConvertOptional<T, C>
 
+/**
+ * Converts an objects keys to `camelCase`.
+ *
+ * @public
+ */
 export type CamelCaseKeys<T extends Input> = KeysToCase<T, "camel">
+
+/**
+ * Converts an objects keys to `CONSTANT_CASE`.
+ *
+ * @public
+ */
 export type ConstantCaseKeys<T extends Input> = KeysToCase<T, "constant">
+
+/**
+ * Converts an objects keys to `kebab-case`.
+ *
+ * @public
+ */
 export type KebabCaseKeys<T extends Input> = KeysToCase<T, "kebab">
+
+/**
+ * Converts an objects keys to `snake_case`.
+ *
+ * @public
+ */
 export type SnakeCaseKeys<T extends Input> = KeysToCase<T, "snake">
+
+/**
+ * Converts an objects keys to `PascalCase`.
+ *
+ * @public
+ */
 export type PascalCaseKeys<T extends Input> = KeysToCase<T, "pascal">
 
-export type ParamCaseKeys<T extends Input, P extends Prefix> = {
-  [K in KeyOf<T> as ParamCase<K, P>]: T[K]
+/**
+ * Converts an objects keys to `--param-case`.
+ *
+ * @public
+ */
+export type ParamCaseKeys<T extends Input> = {
+  [K in KeyOf<T> as ParamCase<K>]: T[K]
 }
 
+/**
+ * Union of all possible key transformations.
+ *
+ * @remarks
+ * Using this union type is expensive, so use only when absolutely necessary.
+ *
+ * @public
+ */
 export type AnyCaseKeys<O extends Input> =
   | StringKeys<O>
   | CamelCaseKeys<O>

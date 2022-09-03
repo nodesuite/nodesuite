@@ -3,5 +3,3 @@
  */
 
 export * from "./configure"
-export * from "./parse"
-export * from "./pipe"

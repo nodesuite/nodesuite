@@ -23,20 +23,18 @@ import type { RawOptions } from "../types"
  *
  * @public
  */
-export const readCliOptions = <K extends string>(
-  keys: K[]
-): RawOptions<K> & { _?: string[] } => {
+export const readCliOptions = <K extends string>(keys: K[]): RawOptions<K> => {
   // Define Vercel arg spec.
   const spec: Spec = Object.fromEntries(
-    keys.map(([key]) => [paramCase(key, "--"), String])
+    keys.map(([key]) => [paramCase(key), String])
   )
 
   // Extract args from argv.
-  const { _, ...rawArgs } = arg(spec, { permissive: true })
+  const { _, ...argv } = arg(spec, { permissive: true })
 
   // Convert from --param-case to camelCase and filter nullish values.
-  const args: RawOptions<K> = camelCaseKeys(rawArgs)
+  const args: RawOptions = camelCaseKeys(argv)
 
   // Append all unexpected keys.
-  return { ...filter(args, keys), _ }
+  return { ...filter(args, keys), _ } as RawOptions<K>
 }

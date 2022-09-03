@@ -3,10 +3,9 @@ import {
   constantCase,
   paramCase,
   pascalCase,
-  removePrefix,
-  snakeCase
+  snakeCase,
+  stripPrefix
 } from "./transformers"
-import { DOUBLE_PREFIX } from "./types"
 import type {
   CamelCaseKeys,
   ConstantCaseKeys,
@@ -14,7 +13,6 @@ import type {
   KebabCaseKeys,
   ParamCaseKeys,
   PascalCaseKeys,
-  Prefix,
   SnakeCaseKeys
 } from "./types"
 
@@ -51,16 +49,10 @@ export const constantCaseKeys = <T extends Record<string, any>>(
  *
  * @public
  */
-export const paramCaseKeys = <
-  T extends Input,
-  P extends Prefix = typeof DOUBLE_PREFIX
->(
-  input: T,
-  prefix: P = DOUBLE_PREFIX as P
-): ParamCaseKeys<T, P> =>
+export const paramCaseKeys = <T extends Input>(input: T): ParamCaseKeys<T> =>
   Object.fromEntries(
-    Object.entries(input).map(([key, value]) => [paramCase(key, prefix), value])
-  ) as ParamCaseKeys<T, P>
+    Object.entries(input).map(([key, value]) => [paramCase(key), value])
+  ) as ParamCaseKeys<T>
 
 /**
  * Removes `--param-case` dash prefix from keys.
@@ -71,7 +63,7 @@ export const stripParamCaseKeys = <T extends Input>(
   input: KebabCaseKeys<T>
 ): T =>
   Object.fromEntries(
-    Object.entries(input).map(([key, value]) => [removePrefix(key), value])
+    Object.entries(input).map(([key, value]) => [stripPrefix(key), value])
   ) as T
 
 /**

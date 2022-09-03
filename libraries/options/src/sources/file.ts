@@ -18,10 +18,10 @@ export const readFileOptions = <K extends string>(
   try {
     // Test if a valid path was provided.
     if (path) {
-      const content: RawOptions<K> = camelCaseKeys(readRawConfigFile(path))
+      const content: RawOptions = camelCaseKeys(readRawConfigFile(path))
 
       // Read the source file and ensure all keys are camelCase.
-      return filter(content, keys)
+      return filter(content, keys) as RawOptions<K>
     }
   } catch (error) {
     // Report errors as warnings.

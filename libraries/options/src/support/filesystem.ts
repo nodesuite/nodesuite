@@ -2,7 +2,7 @@ import { readFileSync } from "fs-extra"
 import type { AnyRecord } from "@nodesuite/is"
 
 import { FileReadError, InvalidFilePathError } from "./errors"
-import { hasExtension, parseJson, parseYaml } from "./formats"
+import { hasExtension, parseJson, parseYaml } from "./serializaton"
 import type { ValidExtension } from "../types"
 
 /**

@@ -7,12 +7,12 @@ import type { Reviver, ValidExtension } from "../types"
 /**
  * JSON reviver that forces all values to strings.
  *
- * @param _k - Property key.
+ * @param _ - Unused property key.
  * @param value - Property value.
  *
  * @internal
  */
-const reviver: Reviver = (_k: unknown, value: unknown): string | undefined => {
+const reviver: Reviver = (_: unknown, value: unknown): string | undefined => {
   try {
     return asString(value)
   } catch (error) {

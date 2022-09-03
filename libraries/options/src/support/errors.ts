@@ -25,7 +25,7 @@ export class MissingRequiredValueError extends Error {
  *
  * @public
  */
-export class UnfilterableValueError extends Error {
+export class InvalidObjectError extends Error {
   public readonly value: unknown
 
   public constructor(value: unknown) {

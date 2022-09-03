@@ -21,9 +21,6 @@ import type { RawOptions } from "../types"
  * @public
  */
 export const readEnvOptions = <K extends string>(keys: K[]): RawOptions<K> => {
-  // Extract env from dotenv-defaults.
-  const env: RawOptions<K> = camelCaseKeys(process.env)
-
-  // Filter unexpected keys and empty values.
-  return filter(env, keys)
+  const env: RawOptions = camelCaseKeys(process.env)
+  return filter(env, keys) as RawOptions<K>
 }

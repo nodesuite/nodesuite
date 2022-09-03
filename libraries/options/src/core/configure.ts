@@ -1,67 +1,54 @@
-import { asString } from "@nodesuite/is"
-import type { KeyOf } from "@nodesuite/is"
+import { copy } from "copy-anything"
+import { setProperty } from "dot-prop"
 
 import { readCliOptions, readEnvOptions, readFileOptions } from "../sources"
-import { extractConfigPath, extractKeys } from "../support"
-import { parse } from "./parse"
-import { pipe } from "./pipe"
-import type { InferSchema, Options, RawOptions, Serializable } from "../types"
+import { extractConfigPath } from "../support"
+import { extractKeys } from "../support/keys"
+import type { PartialOptions, RawOptions } from "../types"
 
 /**
  * Reads options from all sources in order of priority.
  *
- * @param schema - Deserialization schema for parsing options.
+ * @remarks
+ * Reads from all available sources a flattened `camelCase` keyed records.
+ * Each source is stripped of empty values to ensure key is explicitly free for next level.
+ * All sources are merged in order, then used to inject into the original defaults object.
  *
  * @public
  */
-export const configure = <
-  O extends Options,
-  S extends InferSchema<O> = InferSchema<O>
->(
-  schema: S
-): O => {
-  // Define internal types.
-  type Key = KeyOf<S>
-  type Raw = RawOptions<Key>
+export const configure = <O extends object>(defaults: PartialOptions<O>): O => {
+  // Create copy of source to avoid pollution of original.
+  const options: PartialOptions<O> = copy(defaults)
 
-  // Extract keys from schema.
-  const keys: Key[] = extractKeys(schema)
+  // Extract all deeply nested keys as dot notation strings.
+  const keys: string[] = extractKeys(options)
 
-  // Read from all available sources as `camelCase` objects.
-  // Each level is stripped of empty values to ensure key is explicitly free for next level.
-  const cliOptions: Raw = readCliOptions(keys)
-  const envOptions: Raw = readEnvOptions(keys)
+  // Load command line arguments.
+  const cliOptions: RawOptions = readCliOptions(keys)
+
+  // Load environment variables.
+  const envOptions: RawOptions = readEnvOptions(keys)
 
   // Existing options are searched for a "config" property.
   const filePath: string | undefined = extractConfigPath([
     cliOptions,
     envOptions
   ])
-  const fileOptions: Raw = readFileOptions(keys, filePath)
+
+  // Load JSON/YAML file.
+  const fileOptions: RawOptions = readFileOptions(keys, filePath)
 
   // Merge options in order of priority.
-  const initialState: Raw = {
+  const rawOptions: RawOptions = {
     ...fileOptions,
     ...envOptions,
     ...cliOptions
   }
 
-  // Build and parse each value according to the `Cast` or `Handler` defined in the schema.
-  return pipe<S, O>(
-    schema,
-    (map, [key, parser]) => {
-      // The current "raw options" stack is passed as the starting state for the map, so all values are available unparsed as strings.
-      const value: Serializable | undefined = map.get(key)
-      // Use the keyed parser from the source schema to parse each value.
-      const parsed: Serializable | undefined = parse(
-        asString(key),
-        value,
-        parser
-      )
-      console.debug(`Resolved "${asString(key)}" as "${parsed}".`)
-      // Replace the unparsed value within the map.
-      return map.set(key, parsed)
-    },
-    initialState
-  )
+  // Use flattened record to set values on the working object.
+  for (const [key, value] of Object.entries(rawOptions)) {
+    setProperty(options, key, value)
+  }
+
+  return options as O
 }
