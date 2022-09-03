@@ -11,6 +11,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nodesuite/deep-object",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nodesuite/eslint-config",
       "allowedCategories": [ "libraries" ]
     },
@@ -21,6 +25,10 @@
     {
       "name": "@nodesuite/node-rig",
       "allowedCategories": [ "libraries", "stack" ]
+    },
+    {
+      "name": "@nodesuite/notation",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nodesuite/timer",
@@ -60,6 +68,14 @@
     },
     {
       "name": "change-case",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "copy-anything",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "dot-prop",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -104,6 +120,14 @@
     },
     {
       "name": "spectypes",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "ts-deepmerge",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "ts-essentials",
       "allowedCategories": [ "libraries" ]
     },
     {

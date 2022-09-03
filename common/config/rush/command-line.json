@@ -52,6 +52,22 @@
       "ignoreMissingScript": true
     },
     {
+      "name": "build:prod",
+      "commandKind": "bulk",
+      "summary": "Uses tsup to build rather than tsc in development.",
+      "allowWarningsInSuccessfulBuild": false,
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "typecheck",
+      "commandKind": "bulk",
+      "summary": "Run tsc --noEmit across packages.",
+      "allowWarningsInSuccessfulBuild": false,
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    },
+    {
       "name": "test",
       "commandKind": "bulk",
       "summary": "Run tests on all packages with ava.",

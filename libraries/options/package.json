@@ -1,8 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/options",
+<<<<<<< Updated upstream
   "version": "0.0.22",
   "description": "Universal options parser for cli argument, environment variables, and configuration files.",
+=======
+  "version": "0.0.21",
+  "description": "Universal options parser for cli arguments, environment variables, and configuration files.",
+>>>>>>> Stashed changes
   "keywords": [
     "cli",
     "config",
@@ -16,10 +21,18 @@
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib",
+    "dist",
     "README.md"
   ],
   "scripts": {
@@ -27,22 +40,27 @@
     "barrels:generate": "barrelsby -d src -c node_modules/@nodesuite/node-rig/profiles/default/barrelsby.json",
     "barrels:lint": "eslint src/**/index.ts --fix",
     "build": "heft build --clean",
+    "build:prod": "tsup-node --config=node_modules/@nodesuite/node-rig/profiles/default/tsup.config.js",
     "circular": "dpdm --ext ts --circular --output .rush/circular.json src",
     "clean": "run-p clean:*",
     "clean:heft": "heft clean --clear-cache",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint src --ext .ts --fix",
     "lint:sort": "sort-package-json",
-    "typecheck": "tsc --noemit",
+    "typecheck": "tsc --noEmit",
     "upgrade": "ncu -u --packageFile package.json"
   },
   "dependencies": {
     "@nodesuite/case": "workspace:*",
     "@nodesuite/is": "workspace:*",
     "arg": "^5.0.2",
+    "dot-prop": "^7.2.0",
     "dotenv-defaults": "^5.0.2",
+    "copy-anything": "^3.0.2",
     "fs-extra": "^10.1.0",
+    "ts-deepmerge": "^3.0.0",
     "tslib": "^2.4.0",
+    "type-fest": "^2.19.0",
     "yaml": "^2.1.1"
   },
   "devDependencies": {
@@ -51,8 +69,8 @@
     "@rushstack/eslint-config": "^3.0.0",
     "@rushstack/heft": "^0.47.5",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.7.13",
-    "@typescript-eslint/parser": "^5.35.1",
+    "@types/node": "^18.7.14",
+    "@typescript-eslint/parser": "^5.36.1",
     "ava": "^4.3.3",
     "barrelsby": "^2.4.0",
     "c8": "^7.12.0",
@@ -61,7 +79,8 @@
     "npm-check-updates": "^15.3.4",
     "npm-run-all": "^4.1.5",
     "sort-package-json": "^1.57.0",
-    "typescript": "^4.8.2"
+    "tsup": "^6.2.3",
+    "typescript": "4.7.4"
   },
   "engines": {
     "node": ">=16"
