@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/process
 
-This log was last generated on Sun, 04 Sep 2022 02:06:45 GMT and should not be manually modified.
+This log was last generated on Sun, 04 Sep 2022 05:41:36 GMT and should not be manually modified.
+
+## 0.0.26
+Sun, 04 Sep 2022 05:41:36 GMT
+
+_Version update only_
 
 ## 0.0.25
 Sun, 04 Sep 2022 02:06:45 GMT

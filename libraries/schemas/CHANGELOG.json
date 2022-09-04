@@ -2,6 +2,12 @@
   "name": "@nodesuite/schemas",
   "entries": [
     {
+      "version": "0.0.26",
+      "tag": "@nodesuite/schemas_v0.0.26",
+      "date": "Sun, 04 Sep 2022 05:41:36 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.25",
       "tag": "@nodesuite/schemas_v0.0.25",
       "date": "Sun, 04 Sep 2022 02:06:45 GMT",
