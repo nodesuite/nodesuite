@@ -1,11 +1,11 @@
-import type { DeepPartial } from "@nodesuite/is"
+import type { PartialDeep } from "type-fest"
 
 /**
  * Partial abstract options object.
  *
  * @public
  */
-export type PartialOptions<O extends object> = DeepPartial<O>
+export type PartialOptions<O extends object> = PartialDeep<O>
 
 /**
  * Intermediate options extracted from sources with string values.

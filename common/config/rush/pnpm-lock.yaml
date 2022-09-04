@@ -269,7 +269,6 @@ importers:
       npm-check-updates: ^15.3.4
       npm-run-all: ^4.1.5
       sort-package-json: ^1.57.0
-      ts-deepmerge: ^3.0.0
       tslib: ^2.4.0
       tsup: ^6.2.3
       type-fest: ^2.19.0
@@ -283,7 +282,6 @@ importers:
       dot-prop: 7.2.0
       dotenv-defaults: 5.0.2
       fs-extra: 10.1.0
-      ts-deepmerge: 3.0.0
       tslib: 2.4.0
       type-fest: 2.19.0
       yaml: 2.1.1
@@ -4814,11 +4812,6 @@ packages:
 
   /true-case-path/2.2.1:
     resolution: {integrity: sha512-0z3j8R7MCjy10kc/g+qg7Ln3alJTodw9aDuVWZa3uiWqfuBMKeAeP2ocWcxoyM3D73yz3Jt/Pu4qPr4wHSdB/Q==}
-
-  /ts-deepmerge/3.0.0:
-    resolution: {integrity: sha512-gpjFrde/nE3jp7l5cJTDpyhdbGdAIO/AkNjaz4V9odnopdLd9NVrQcBDEBiE/ucMV9dmNOcdgzOVwS7U6SsBhA==}
-    engines: {node: '>=14'}
-    dev: false
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}

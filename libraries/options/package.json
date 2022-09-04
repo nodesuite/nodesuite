@@ -48,14 +48,13 @@
   "dependencies": {
     "@nodesuite/case": "workspace:*",
     "@nodesuite/is": "workspace:*",
+    "type-fest": "^2.19.0",
     "arg": "^5.0.2",
     "copy-anything": "^3.0.2",
     "dot-prop": "^7.2.0",
     "dotenv-defaults": "^5.0.2",
     "fs-extra": "^10.1.0",
-    "ts-deepmerge": "^3.0.0",
     "tslib": "^2.4.0",
-    "type-fest": "^2.19.0",
     "yaml": "^2.1.1"
   },
   "devDependencies": {
