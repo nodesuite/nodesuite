@@ -2,21 +2,27 @@ import { copy } from "copy-anything"
 import { setProperty } from "dot-prop"
 
 import { readCliOptions, readEnvOptions, readFileOptions } from "../sources"
-import { extractConfigPath } from "../support"
-import { extractKeys } from "../support/keys"
-import type { PartialOptions, RawOptions } from "../types"
+import { extractConfigPath, extractKeys } from "../support"
+import type { OptionsParser, PartialOptions, RawOptions } from "../types"
 
 /**
  * Reads options from all sources in order of priority.
  *
  * @remarks
  * Reads from all available sources a flattened `camelCase` keyed records.
+ * Importantly, the `defaults` object must contain all keys required in final output.
  * Each source is stripped of empty values to ensure key is explicitly free for next level.
  * All sources are merged in order, then used to inject into the original defaults object.
  *
+ * @param defaults - Default values for the options. Must implement all keys.
+ * @param parse - Abstract parser function which ensures values are cast as intended types.
+ *
  * @public
  */
-export const configure = <O extends object>(defaults: PartialOptions<O>): O => {
+export const configure = <O extends object>(
+  defaults: PartialOptions<O>,
+  parse: OptionsParser<O>
+): O => {
   // Create copy of source to avoid pollution of original.
   const options: PartialOptions<O> = copy(defaults)
 
@@ -50,5 +56,5 @@ export const configure = <O extends object>(defaults: PartialOptions<O>): O => {
     setProperty(options, key, value)
   }
 
-  return options as O
+  return parse(options)
 }
