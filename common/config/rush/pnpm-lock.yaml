@@ -245,65 +245,6 @@ importers:
       tsup: 6.2.3_typescript@4.7.4
       typescript: 4.7.4
 
-  ../../libraries/options:
-    specifiers:
-      '@nodesuite/case': workspace:*
-      '@nodesuite/eslint-config': workspace:*
-      '@nodesuite/is': workspace:*
-      '@nodesuite/node-rig': workspace:*
-      '@rushstack/eslint-config': ^3.0.0
-      '@rushstack/heft': ^0.47.5
-      '@types/fs-extra': ^9.0.13
-      '@types/node': ^18.7.14
-      '@typescript-eslint/parser': ^5.36.1
-      arg: ^5.0.2
-      ava: ^4.3.3
-      barrelsby: ^2.4.0
-      c8: ^7.12.0
-      copy-anything: ^3.0.2
-      dot-prop: ^7.2.0
-      dotenv-defaults: ^5.0.2
-      dpdm: ^3.10.0
-      eslint: 8.22.0
-      fs-extra: ^10.1.0
-      npm-check-updates: ^15.3.4
-      npm-run-all: ^4.1.5
-      sort-package-json: ^1.57.0
-      tslib: ^2.4.0
-      tsup: ^6.2.3
-      type-fest: ^2.19.0
-      typescript: 4.7.4
-      yaml: ^2.1.1
-    dependencies:
-      '@nodesuite/case': link:../case
-      '@nodesuite/is': link:../is
-      arg: 5.0.2
-      copy-anything: 3.0.2
-      dot-prop: 7.2.0
-      dotenv-defaults: 5.0.2
-      fs-extra: 10.1.0
-      tslib: 2.4.0
-      type-fest: 2.19.0
-      yaml: 2.1.1
-    devDependencies:
-      '@nodesuite/eslint-config': link:../../stack/eslint-config
-      '@nodesuite/node-rig': link:../../rigs/node-rig
-      '@rushstack/eslint-config': 3.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
-      '@rushstack/heft': 0.47.5
-      '@types/fs-extra': 9.0.13
-      '@types/node': 18.7.14
-      '@typescript-eslint/parser': 5.36.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-      ava: 4.3.3
-      barrelsby: 2.4.0
-      c8: 7.12.0
-      dpdm: 3.10.0
-      eslint: 8.22.0
-      npm-check-updates: 15.3.4
-      npm-run-all: 4.1.5
-      sort-package-json: 1.57.0
-      tsup: 6.2.3_typescript@4.7.4
-      typescript: 4.7.4
-
   ../../libraries/process:
     specifiers:
       '@nodesuite/eslint-config': workspace:*
@@ -1844,13 +1785,6 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /copy-anything/3.0.2:
-    resolution: {integrity: sha512-CzATjGXzUQ0EvuvgOCI6A4BGOo2bcVx8B+eC2nF862iv9fopnPQwlrbACakNCHRIJbCSBj+J/9JeDf60k64MkA==}
-    engines: {node: '>=12.13'}
-    dependencies:
-      is-what: 4.1.7
-    dev: false
-
   /cross-spawn/6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
     engines: {node: '>=4.8'}
@@ -1989,13 +1923,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
-
-  /dot-prop/7.2.0:
-    resolution: {integrity: sha512-Ol/IPXUARn9CSbkrdV4VJo7uCy1I3VuSiWCaFSg+8BdUOzF9n3jefIpcgAydvUZbTdEBZs2vEiTiS9m61ssiDA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      type-fest: 2.19.0
-    dev: false
 
   /dotenv-defaults/5.0.2:
     resolution: {integrity: sha512-y5z4NhblzwNk8XBIYVzjLcFkANK0rxbRDO6kGOfH9QrVYIGVEX52IqwSprKVsaLHM9pnNkCSxazZF/JPydDPvA==}
@@ -2613,6 +2540,7 @@ packages:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.0
+    dev: true
 
   /fs-extra/7.0.1:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
@@ -3186,11 +3114,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
 
-  /is-what/4.1.7:
-    resolution: {integrity: sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==}
-    engines: {node: '>=12.13'}
-    dev: false
-
   /is-yarn-global/0.4.0:
     resolution: {integrity: sha512-HneQBCrXGBy15QnaDfcn6OLoU8AQPAa0Qn0IeJR/QCo4E8dNZaGGwxpCwWyEBQC5QvFonP8d6t60iGpAHVAfNA==}
     engines: {node: '>=12'}
@@ -3285,6 +3208,7 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.10
+    dev: true
 
   /jsonlines/0.1.1:
     resolution: {integrity: sha512-ekDrAGso79Cvf+dtm+mL8OBI2bmAOt3gssYs833De/C9NmIpWDWyUO4zPgB5x2/OhY366dkhgfPMYfwZF7yOZA==}
@@ -4932,6 +4856,7 @@ packages:
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
+    dev: true
 
   /update-notifier/6.0.2:
     resolution: {integrity: sha512-EDxhTEVPZZRLWYcJ4ZXjGFN0oP7qYvbXWzEgRm/Yql4dHX5wDbvh89YHP6PK1lzZJYrMtXUuZZz8XGK+U6U1og==}
