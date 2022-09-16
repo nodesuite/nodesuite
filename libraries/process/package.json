@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/process",
-  "version": "0.0.26",
+  "version": "0.1.1",
   "description": "Enhanced Node child-process management.",
   "keywords": [
     "child-process",
