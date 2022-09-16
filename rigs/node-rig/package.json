@@ -25,9 +25,9 @@
     "upgrade": "ncu -u --packageFile package.json"
   },
   "dependencies": {
-    "@microsoft/api-extractor": "^7.29.5",
-    "@rushstack/heft": "^0.47.5",
-    "@types/node": "^18.7.14",
+    "@microsoft/api-extractor": "^7.31.1",
+    "@rushstack/heft": "^0.47.9",
+    "@types/node": "^18.7.18",
     "eslint": "8.22.0",
     "npm-check-updates": "^15.3.4",
     "npm-run-all": "^4.1.5",
