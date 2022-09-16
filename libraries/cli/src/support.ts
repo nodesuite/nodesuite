@@ -25,5 +25,6 @@ export const fallbackLogger: Logger = {
   debug: console.debug.bind(console),
   info: console.log.bind(console),
   warn: console.warn.bind(console),
-  error: console.error.bind(console)
+  error: console.error.bind(console),
+  fatal: console.error.bind(console)
 }

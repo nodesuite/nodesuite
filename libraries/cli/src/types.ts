@@ -22,8 +22,11 @@ export interface Logger {
   info(...args: unknown[]): unknown
   warn(...args: unknown[]): unknown
   error(...args: unknown[]): unknown
+  fatal(...args: unknown[]): unknown
 }
 
 export interface CliOptions {
   logger?: Logger
 }
+
+export type Env<K extends string = string> = Record<K, string | undefined>

@@ -4,10 +4,13 @@ import { useTimer } from "@nodesuite/timer"
 import type { PerformanceTimer } from "@nodesuite/timer"
 
 import { fallbackLogger, getOs } from "./support"
-import type { CliCommand, CliOptions, Logger, Os } from "./types"
+import type { CliCommand, CliOptions, Env, Logger, Os } from "./types"
 
 /**
- * Base CLI Command
+ * Abstract CLI Command
+ *
+ * @remarks
+ * Each command should extend this base class, rather than use it directly.
  *
  * @public
  */
@@ -30,6 +33,15 @@ export abstract class Command implements CliCommand {
   public readonly timer: PerformanceTimer = useTimer()
 
   /**
+   * Typed environment variables pre-parsed by `dotenv-defaults`.
+   *
+   * @see https://github.com/mrsteele/dotenv-defaults
+   *
+   * @internal
+   */
+  protected readonly _env: Env = process.env
+
+  /**
    * Logging instance passed in at construction.
    *
    * @remarks
@@ -41,9 +53,6 @@ export abstract class Command implements CliCommand {
 
   /**
    * Resolve the underlying operating system name.
-   *
-   * @remarks
-   * This is distinct from the "fake" operating system provided by fingerprint config.
    *
    * @public
    */
@@ -64,6 +73,7 @@ export abstract class Command implements CliCommand {
    * Primary run command to extend.
    *
    * @virtual
+   * @public
    */
   public abstract run(): Promise<void>
 
@@ -71,6 +81,8 @@ export abstract class Command implements CliCommand {
    * Reports the performance timer duration to console and stops the timer.
    *
    * @param action - Description of the action to report duration for.
+   *
+   * @public
    */
   public report(action: string = "executed"): void {
     this.logger.info(
