@@ -1,5 +1,6 @@
-import { delay, ProcessTerminationError } from "../support"
-import { ERROR_EVENT, EXIT_EVENT, SIGTERM } from "../types"
+import { ProcessTerminationError } from "../errors"
+import { delay } from "../support"
+import { PROCESS_ERROR_EVENT, PROCESS_EXIT_EVENT, SIGTERM } from "../types"
 import type { KillOptions, ManagedProcess } from "../types"
 
 /**
@@ -17,7 +18,7 @@ export const kill = async (
   try {
     const { timeout, event, signal }: KillOptions = {
       timeout: 5000,
-      event: EXIT_EVENT,
+      event: PROCESS_EXIT_EVENT,
       signal: SIGTERM,
       ...options
     }
@@ -49,7 +50,7 @@ export const kill = async (
         })
 
         // Abort early if an error occurs.
-        managedProcess.once(ERROR_EVENT, () => {
+        managedProcess.once(PROCESS_ERROR_EVENT, () => {
           reject()
         })
 

@@ -1,4 +1,5 @@
-import { configure, nodeExec, ProcessExecutionError } from "../support"
+import { ProcessExecutionError } from "../errors"
+import { configure, nodeExec } from "../support"
 import type { ExecOptions, ProcessConfig } from "../types"
 
 /**

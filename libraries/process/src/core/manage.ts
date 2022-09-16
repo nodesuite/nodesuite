@@ -1,10 +1,10 @@
 import { promisifyClose, promisifyMessage, promisifyOpen } from "../promises"
 import {
-  CLOSE_EVENT,
-  CLOSED_STATE,
-  ERROR_EVENT,
-  OPENED_STATE,
-  SPAWN_EVENT
+  PROCESS_CLOSE_EVENT,
+  PROCESS_CLOSED_STATE,
+  PROCESS_ERROR_EVENT,
+  PROCESS_OPENED_STATE,
+  PROCESS_SPAWN_EVENT
 } from "../types"
 import type { ManagedProcess, NodeChildProcess } from "../types"
 
@@ -29,7 +29,7 @@ export const manage = (
     command,
     method,
     killing: undefined,
-    state: CLOSED_STATE,
+    state: PROCESS_CLOSED_STATE,
     untilOpen: promisifyOpen(childProcess, command),
     untilClose: promisifyClose(childProcess),
     untilMessage: promisifyMessage(childProcess, command)
@@ -37,17 +37,17 @@ export const manage = (
 
   // Change state and notify debugger on state changes.
 
-  managedProcess.once(SPAWN_EVENT, () => {
-    managedProcess.state = OPENED_STATE
+  managedProcess.once(PROCESS_SPAWN_EVENT, () => {
+    managedProcess.state = PROCESS_OPENED_STATE
     console.debug(`Process "${command}" opened.`)
   })
 
-  managedProcess.once(CLOSE_EVENT, () => {
-    managedProcess.state = CLOSED_STATE
+  managedProcess.once(PROCESS_CLOSE_EVENT, () => {
+    managedProcess.state = PROCESS_CLOSED_STATE
     console.debug(`Process "${command}" closed.`)
   })
 
-  managedProcess.on(ERROR_EVENT, (error: Error) => {
+  managedProcess.on(PROCESS_ERROR_EVENT, (error: Error) => {
     console.debug(`Process "${command}" error: ${error.message}`)
   })
 

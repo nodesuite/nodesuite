@@ -4,5 +4,4 @@
 
 export * from "./configure"
 export * from "./delay"
-export * from "./exceptions"
 export * from "./vendor"

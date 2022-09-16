@@ -1,5 +1,5 @@
 import { OpenTimeoutError } from "../errors"
-import { ERROR_EVENT, SPAWN_EVENT } from "../types"
+import { PROCESS_ERROR_EVENT, PROCESS_SPAWN_EVENT } from "../types"
 import type { NodeChildProcess } from "../types"
 
 /**
@@ -32,15 +32,15 @@ export const promisifyOpen =
       // Handle successful spawn event.
       const onSpawn = (): void => {
         // Remove abort listener.
-        childProcess.removeListener(ERROR_EVENT, onError)
+        childProcess.removeListener(PROCESS_ERROR_EVENT, onError)
 
         // Once process is spawned, convert to observable.
         resolve()
       }
 
       // Bind listeners.
-      childProcess.once(ERROR_EVENT, onError)
-      childProcess.once(SPAWN_EVENT, onSpawn)
+      childProcess.once(PROCESS_ERROR_EVENT, onError)
+      childProcess.once(PROCESS_SPAWN_EVENT, onSpawn)
 
       // If a timeout was requested, abort if reached.
       if (timeout) {

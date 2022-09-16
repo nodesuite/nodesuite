@@ -1,4 +1,4 @@
-import { CLOSE_EVENT, ERROR_EVENT } from "../types"
+import { PROCESS_CLOSE_EVENT, PROCESS_ERROR_EVENT } from "../types"
 import type { CloseReason, NodeChildProcess, Signal } from "../types"
 
 /**
@@ -21,7 +21,7 @@ export const promisifyClose =
 
       // Listen for close event and resolve with payload.
       childProcess.once(
-        CLOSE_EVENT,
+        PROCESS_CLOSE_EVENT,
         (code: number | undefined, signal: Signal | undefined) => {
           resolve({
             code,
@@ -31,7 +31,7 @@ export const promisifyClose =
       )
 
       // Abort on errors.
-      childProcess.once(ERROR_EVENT, (error: Error) => {
+      childProcess.once(PROCESS_ERROR_EVENT, (error: Error) => {
         reject({
           error
         })

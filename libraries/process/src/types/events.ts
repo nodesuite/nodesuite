@@ -2,13 +2,13 @@
  * @public
  */
 export const [
-  CLOSE_EVENT,
-  DISCONNECT_EVENT,
-  ERROR_EVENT,
-  EXIT_EVENT,
-  MESSAGE_EVENT,
-  OPEN_EVENT,
-  SPAWN_EVENT
+  PROCESS_CLOSE_EVENT,
+  PROCESS_DISCONNECT_EVENT,
+  PROCESS_ERROR_EVENT,
+  PROCESS_EXIT_EVENT,
+  PROCESS_MESSAGE_EVENT,
+  PROCESS_OPEN_EVENT,
+  PROCESS_SPAWN_EVENT
 ] = [
   "close",
   "disconnect",
@@ -23,12 +23,13 @@ export const [
  * @public
  */
 export const processEvents = [
-  CLOSE_EVENT,
-  DISCONNECT_EVENT,
-  ERROR_EVENT,
-  EXIT_EVENT,
-  MESSAGE_EVENT,
-  SPAWN_EVENT
+  PROCESS_CLOSE_EVENT,
+  PROCESS_DISCONNECT_EVENT,
+  PROCESS_ERROR_EVENT,
+  PROCESS_EXIT_EVENT,
+  PROCESS_MESSAGE_EVENT,
+  PROCESS_OPEN_EVENT,
+  PROCESS_SPAWN_EVENT
 ] as const
 
 /**
@@ -39,7 +40,7 @@ export type ProcessEvent = typeof processEvents[number]
 /**
  * @public
  */
-export const closeEvents = [CLOSE_EVENT, EXIT_EVENT] as const
+export const closeEvents = [PROCESS_CLOSE_EVENT, PROCESS_EXIT_EVENT] as const
 
 /**
  * @public

@@ -1,5 +1,9 @@
 import { MessageTimeoutError } from "../errors"
-import { CLOSE_EVENT, ERROR_EVENT, MESSAGE_EVENT } from "../types"
+import {
+  PROCESS_CLOSE_EVENT,
+  PROCESS_ERROR_EVENT,
+  PROCESS_MESSAGE_EVENT
+} from "../types"
 import type { NodeChildProcess, Serializable, Signal, Validate } from "../types"
 
 /**
@@ -43,15 +47,15 @@ export const promisifyMessage =
 
         console.debug(`Matched awaited message from child process.`, message)
 
-        childProcess.off(MESSAGE_EVENT, onMessage)
-        childProcess.off(CLOSE_EVENT, onClose)
-        childProcess.off(ERROR_EVENT, onError)
+        childProcess.off(PROCESS_MESSAGE_EVENT, onMessage)
+        childProcess.off(PROCESS_CLOSE_EVENT, onClose)
+        childProcess.off(PROCESS_ERROR_EVENT, onError)
         resolve(message)
       }
 
-      childProcess.on(MESSAGE_EVENT, onMessage)
-      childProcess.once(CLOSE_EVENT, onClose)
-      childProcess.once(ERROR_EVENT, onError)
+      childProcess.on(PROCESS_MESSAGE_EVENT, onMessage)
+      childProcess.once(PROCESS_CLOSE_EVENT, onClose)
+      childProcess.once(PROCESS_ERROR_EVENT, onError)
 
       // If a timeout was requested, abort if reached.
       if (timeout) {

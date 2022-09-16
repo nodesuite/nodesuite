@@ -1,4 +1,4 @@
-import { ProcessConfigurationError } from "./exceptions"
+import { ProcessConfigurationError } from "../errors"
 import type {
   ExecOptions,
   ForkOptions,
