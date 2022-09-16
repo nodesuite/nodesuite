@@ -14,7 +14,6 @@ const {
   barrels,
   javascript,
   markdown,
-  schemas,
   typescript
 } = require("../overrides")
 
@@ -60,5 +59,5 @@ module.exports = {
     "tsdoc/syntax": "error"
   },
   // Pattern specific overrides.
-  overrides: [anyInTypes, barrels, javascript, markdown, schemas, typescript]
+  overrides: [anyInTypes, barrels, javascript, markdown, typescript]
 }
