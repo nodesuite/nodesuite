@@ -2,6 +2,12 @@
   "name": "@nodesuite/websocket",
   "entries": [
     {
+      "version": "0.1.5",
+      "tag": "@nodesuite/websocket_v0.1.5",
+      "date": "Sat, 17 Sep 2022 07:16:52 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.1.4",
       "tag": "@nodesuite/websocket_v0.1.4",
       "date": "Sat, 17 Sep 2022 01:17:58 GMT",
