@@ -16,24 +16,19 @@ export type Rejection = (reason?: string | Error | unknown) => void
 /**
  * @public
  */
-export interface Deferral<R = void> {
+export interface DeferralBuilder<R = void> {
   // Original promise to await.
-  readonly promise: Promise<R>
+  promise: Promise<R>
   // Internal resolve function.
-  readonly resolve: Resolver<R>
+  resolve: Resolver<R>
   // Internal reject function.
-  readonly reject: Rejection
+  reject: Rejection
+
+  // Test if deferral has already been resolved.
+  isResolved(): boolean
 
   // Sugar syntax to avoid using promise object.
-  readonly untilResolved: () => Promise<R>
+  untilResolved(): Promise<R>
 }
 
-/**
- * @internal
- */
-export interface Builder<R = void> {
-  promise?: Promise<R> | undefined
-  resolve?: Resolver<R> | undefined
-  reject?: Rejection | undefined
-  untilResolved?: () => Promise<R>
-}
+export type Deferral<R = void> = Readonly<DeferralBuilder<R>>

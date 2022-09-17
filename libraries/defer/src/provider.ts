@@ -1,4 +1,4 @@
-import type { Builder, Callback, Deferral } from "./types"
+import type { Callback, Deferral, DeferralBuilder } from "./types"
 
 /**
  * Default void callback.
@@ -18,10 +18,19 @@ const NOOP =
 export const defer = <R = void>(
   callback: Callback<R> = NOOP()
 ): Deferral<R> => {
-  const deferral: Builder<R> = {}
+  let _isResolved: boolean = false
+
+  const deferral: Partial<DeferralBuilder<R>> = {
+    resolve: undefined,
+    reject: undefined,
+    promise: undefined,
+
+    isResolved: (): boolean => _isResolved
+  }
 
   const promise: Promise<R> = new Promise<R>((resolve, reject) => {
     deferral.resolve = () => {
+      _isResolved = true
       resolve(callback())
     }
 
@@ -31,5 +40,5 @@ export const defer = <R = void>(
   deferral.promise = promise
   deferral.untilResolved = async (): Promise<R> => promise
 
-  return deferral as Deferral<R>
+  return Object.freeze(deferral) as Deferral<R>
 }
