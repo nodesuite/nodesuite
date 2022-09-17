@@ -61,16 +61,19 @@ export const promisifyMessage =
         console.debug(`Matched awaited message from child process.`, message)
 
         childProcess.off(PROCESS_DATA_EVENT, onData)
-        childProcess.off(PROCESS_CLOSE_EVENT, onClose)
-        childProcess.off(PROCESS_ERROR_EVENT, onError)
-
         childProcess.stdout?.off(PROCESS_DATA_EVENT, onData)
         childProcess.stderr?.off(PROCESS_DATA_EVENT, onData)
+
+        childProcess.off(PROCESS_CLOSE_EVENT, onClose)
+        childProcess.off(PROCESS_ERROR_EVENT, onError)
 
         resolve(message)
       }
 
       childProcess.on(PROCESS_DATA_EVENT, onData)
+      childProcess.stdout?.on(PROCESS_DATA_EVENT, onData)
+      childProcess.stderr?.on(PROCESS_DATA_EVENT, onData)
+
       childProcess.once(PROCESS_CLOSE_EVENT, onClose)
       childProcess.once(PROCESS_ERROR_EVENT, onError)
     })
