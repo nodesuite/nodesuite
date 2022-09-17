@@ -3,14 +3,14 @@ import type { PerformanceTimer } from "@nodesuite/timer"
 import type { ExecutionMethod } from "./methods"
 import type { Signal } from "./signals"
 import type { ProcessState } from "./states"
-import type { NodeChildProcess, Serializable } from "./vendor"
+import type { NodeChildProcess } from "./vendor"
 
 export interface CloseReason {
   code: number | undefined
   signal: Signal | undefined
 }
 
-export type Validate<T> = (input: unknown) => T | void
+export type Validate = (message: string) => boolean
 
 export interface ChildProcess extends NodeChildProcess {
   readonly command: string
@@ -26,8 +26,5 @@ export interface ChildProcess extends NodeChildProcess {
 
   untilClose(): Promise<CloseReason>
 
-  untilMessage<T extends Serializable = Serializable>(
-    validate: Validate<T>,
-    timeout?: number
-  ): Promise<T>
+  untilMessage(validate: Validate, timeout?: number): Promise<string>
 }

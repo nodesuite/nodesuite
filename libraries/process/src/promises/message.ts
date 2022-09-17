@@ -4,13 +4,13 @@ import {
   PROCESS_DATA_EVENT,
   PROCESS_ERROR_EVENT
 } from "../types"
-import type { NodeChildProcess, Serializable, Signal, Validate } from "../types"
+import type { NodeChildProcess, Signal, Validate } from "../types"
 
 /**
  * Awaits a specific message event from a specified child process.
  *
  * @remarks
- * Has a default timeout of 120s.
+ * Has a default timeout of 90s.
  *
  * @param childProcess - Spawned child process to monitor.
  * @param command - Optional name of command for debugging.
@@ -19,11 +19,18 @@ import type { NodeChildProcess, Serializable, Signal, Validate } from "../types"
  */
 export const promisifyMessage =
   (childProcess: NodeChildProcess, command?: string) =>
-  <T extends Serializable = Serializable>(
-    validate: Validate<T>,
-    timeout: number = 120000
-  ): Promise<T> =>
-    new Promise<T>((resolve, reject) => {
+  (validate: Validate, timeout: number = 90000): Promise<string> =>
+    new Promise((resolve, reject) => {
+      // If a timeout was requested, start a timer to reject promise if reached.
+      const timer: NodeJS.Timer = setTimeout(() => {
+        const error: Error = new MessageTimeoutError(
+          command ?? childProcess.pid,
+          timeout
+        )
+        console.warn(error.message)
+        reject(error)
+      }, timeout)
+
       // Abort observer if process closes before a match is found.
       const onClose = (
         code: number | undefined,
@@ -42,33 +49,28 @@ export const promisifyMessage =
       // Matching logic, generally a Zod schema or function that throws if invalid.
       // We must remove this listener upon resolution to avoid memory leaks.
       const onData = (data: Buffer): void => {
-        const message: T | void = validate(data.toString("utf8"))
+        const message: string = data.toString()
 
-        if (!message) {
+        if (!validate(message)) {
           return
         }
+
+        // Clear the rejection timeout.
+        clearTimeout(timer)
 
         console.debug(`Matched awaited message from child process.`, message)
 
         childProcess.off(PROCESS_DATA_EVENT, onData)
         childProcess.off(PROCESS_CLOSE_EVENT, onClose)
         childProcess.off(PROCESS_ERROR_EVENT, onError)
+
+        childProcess.stdout?.off(PROCESS_DATA_EVENT, onData)
+        childProcess.stderr?.off(PROCESS_DATA_EVENT, onData)
+
         resolve(message)
       }
 
       childProcess.on(PROCESS_DATA_EVENT, onData)
       childProcess.once(PROCESS_CLOSE_EVENT, onClose)
       childProcess.once(PROCESS_ERROR_EVENT, onError)
-
-      // If a timeout was requested, abort if reached.
-      if (timeout) {
-        setTimeout(() => {
-          const error: Error = new MessageTimeoutError(
-            command ?? childProcess.pid,
-            timeout
-          )
-          console.warn(error.message)
-          reject(error)
-        }, timeout)
-      }
     })
