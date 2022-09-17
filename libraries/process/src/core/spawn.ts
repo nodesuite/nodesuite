@@ -22,12 +22,11 @@ import type {
 export const spawn = async (
   command: string,
   args: string[] = [],
-  options: SpawnOptions = {}
+  { filters, ...options }: SpawnOptions = {}
 ): Promise<ChildProcess> => {
   // Configure args and options.
   const config: ProcessConfig<SpawnOptions> = configure({ args, options })
   const method: ExecutionMethod = SPAWN
-  const filters: string[] = options.filters ?? []
 
   // Spawn a new child process.
   const childProcess: ChildProcess = manage(
@@ -35,7 +34,7 @@ export const spawn = async (
     {
       command,
       method,
-      filters
+      filters: filters ?? []
     }
   )
 

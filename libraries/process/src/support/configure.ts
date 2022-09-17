@@ -32,13 +32,15 @@ export const configure = <O extends SpawnOptions | ForkOptions | ExecOptions>(
     })
 
     // Merges process options with current environment variables.
-    const parseOptions = <O extends SpawnOptions | ForkOptions | ExecOptions>(
-      options: O
-    ): O => ({
-      ...options,
-      stdio: options.stdio ?? [process.stdin, "pipe", "pipe"],
-      env: mergeEnv(options.env)
-    })
+    const parseOptions = <O extends SpawnOptions | ForkOptions | ExecOptions>({
+      stdio,
+      ...options
+    }: O): O =>
+      ({
+        ...options,
+        stdio: stdio ?? [process.stdin, "pipe", "pipe"],
+        env: mergeEnv(options.env)
+      } as O)
 
     const args: string[] = parseArgs(config.command, config.args)
     const options: O = parseOptions(config.options)

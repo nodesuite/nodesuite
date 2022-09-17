@@ -46,7 +46,7 @@ export const promisifyMessage =
         })
       }
 
-      // Matching logic, generally a Zod schema or function that throws if invalid.
+      // Search messages based on validation function.
       // We must remove this listener upon resolution to avoid memory leaks.
       const onData = (data: Buffer): void => {
         const message: string = data.toString().trim()
