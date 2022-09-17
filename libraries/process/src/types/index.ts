@@ -4,6 +4,7 @@
 
 export * from "./config"
 export * from "./events"
+export * from "./manager"
 export * from "./methods"
 export * from "./options"
 export * from "./process"

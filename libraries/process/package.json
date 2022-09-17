@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@nodesuite/timer": "workspace:*",
+    "@nodesuite/defer": "workspace:*",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
