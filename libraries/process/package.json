@@ -40,6 +40,7 @@
     "upgrade": "ncu -u --packageFile package.json"
   },
   "dependencies": {
+    "@nodesuite/timer": "workspace:*",
     "tslib": "^2.4.0"
   },
   "devDependencies": {

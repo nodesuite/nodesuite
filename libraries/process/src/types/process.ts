@@ -1,3 +1,5 @@
+import type { PerformanceTimer } from "@nodesuite/timer"
+
 import type { ExecutionMethod } from "./methods"
 import type { Signal } from "./signals"
 import type { ProcessState } from "./states"
@@ -10,9 +12,10 @@ export interface CloseReason {
 
 export type Validate<T> = (input: unknown) => T | void
 
-export interface ManagedProcess extends NodeChildProcess {
+export interface ChildProcess extends NodeChildProcess {
   readonly command: string
   readonly method: ExecutionMethod
+  readonly timer: PerformanceTimer
 
   state: ProcessState
 

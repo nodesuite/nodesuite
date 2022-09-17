@@ -249,6 +249,7 @@ importers:
     specifiers:
       '@nodesuite/eslint-config': workspace:*
       '@nodesuite/node-rig': workspace:*
+      '@nodesuite/timer': workspace:*
       '@rushstack/eslint-config': ^3.0.1
       '@rushstack/heft': ^0.47.9
       '@types/node': ^18.7.18
@@ -265,6 +266,7 @@ importers:
       tsup: ^6.2.3
       typescript: 4.7.4
     dependencies:
+      '@nodesuite/timer': link:../timer
       tslib: 2.4.0
     devDependencies:
       '@nodesuite/eslint-config': link:../../stack/eslint-config

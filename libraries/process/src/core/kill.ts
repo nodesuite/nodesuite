@@ -1,18 +1,18 @@
 import { ProcessTerminationError } from "../errors"
 import { delay } from "../support"
 import { PROCESS_ERROR_EVENT, PROCESS_EXIT_EVENT, SIGTERM } from "../types"
-import type { KillOptions, ManagedProcess } from "../types"
+import type { ChildProcess, KillOptions } from "../types"
 
 /**
- * Terminates a child managedProcess and awaits for a closed state.
+ * Terminates a child childProcess and awaits for a closed state.
  *
  * @remarks
- * Removes any listeners attached to the managedProcess.
+ * Removes any listeners attached to the childProcess.
  *
  * @public
  */
 export const kill = async (
-  managedProcess: ManagedProcess,
+  childProcess: ChildProcess,
   options: Partial<KillOptions> = {}
 ): Promise<void> => {
   try {
@@ -24,52 +24,52 @@ export const kill = async (
     }
 
     // If process already killed, terminate immediately.
-    if (managedProcess.killed) {
+    if (childProcess.killed) {
       return
     }
 
     // If already awaiting a kill event, return previous promise race.
-    if (managedProcess.killing) {
-      return Promise.race([managedProcess.killing, delay(timeout)])
+    if (childProcess.killing) {
+      return Promise.race([childProcess.killing, delay(timeout)])
     }
 
     // Attach the first kill race.
-    managedProcess.killing = Promise.race([
+    childProcess.killing = Promise.race([
       new Promise<void>((resolve) => {
         // Poll for a killed in case event is already triggered.
         for (let i: number = 0; i < 100; i++) {
-          if (managedProcess.killed) {
+          if (childProcess.killed) {
             resolve()
           }
         }
       }),
       new Promise<void>((resolve, reject) => {
         // Await close or exit event before resolving.
-        managedProcess.once(event, () => {
+        childProcess.once(event, () => {
           resolve()
         })
 
         // Abort early if an error occurs.
-        managedProcess.once(PROCESS_ERROR_EVENT, () => {
+        childProcess.once(PROCESS_ERROR_EVENT, () => {
           reject()
         })
 
         // Send termination signal.
-        managedProcess.kill(signal)
+        childProcess.kill(signal)
 
         // Resolve if process is already terminated by the time listeners are attached.
-        if (managedProcess.killed) {
+        if (childProcess.killed) {
           resolve()
         }
       }),
       delay(timeout)
     ])
 
-    await managedProcess.killing
+    await childProcess.killing
 
     // Removes all listeners after termination.
-    managedProcess.removeAllListeners()
+    childProcess.removeAllListeners()
   } catch (error) {
-    throw new ProcessTerminationError(managedProcess.command, error as Error)
+    throw new ProcessTerminationError(childProcess.command, error as Error)
   }
 }

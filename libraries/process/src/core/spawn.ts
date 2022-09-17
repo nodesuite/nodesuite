@@ -2,8 +2,8 @@ import { configure, nodeSpawn } from "../support"
 import { SPAWN } from "../types"
 import { manage } from "./manage"
 import type {
+  ChildProcess,
   ExecutionMethod,
-  ManagedProcess,
   ProcessConfig,
   SpawnOptions
 } from "../types"
@@ -23,13 +23,13 @@ export const spawn = async (
   command: string,
   args: string[] = [],
   options: SpawnOptions = {}
-): Promise<ManagedProcess> => {
+): Promise<ChildProcess> => {
   // Configure args and options.
   const config: ProcessConfig<SpawnOptions> = configure({ args, options })
   const method: ExecutionMethod = SPAWN
 
   // Spawn a new child process.
-  const managedProcess: ManagedProcess = manage(
+  const childProcess: ChildProcess = manage(
     nodeSpawn(command, config.args, config.options),
     {
       command,
@@ -38,7 +38,7 @@ export const spawn = async (
   )
 
   // Await completed spawn event.
-  await managedProcess.untilOpen()
+  await childProcess.untilOpen()
 
-  return managedProcess
+  return childProcess
 }
