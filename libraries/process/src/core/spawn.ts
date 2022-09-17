@@ -27,13 +27,15 @@ export const spawn = async (
   // Configure args and options.
   const config: ProcessConfig<SpawnOptions> = configure({ args, options })
   const method: ExecutionMethod = SPAWN
+  const filters: string[] = options.filters ?? []
 
   // Spawn a new child process.
   const childProcess: ChildProcess = manage(
     nodeSpawn(command, config.args, config.options),
     {
       command,
-      method
+      method,
+      filters
     }
   )
 

@@ -8,18 +8,17 @@ import type {
 import type { PROCESS_ERROR_EVENT, PROCESS_MESSAGE_EVENT } from "./events"
 import type { Serializable } from "./vendor"
 
-export interface ForkOptions extends NodeForkOptions {
+interface BaseOptions {
   errors?: boolean
+  filters?: string[]
+  stdio?: StdioOptions
 }
 
-export interface SpawnOptions extends NodeSpawnOptions {
-  errors?: boolean
-}
+export type ForkOptions = NodeForkOptions & BaseOptions
 
-export interface ExecOptions extends NodeExecOptions {
-  errors?: boolean
-  stdio?: StdioOptions | undefined
-}
+export type SpawnOptions = NodeSpawnOptions & BaseOptions
+
+export type ExecOptions = NodeExecOptions & BaseOptions
 
 export type IOFunction = (data: Serializable) => void
 

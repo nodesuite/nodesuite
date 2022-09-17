@@ -16,6 +16,7 @@ export interface ChildProcess extends NodeChildProcess {
   readonly command: string
   readonly method: ExecutionMethod
   readonly timer: PerformanceTimer
+  readonly filters: string[]
 
   state: ProcessState
 

@@ -5,6 +5,7 @@ import { promisifyClose, promisifyMessage, promisifyOpen } from "../promises"
 import {
   PROCESS_CLOSE_EVENT,
   PROCESS_CLOSED_STATE,
+  PROCESS_DATA_EVENT,
   PROCESS_ERROR_EVENT,
   PROCESS_OPENED_STATE,
   PROCESS_OPENING_STATE,
@@ -22,12 +23,17 @@ import type { ChildProcess, NodeChildProcess } from "../types"
  * @param nativeChildProcess - Native child process to augment.
  * @param command - Command name or executable path called by `spawn` or `fork`.
  * @param method - Execution method (`spawn`, `fork`) used to spawn the process.
+ * @param filters - String filters used to reduce stdout and stderr noise.
  *
  * @internal
  */
 export const manage = (
   nativeChildProcess: NodeChildProcess,
-  { command, method }: Pick<ChildProcess, "command" | "method">
+  {
+    command,
+    method,
+    filters
+  }: Pick<ChildProcess, "command" | "method" | "filters">
 ): ChildProcess => {
   // Initialize a timer to track duration.
   const timer: PerformanceTimer = new Timer()
@@ -37,6 +43,7 @@ export const manage = (
     command,
     method,
     timer,
+    filters,
     killing: undefined,
     state: PROCESS_OPENING_STATE,
     untilOpen: promisifyOpen(nativeChildProcess, command),
@@ -62,6 +69,36 @@ export const manage = (
       childProcess.kill(SIGTERM)
     }
   })
+
+  const filter = (data: Buffer): string | undefined => {
+    const message: string = data.toString().trim()
+    return !childProcess.filters ||
+      childProcess.filters.every((filter) => !message.includes(filter))
+      ? message
+      : undefined
+  }
+
+  const onStdout = (data: Buffer): void => {
+    const message: string | undefined = filter(data)
+    if (message) {
+      process.stdout.write(`${message}\n`)
+    }
+  }
+
+  const onStderr = (data: Buffer): void => {
+    const message: string | undefined = filter(data)
+    if (message) {
+      process.stderr.write(`${message}\n`)
+    }
+  }
+
+  if (childProcess.stdout) {
+    childProcess.stdout.on(PROCESS_DATA_EVENT, onStdout)
+  }
+
+  if (childProcess.stderr) {
+    childProcess.stderr.on(PROCESS_DATA_EVENT, onStderr)
+  }
 
   return childProcess
 }
