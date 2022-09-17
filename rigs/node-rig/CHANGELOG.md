@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/node-rig
 
-This log was last generated on Sat, 17 Sep 2022 00:22:25 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Sep 2022 01:00:27 GMT and should not be manually modified.
+
+## 0.1.3
+Sat, 17 Sep 2022 01:00:27 GMT
+
+_Version update only_
 
 ## 0.1.2
 Sat, 17 Sep 2022 00:22:25 GMT
