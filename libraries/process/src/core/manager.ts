@@ -9,6 +9,13 @@ import type { ChildProcess } from "../types"
 /**
  * Abstract utility wrapper for building process-based classes.
  *
+ * @remarks
+ * Inheritors should implement own "open" and "close" logic which is provided to
+ * the "setOpen" and "setClose" handlers.
+ *
+ * Importantly, to release the opener and closer promises, the "open" and "close"
+ * logic should emit the appropriate process event to signal ready state.
+ *
  * @public
  */
 export abstract class ProcessManager extends EventEmitter {
