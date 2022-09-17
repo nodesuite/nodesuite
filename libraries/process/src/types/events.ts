@@ -3,6 +3,7 @@
  */
 export const [
   PROCESS_CLOSE_EVENT,
+  PROCESS_DATA_EVENT,
   PROCESS_DISCONNECT_EVENT,
   PROCESS_ERROR_EVENT,
   PROCESS_EXIT_EVENT,
@@ -11,6 +12,7 @@ export const [
   PROCESS_SPAWN_EVENT
 ] = [
   "close",
+  "data",
   "disconnect",
   "error",
   "exit",
@@ -24,6 +26,7 @@ export const [
  */
 export const processEvents = [
   PROCESS_CLOSE_EVENT,
+  PROCESS_DATA_EVENT,
   PROCESS_DISCONNECT_EVENT,
   PROCESS_ERROR_EVENT,
   PROCESS_EXIT_EVENT,

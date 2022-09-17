@@ -1,8 +1,8 @@
 import { MessageTimeoutError } from "../errors"
 import {
   PROCESS_CLOSE_EVENT,
-  PROCESS_ERROR_EVENT,
-  PROCESS_MESSAGE_EVENT
+  PROCESS_DATA_EVENT,
+  PROCESS_ERROR_EVENT
 } from "../types"
 import type { NodeChildProcess, Serializable, Signal, Validate } from "../types"
 
@@ -41,7 +41,7 @@ export const promisifyMessage =
 
       // Matching logic, generally a Zod schema or function that throws if invalid.
       // We must remove this listener upon resolution to avoid memory leaks.
-      const onMessage = (data: Buffer): void => {
+      const onData = (data: Buffer): void => {
         const message: T | void = validate(data.toString("utf8"))
 
         if (!message) {
@@ -50,13 +50,13 @@ export const promisifyMessage =
 
         console.debug(`Matched awaited message from child process.`, message)
 
-        childProcess.off(PROCESS_MESSAGE_EVENT, onMessage)
+        childProcess.off(PROCESS_DATA_EVENT, onData)
         childProcess.off(PROCESS_CLOSE_EVENT, onClose)
         childProcess.off(PROCESS_ERROR_EVENT, onError)
         resolve(message)
       }
 
-      childProcess.on(PROCESS_MESSAGE_EVENT, onMessage)
+      childProcess.on(PROCESS_DATA_EVENT, onData)
       childProcess.once(PROCESS_CLOSE_EVENT, onClose)
       childProcess.once(PROCESS_ERROR_EVENT, onError)
 
