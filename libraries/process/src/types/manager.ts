@@ -1,4 +1,4 @@
-import type EventEmitter from "node:events"
+import type { EventEmitter } from "node:events"
 
 import type { ChildProcess } from "./process"
 
@@ -16,4 +16,7 @@ export interface ManagedProcess extends EventEmitter {
 
   // Expose internal child process.
   process(): ChildProcess
+
+  // Awaits a close event from the internal child process.
+  untilClose(): Promise<void>
 }

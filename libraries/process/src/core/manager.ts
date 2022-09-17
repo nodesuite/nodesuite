@@ -92,6 +92,15 @@ export abstract class ProcessManager extends EventEmitter {
   }
 
   /**
+   * Awaits the deferred close event.
+   *
+   * @public
+   */
+  public untilClose(): Promise<void> {
+    return this.#closer.untilResolved()
+  }
+
+  /**
    * Returns an existing open or sets an opening state.
    *
    * @remarks
