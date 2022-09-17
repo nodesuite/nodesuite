@@ -36,6 +36,7 @@ export const configure = <O extends SpawnOptions | ForkOptions | ExecOptions>(
       options: O
     ): O => ({
       ...options,
+      stdio: options.stdio ?? [process.stdin, "pipe", "pipe"],
       env: mergeEnv(options.env)
     })
 

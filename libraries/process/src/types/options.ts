@@ -1,17 +1,25 @@
 import type {
   ExecOptions as NodeExecOptions,
   ForkOptions as NodeForkOptions,
-  SpawnOptions as NodeSpawnOptions
+  SpawnOptions as NodeSpawnOptions,
+  StdioOptions
 } from "node:child_process"
 
 import type { PROCESS_ERROR_EVENT, PROCESS_MESSAGE_EVENT } from "./events"
 import type { Serializable } from "./vendor"
 
-export type ForkOptions = NodeForkOptions & { errors?: boolean }
+export interface ForkOptions extends NodeForkOptions {
+  errors?: boolean
+}
 
-export type SpawnOptions = NodeSpawnOptions & { errors?: boolean }
+export interface SpawnOptions extends NodeSpawnOptions {
+  errors?: boolean
+}
 
-export type ExecOptions = NodeExecOptions & { errors?: boolean }
+export interface ExecOptions extends NodeExecOptions {
+  errors?: boolean
+  stdio?: StdioOptions | undefined
+}
 
 export type IOFunction = (data: Serializable) => void
 
