@@ -26,6 +26,7 @@ export interface ChildProcess extends NodeChildProcess {
   untilClose(): Promise<CloseReason>
 
   untilMessage<T extends Serializable = Serializable>(
-    validate: Validate<T>
+    validate: Validate<T>,
+    timeout?: number
   ): Promise<T>
 }

@@ -9,6 +9,9 @@ import type { NodeChildProcess, Serializable, Signal, Validate } from "../types"
 /**
  * Awaits a specific message event from a specified child process.
  *
+ * @remarks
+ * Has a default timeout of 120s.
+ *
  * @param childProcess - Spawned child process to monitor.
  * @param command - Optional name of command for debugging.
  *
@@ -18,7 +21,7 @@ export const promisifyMessage =
   (childProcess: NodeChildProcess, command?: string) =>
   <T extends Serializable = Serializable>(
     validate: Validate<T>,
-    timeout?: number
+    timeout: number = 120000
   ): Promise<T> =>
     new Promise<T>((resolve, reject) => {
       // Abort observer if process closes before a match is found.
@@ -38,8 +41,8 @@ export const promisifyMessage =
 
       // Matching logic, generally a Zod schema or function that throws if invalid.
       // We must remove this listener upon resolution to avoid memory leaks.
-      const onMessage = (stdout: Serializable): void => {
-        const message: T | void = validate(stdout)
+      const onMessage = (data: Buffer): void => {
+        const message: T | void = validate(data.toString("utf8"))
 
         if (!message) {
           return
