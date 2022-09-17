@@ -49,7 +49,7 @@ export const promisifyMessage =
       // Matching logic, generally a Zod schema or function that throws if invalid.
       // We must remove this listener upon resolution to avoid memory leaks.
       const onData = (data: Buffer): void => {
-        const message: string = data.toString()
+        const message: string = data.toString().trim()
 
         if (!validate(message)) {
           return
@@ -60,7 +60,6 @@ export const promisifyMessage =
 
         console.debug(`Matched awaited message from child process.`, message)
 
-        childProcess.off(PROCESS_DATA_EVENT, onData)
         childProcess.stdout?.off(PROCESS_DATA_EVENT, onData)
         childProcess.stderr?.off(PROCESS_DATA_EVENT, onData)
 
@@ -70,7 +69,6 @@ export const promisifyMessage =
         resolve(message)
       }
 
-      childProcess.on(PROCESS_DATA_EVENT, onData)
       childProcess.stdout?.on(PROCESS_DATA_EVENT, onData)
       childProcess.stderr?.on(PROCESS_DATA_EVENT, onData)
 
