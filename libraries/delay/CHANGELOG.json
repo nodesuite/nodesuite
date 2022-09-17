@@ -2,6 +2,12 @@
   "name": "@nodesuite/delay",
   "entries": [
     {
+      "version": "0.1.10",
+      "tag": "@nodesuite/delay_v0.1.10",
+      "date": "Sat, 17 Sep 2022 08:31:16 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.1.9",
       "tag": "@nodesuite/delay_v0.1.9",
       "date": "Sat, 17 Sep 2022 08:19:17 GMT",
