@@ -50,7 +50,7 @@ module.exports = {
     "lines-around-comment": ["error", linesAroundComment],
     "no-console": when("production"),
     "no-debugger": when("production"),
-    "no-return-await": "error",
+    "no-return-await": "off",
     "no-unused-vars": "off",
     "object-curly-spacing": ["error", "always"],
     "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
