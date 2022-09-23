@@ -1,12 +1,14 @@
-import type { Logger, Os } from "./types"
+import { platform } from "node:os"
+
+import type { Logger, OperatingSystem } from "./types"
 
 /**
  * Resolves the "os" description from current process.
  *
  * @internal
  */
-export const getOs = (): Os => {
-  switch (process.platform) {
+export const getOs = (): OperatingSystem => {
+  switch (platform()) {
     case "darwin":
       return "macOS"
     case "win32":
@@ -21,7 +23,7 @@ export const getOs = (): Os => {
  *
  * @internal
  */
-export const fallbackLogger: Logger = {
+export const consoleLogger: Logger = {
   debug: console.debug.bind(console),
   info: console.log.bind(console),
   warn: console.warn.bind(console),

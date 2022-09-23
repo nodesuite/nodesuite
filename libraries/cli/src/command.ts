@@ -3,8 +3,14 @@ import "dotenv-defaults/config"
 import { useTimer } from "@nodesuite/timer"
 import type { PerformanceTimer } from "@nodesuite/timer"
 
-import { fallbackLogger, getOs } from "./support"
-import type { CliCommand, CliOptions, Env, Logger, Os } from "./types"
+import { consoleLogger, getOs } from "./support"
+import type {
+  CliCommand,
+  CommandOptions,
+  Env,
+  Logger,
+  OperatingSystem
+} from "./types"
 
 /**
  * Abstract CLI Command
@@ -33,7 +39,7 @@ export abstract class Command implements CliCommand {
   public readonly timer: PerformanceTimer = useTimer()
 
   /**
-   * Typed environment variables pre-parsed by `dotenv-defaults`.
+   * Environment variables loaded from any `.env` or `.env-defaults` files.
    *
    * @see https://github.com/mrsteele/dotenv-defaults
    *
@@ -56,17 +62,21 @@ export abstract class Command implements CliCommand {
    *
    * @public
    */
-  public readonly os: Os = getOs()
+  public readonly os: OperatingSystem = getOs()
 
   /**
    * Constructor
    *
-   * @param options - CLI configuration options object.
+   * @remarks
+   * If no logger is provided, logging will fall back to the closest
+   * available `console.log` method.
+   *
+   * @param options - Command configuration options object.
    *
    * @public
    */
-  protected constructor({ logger }: CliOptions = {}) {
-    this.logger = logger ?? fallbackLogger
+  public constructor({ logger = consoleLogger }: CommandOptions = {}) {
+    this.logger = logger
   }
 
   /**
@@ -84,7 +94,7 @@ export abstract class Command implements CliCommand {
    *
    * @public
    */
-  public report(action: string = "executed"): void {
+  public report(action: string = "completed"): void {
     this.logger.info(
       `Command "${this.name}" ${action} in ${this.timer.getDuration()} ms.`
     )
