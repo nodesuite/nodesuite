@@ -14,28 +14,33 @@ const {
   barrels,
   javascript,
   markdown,
+  typeDefinitions,
   typescript
 } = require("../overrides")
 
 const { when } = require("../utils")
 
 /**
- * Node Eslint Config
+ * NodeJS ESLint profile.
+ *
+ * @remarks
+ * This profile is intended for use within NodeJS applications.
+ * Rules may not be appropriate for browser applications.
  *
  * @public
  */
 module.exports = {
-  // Environment linter should expect.
+  /* Environment linter should expect. */
   env: {
     node: true
   },
-  // List of patterns to ignore.
+  /* List of patterns to ignore. */
   ignorePatterns,
-  // Default parser options for TypeScript.
+  /* Default parser options for TypeScript. */
   parserOptions,
-  // Third-party plugins to load.
+  /* Third-party plugins to load. */
   plugins,
-  // Main rules definitions across all included files.
+  /* Main rule definitions used across all matched files. */
   rules: {
     "@rushstack/no-new-null": "off",
     "@typescript-eslint/member-ordering": "error",
@@ -58,6 +63,13 @@ module.exports = {
     "simple-import-sort/imports": ["error", simpleImportSort],
     "tsdoc/syntax": "error"
   },
-  // Pattern specific overrides.
-  overrides: [anyInTypes, barrels, javascript, markdown, typescript]
+  /* Pattern specific overrides. */
+  overrides: [
+    anyInTypes,
+    barrels,
+    javascript,
+    markdown,
+    typeDefinitions,
+    typescript
+  ]
 }
