@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/delay
 
-This log was last generated on Fri, 23 Sep 2022 00:45:11 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 05:52:54 GMT and should not be manually modified.
+
+## 0.1.15
+Mon, 03 Oct 2022 05:52:54 GMT
+
+_Version update only_
 
 ## 0.1.14
 Fri, 23 Sep 2022 00:45:11 GMT
