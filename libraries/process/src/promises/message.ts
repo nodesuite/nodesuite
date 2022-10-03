@@ -58,8 +58,6 @@ export const promisifyMessage =
         // Clear the rejection timeout.
         clearTimeout(timer)
 
-        console.debug(`Matched awaited message from child process.`, message)
-
         childProcess.stdout?.off(PROCESS_DATA_EVENT, onData)
         childProcess.stderr?.off(PROCESS_DATA_EVENT, onData)
 
