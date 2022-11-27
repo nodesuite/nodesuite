@@ -2,6 +2,12 @@
   "name": "@nodesuite/eslint-config",
   "entries": [
     {
+      "version": "0.1.17",
+      "tag": "@nodesuite/eslint-config_v0.1.17",
+      "date": "Sun, 27 Nov 2022 01:34:12 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.1.16",
       "tag": "@nodesuite/eslint-config_v0.1.16",
       "date": "Sun, 27 Nov 2022 00:35:17 GMT",
