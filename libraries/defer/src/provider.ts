@@ -16,7 +16,7 @@ const NOOP =
  * @public
  */
 export const defer = <R = void>(
-  callback: Callback<R> = NOOP()
+  onResolve: Callback<R> = NOOP()
 ): Deferral<R> => {
   let _isResolved: boolean = false
 
@@ -31,14 +31,14 @@ export const defer = <R = void>(
   const promise: Promise<R> = new Promise<R>((resolve, reject) => {
     deferral.resolve = () => {
       _isResolved = true
-      resolve(callback())
+      resolve(onResolve())
     }
 
     deferral.reject = reject
   })
 
   deferral.promise = promise
-  deferral.untilResolved = async (): Promise<R> => promise
+  deferral.untilResolved = async (): Promise<R> => await promise
 
   return Object.freeze(deferral) as Deferral<R>
 }
