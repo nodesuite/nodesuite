@@ -51,7 +51,7 @@ module.exports = {
     "@typescript-eslint/typedef": "off",
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
-    "filenames/match-regex": [2, "^[a-z-]+$", "/src/"],
+    "filenames/match-regex": [2, "^[a-z-.]+$", "/src/"],
     "folders/match-regex": [2, "^[a-z-]+$", "/src/"],
     "import/order": "off",
     "lines-around-comment": ["error", linesAroundComment],
