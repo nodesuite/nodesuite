@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^5.44.0",
     "dotenv-defaults": "^5.0.2",
     "eslint": "8.22.0",
+    "eslint-plugin-filename-rules": "^1.2.0",
     "eslint-plugin-filenames": "^1.3.2",
     "eslint-plugin-folders": "^1.0.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",

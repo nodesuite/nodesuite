@@ -1,3 +1,4 @@
+"use strict"
 require("@rushstack/eslint-config/patch/modern-module-resolution")
 
 const { ignorePatterns, parserOptions, plugins } = require("../options")
@@ -51,7 +52,7 @@ module.exports = {
     "@typescript-eslint/typedef": "off",
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
-    "filenames/match-regex": [2, "^[a-z0-9-.]+$", "/src/**"],
+    "filename-rules/match": [2, /^[a-z0-9.-]+$/],
     "folders/match-regex": [2, "^[a-z0-9-]+$", "/src/**"],
     "import/order": "off",
     "lines-around-comment": ["error", linesAroundComment],

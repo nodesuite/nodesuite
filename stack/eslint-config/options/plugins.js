@@ -1,6 +1,7 @@
+"use strict"
 module.exports = [
   "eslint-plugin-tsdoc",
-  "filenames",
+  "filename-rules",
   "folders",
   "prefer-arrow",
   "simple-import-sort"

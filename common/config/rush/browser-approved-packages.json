@@ -95,6 +95,10 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
+      "name": "eslint-plugin-filename-rules",
+      "allowedCategories": [ "stack" ]
+    },
+    {
       "name": "eslint-plugin-filenames",
       "allowedCategories": [ "stack" ]
     },
