@@ -1,18 +1,13 @@
 {
-  "directory": [
-    "src"
-  ],
+  "noHeader": true,
+  "directory": ["src"],
   "delete": true,
   "location": "all",
   "name": "index",
   "structure": "flat",
   "verbose": false,
   "noSemicolon": true,
-  "include": [
-    "\\.ts$"
-  ],
-  "exclude": [
-    "\\.js$",
-    "\\.d\\.ts$"
-  ]
+  "singleQuotes": false,
+  "include": ["\\.ts$"],
+  "exclude": ["\\.js$", "\\.test.ts$", "\\.d\\.ts$"]
 }
