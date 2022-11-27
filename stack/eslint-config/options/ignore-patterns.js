@@ -1,10 +1,11 @@
+"use strict"
 module.exports = [
   "**/*.d.ts",
-  "build.ts",
   "bin",
+  "build.ts",
   "dist",
   "lib",
   "test",
-  "vite",
-  "tsup.config.ts"
+  "tsup.config.ts",
+  "vite"
 ]
