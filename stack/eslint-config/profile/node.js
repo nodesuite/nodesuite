@@ -51,6 +51,8 @@ module.exports = {
     "@typescript-eslint/typedef": "off",
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
+    "filenames/match-regex": [2, "^[a-z-]+$", "/src/"],
+    "folders/match-regex": [2, "^[a-z-]+$", "/src/"],
     "import/order": "off",
     "lines-around-comment": ["error", linesAroundComment],
     "no-console": when("production"),
@@ -61,8 +63,7 @@ module.exports = {
     "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": ["error", simpleImportSort],
-    "tsdoc/syntax": "error",
-    "folders/match-regex": [2, "^[a-z\-]+$", "/src/"]
+    "tsdoc/syntax": "error"
   },
   /* Pattern specific overrides. */
   overrides: [
