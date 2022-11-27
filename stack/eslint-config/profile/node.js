@@ -61,7 +61,8 @@ module.exports = {
     "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": ["error", simpleImportSort],
-    "tsdoc/syntax": "error"
+    "tsdoc/syntax": "error",
+    "folders/match-regex": [2, "^[a-z\-]+$", "/src/"]
   },
   /* Pattern specific overrides. */
   overrides: [

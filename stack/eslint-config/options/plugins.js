@@ -1,1 +1,6 @@
-module.exports = ["simple-import-sort", "prefer-arrow", "eslint-plugin-tsdoc"]
+module.exports = [
+  "eslint-plugin-tsdoc",
+  "folders",
+  "prefer-arrow",
+  "simple-import-sort"
+]
