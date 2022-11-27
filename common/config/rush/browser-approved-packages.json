@@ -95,6 +95,10 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
+      "name": "eslint-plugin-folders",
+      "allowedCategories": [ "stack" ]
+    },
+    {
       "name": "eslint-plugin-prefer-arrow",
       "allowedCategories": [ "stack" ]
     },
