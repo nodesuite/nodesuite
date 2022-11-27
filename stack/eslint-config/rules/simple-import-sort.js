@@ -1,3 +1,4 @@
+"use strict"
 module.exports = {
   groups: [
     ["^\\u0000"],

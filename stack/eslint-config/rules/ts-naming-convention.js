@@ -1,3 +1,4 @@
+"use strict"
 module.exports = {
   selector: "interface",
   format: ["PascalCase"],
