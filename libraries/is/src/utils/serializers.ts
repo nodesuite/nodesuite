@@ -183,10 +183,12 @@ export const asStringArray = (
       if (json) {
         return json
       }
+
       // Attempt to split comma separated string.
       if (value.includes(",")) {
         return value.split(",")
       }
+
       // If no matches, return default value.
       return defaultValue
     case "object":

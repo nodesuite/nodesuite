@@ -4,6 +4,7 @@
  * @internal
  */
 type WithKeys<O extends object, K extends string> = {
+
   // Provide any new keys as unknown.
   [N in Exclude<K, keyof O>]: unknown
 } &
