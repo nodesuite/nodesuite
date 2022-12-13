@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/download",
-  "version": "0.0.15",
+  "version": "0.1.21",
   "description": "No-frills HTTPS download client with zero dependencies.",
   "keywords": [
     "download",
@@ -14,9 +14,6 @@
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -24,6 +21,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "barrels": "run-s barrels:*",
     "barrels:generate": "barrelsby -d src -c node_modules/@nodesuite/node-rig/profiles/default/barrelsby.json",
