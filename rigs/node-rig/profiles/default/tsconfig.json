@@ -15,8 +15,6 @@
     "inlineSources": false,
     "isolatedModules": false,
     "lib": ["ESNext"],
-    "outDir": "lib",
-    "rootDir": "src",
     "module": "CommonJS",
     "moduleResolution": "Node",
     "newLine": "lf",
@@ -26,14 +24,17 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "lib",
     "pretty": true,
     "removeComments": false,
     "resolveJsonModule": true,
+    "rootDir": "src",
     "skipLibCheck": false,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
     "target": "ES2020",
-    "types": ["node"]
+    "types": ["node"],
+    "useUnknownInCatchVariables": false
   }
 }
