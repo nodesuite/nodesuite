@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/crypto
 
-This log was last generated on Sun, 27 Nov 2022 02:33:35 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Dec 2022 23:46:43 GMT and should not be manually modified.
+
+## 0.1.21
+Tue, 13 Dec 2022 23:46:43 GMT
+
+_Version update only_
 
 ## 0.1.20
 Sun, 27 Nov 2022 02:33:35 GMT
