@@ -47,6 +47,10 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
+      "name": "@rushstack/heft-jest-plugin",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "allowedCategories": [ "stack" ]
     },
