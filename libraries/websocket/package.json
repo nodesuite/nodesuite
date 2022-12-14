@@ -18,10 +18,7 @@
   "main": "dist/index.js",
   "types": "dist/index.ts",
   "files": [
-    "dist/*.js",
-    "dist/**/*.js",
-    "dist/*.d.ts",
-    "dist/**.d.ts"
+    "dist"
   ],
   "scripts": {
     "barrels": "run-s barrels:*",
