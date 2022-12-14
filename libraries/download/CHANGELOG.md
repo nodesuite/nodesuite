@@ -1,54 +1,19 @@
 # Change Log - @nodesuite/download
 
-This log was last generated on Wed, 14 Dec 2022 02:37:09 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Dec 2022 02:48:39 GMT and should not be manually modified.
 
-## 0.2.2
-Wed, 14 Dec 2022 02:37:09 GMT
-
-_Version update only_
-
-## 0.2.1
-Wed, 14 Dec 2022 00:57:45 GMT
+## 0.3.3
+Wed, 14 Dec 2022 02:48:39 GMT
 
 _Version update only_
 
-## 0.1.21
-Tue, 13 Dec 2022 23:46:43 GMT
+## 0.3.2
+Wed, 14 Dec 2022 02:48:21 GMT
 
 _Version update only_
 
-## 0.0.15
-Tue, 23 Aug 2022 03:04:32 GMT
-
-_Version update only_
-
-## 0.0.14
-Tue, 23 Aug 2022 02:46:32 GMT
-
-_Version update only_
-
-## 0.0.13
-Tue, 23 Aug 2022 02:25:34 GMT
-
-_Version update only_
-
-## 0.0.12
-Tue, 23 Aug 2022 02:12:26 GMT
-
-_Version update only_
-
-## 0.0.11
-Tue, 23 Aug 2022 02:05:28 GMT
-
-_Version update only_
-
-## 0.0.10
-Tue, 23 Aug 2022 01:48:28 GMT
-
-_Version update only_
-
-## 0.0.9
-Wed, 17 Aug 2022 02:02:36 GMT
+## 0.3.1
+Wed, 14 Dec 2022 02:47:14 GMT
 
 _Initial release_
 

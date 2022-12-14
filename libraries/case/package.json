@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/case",
-  "version": "0.2.2",
+  "version": "0.3.3",
   "description": "Typed string and object key case transformers.",
   "keywords": [
     "case",

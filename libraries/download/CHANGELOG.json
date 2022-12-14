@@ -2,63 +2,21 @@
   "name": "@nodesuite/download",
   "entries": [
     {
-      "version": "0.2.2",
-      "tag": "@nodesuite/download_v0.2.2",
-      "date": "Wed, 14 Dec 2022 02:37:09 GMT",
+      "version": "0.3.3",
+      "tag": "@nodesuite/download_v0.3.3",
+      "date": "Wed, 14 Dec 2022 02:48:39 GMT",
       "comments": {}
     },
     {
-      "version": "0.2.1",
-      "tag": "@nodesuite/download_v0.2.1",
-      "date": "Wed, 14 Dec 2022 00:57:45 GMT",
+      "version": "0.3.2",
+      "tag": "@nodesuite/download_v0.3.2",
+      "date": "Wed, 14 Dec 2022 02:48:21 GMT",
       "comments": {}
     },
     {
-      "version": "0.1.21",
-      "tag": "@nodesuite/download_v0.1.21",
-      "date": "Tue, 13 Dec 2022 23:46:43 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.15",
-      "tag": "@nodesuite/download_v0.0.15",
-      "date": "Tue, 23 Aug 2022 03:04:32 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.14",
-      "tag": "@nodesuite/download_v0.0.14",
-      "date": "Tue, 23 Aug 2022 02:46:32 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.13",
-      "tag": "@nodesuite/download_v0.0.13",
-      "date": "Tue, 23 Aug 2022 02:25:34 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.12",
-      "tag": "@nodesuite/download_v0.0.12",
-      "date": "Tue, 23 Aug 2022 02:12:26 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.11",
-      "tag": "@nodesuite/download_v0.0.11",
-      "date": "Tue, 23 Aug 2022 02:05:28 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.10",
-      "tag": "@nodesuite/download_v0.0.10",
-      "date": "Tue, 23 Aug 2022 01:48:28 GMT",
-      "comments": {}
-    },
-    {
-      "version": "0.0.9",
-      "tag": "@nodesuite/download_v0.0.9",
-      "date": "Wed, 17 Aug 2022 02:02:36 GMT",
+      "version": "0.3.1",
+      "tag": "@nodesuite/download_v0.3.1",
+      "date": "Wed, 14 Dec 2022 02:47:14 GMT",
       "comments": {}
     }
   ]

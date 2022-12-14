@@ -2,15 +2,21 @@
   "name": "@nodesuite/convict",
   "entries": [
     {
-      "version": "0.2.2",
-      "tag": "@nodesuite/convict_v0.2.2",
-      "date": "Wed, 14 Dec 2022 02:37:09 GMT",
+      "version": "0.3.3",
+      "tag": "@nodesuite/convict_v0.3.3",
+      "date": "Wed, 14 Dec 2022 02:48:39 GMT",
       "comments": {}
     },
     {
-      "version": "0.2.1",
-      "tag": "@nodesuite/convict_v0.2.1",
-      "date": "Wed, 14 Dec 2022 00:57:45 GMT",
+      "version": "0.3.2",
+      "tag": "@nodesuite/convict_v0.3.2",
+      "date": "Wed, 14 Dec 2022 02:48:21 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.3.1",
+      "tag": "@nodesuite/convict_v0.3.1",
+      "date": "Wed, 14 Dec 2022 02:47:14 GMT",
       "comments": {}
     }
   ]
