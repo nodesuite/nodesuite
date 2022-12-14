@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/convict
 
-This log was last generated on Wed, 14 Dec 2022 02:57:55 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Dec 2022 03:09:44 GMT and should not be manually modified.
+
+## 0.3.6
+Wed, 14 Dec 2022 03:09:44 GMT
+
+_Version update only_
 
 ## 0.3.5
 Wed, 14 Dec 2022 02:57:55 GMT

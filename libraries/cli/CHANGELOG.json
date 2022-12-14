@@ -2,6 +2,12 @@
   "name": "@nodesuite/cli",
   "entries": [
     {
+      "version": "0.3.6",
+      "tag": "@nodesuite/cli_v0.3.6",
+      "date": "Wed, 14 Dec 2022 03:09:44 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.5",
       "tag": "@nodesuite/cli_v0.3.5",
       "date": "Wed, 14 Dec 2022 02:57:55 GMT",
