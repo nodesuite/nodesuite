@@ -29,6 +29,16 @@ export class Abort implements AbortManager {
   readonly #options: AbortOptions
 
   /**
+   * Track all listeners for removal on abort.
+   *
+   * @remarks
+   * To avoid memory leaks, each listener is tracked for removal.
+   *
+   * @internal
+   */
+  readonly #listeners: AbortListener[] = []
+
+  /**
    * Constructor
    *
    * @param options - Any configuration options.
@@ -75,6 +85,7 @@ export class Abort implements AbortManager {
     try {
       if (!this.isAborted()) {
         this.#abort.abort()
+        this.clear()
         return { aborted: true }
       } else {
         return { aborted: false }
@@ -97,7 +108,19 @@ export class Abort implements AbortManager {
    */
   public once(listener: AbortListener): this {
     this.#abort.signal.addEventListener("abort", listener, { once: true })
+    this.#listeners.push(listener)
     return this
+  }
+
+  /**
+   * Ergonomic naming for attaching "once" listener.
+   *
+   * @param listener - Abort listener hook.
+   *
+   * @public
+   */
+  public onAbort(listener: AbortListener): void {
+    this.once(listener)
   }
 
   /**
@@ -113,13 +136,16 @@ export class Abort implements AbortManager {
   }
 
   /**
-   * Ergonomic naming for attaching "once" listener.
-   *
-   * @param listener - Abort listener hook.
+   * Removes all event listeners from signal without aborting.
    *
    * @public
    */
-  public onAbort(listener: AbortListener): void {
-    this.once(listener)
+  public clear(): void {
+    while (this.#listeners.length) {
+      const listener: AbortListener | undefined = this.#listeners.shift()
+      if (listener) {
+        this.#abort.signal.removeEventListener("abort", listener)
+      }
+    }
   }
 }

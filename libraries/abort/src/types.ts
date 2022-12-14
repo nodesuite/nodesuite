@@ -23,11 +23,14 @@ export interface AbortManager {
   /* Attach a new one-time event listener. */
   once<R = unknown>(listener: AbortListener<R>): this
 
+  /* Attach a new one-time event listener. */
+  onAbort<R = unknown>(listener: AbortListener<R>): void
+
   /** Removes a previously attached listener. */
   off(listener: AbortListener): this
 
-  /* Attach a new one-time event listener. */
-  onAbort<R = unknown>(listener: AbortListener<R>): void
+  /** Removes all listeners but does not trigger abort. */
+  clear(): void
 }
 
 /**
