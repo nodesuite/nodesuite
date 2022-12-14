@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/convict",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Additional formats for Mozilla Convict.",
   "keywords": [
     "convict",
