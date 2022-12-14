@@ -48,7 +48,7 @@
     },
     {
       "name": "@rushstack/heft-jest-plugin",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "rigs" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
@@ -76,6 +76,10 @@
     },
     {
       "name": "change-case",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "convict",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -169,6 +173,10 @@
     {
       "name": "typescript",
       "allowedCategories": [ "libraries", "rigs", "stack" ]
+    },
+    {
+      "name": "validator",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "ws",

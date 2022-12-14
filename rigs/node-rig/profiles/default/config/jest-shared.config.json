@@ -1,0 +1,47 @@
+{
+  "silent": false,
+
+  "verbose": false,
+
+  "clearMocks": true,
+
+  "roots": ["<rootDir>/src"],
+
+  "testURL": "http://localhost/",
+
+  "testMatch": ["<rootDir>/src/**/*.test.{ts,tsx}"],
+  "testPathIgnorePatterns": ["/node_modules/"],
+
+  "collectCoverage": true,
+
+  "coverageDirectory": "<rootDir>/temp/coverage",
+
+  "collectCoverageFrom": [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.d.ts",
+    "!src/**/*.test.{ts,tsx}",
+    "!src/**/test/**",
+    "!src/**/__tests__/**",
+    "!src/**/__fixtures__/**",
+    "!src/**/__mocks__/**"
+  ],
+  "coveragePathIgnorePatterns": ["/node_modules/"],
+
+  "transformIgnorePatterns": [],
+
+  "transform": {
+    "\\.(ts|tsx)$": "../lib/exports/jest-build-transform.js",
+
+    "\\.(css|sass|scss)$": "../lib/exports/jest-identity-mock-transform.js",
+
+    "\\.(aac|eot|gif|jpeg|jpg|m4a|mp3|mp4|oga|otf|png|svg|ttf|wav|webm|webp|woff|woff2)$": "../lib/exports/jest-string-mock-transform.js"
+  },
+
+  "modulePathIgnorePatterns": [],
+
+  "moduleFileExtensions": ["ts", "tsx", "cjs", "js", "json", "node"],
+
+  "setupFiles": ["../lib/exports/jest-global-setup.js"],
+
+  "resolver": "../lib/exports/jest-improved-resolver.js"
+}

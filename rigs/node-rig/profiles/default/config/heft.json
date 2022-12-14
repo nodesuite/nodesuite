@@ -6,14 +6,19 @@
       "heftEvent": "clean",
       "actionId": "defaultClean",
       "globsToDelete": [
+        "src/**/*.js*",
         "*.build.log",
         "*.build.error.log",
-        ".nyc_output",
-        "coverage/*",
-        "dist",
-        "lib"
+        "temp/",
+        "dist/",
+        "lib/"
       ]
     }
   ],
-  "heftPlugins": []
+  "heftPlugins": [
+    {
+      "plugin": "@rushstack/heft-jest-plugin",
+      "options": {}
+    }
+  ]
 }

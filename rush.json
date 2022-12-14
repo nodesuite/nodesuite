@@ -70,6 +70,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/convict",
+      "projectFolder": "libraries/convict",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/crypto",
       "projectFolder": "libraries/crypto",
       "reviewCategory": "libraries",
