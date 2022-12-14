@@ -14,11 +14,16 @@
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "barrels": "run-s barrels:*",
     "barrels:generate": "barrelsby -d src -c node_modules/@nodesuite/node-rig/profiles/default/barrelsby.json",
