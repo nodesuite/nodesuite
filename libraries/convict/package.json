@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@nodesuite/convict",
+  "version": "0.1.20",
+  "description": "Additional formats for Mozilla Convict.",
+  "keywords": [
+    "convict",
+    "args",
+    "env",
+    "validation"
+  ],
+  "homepage": "https://github.com/nodesuite/nodesuite",
+  "bugs": "https://github.com/nodesuite/nodesuite/issues",
+  "repository": "https://github.com/nodesuite/nodesuite",
+  "license": "ISC",
+  "author": "@nodesuite",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/*.d.ts",
+    "dist/**.d.ts"
+  ],
+  "scripts": {
+    "barrels": "run-s barrels:*",
+    "barrels:generate": "barrelsby -d src -c node_modules/@nodesuite/node-rig/profiles/default/barrelsby.json",
+    "barrels:lint": "eslint src/**/index.ts --fix",
+    "build": "heft build --clean",
+    "build:prod": "tsup-node --config=node_modules/@nodesuite/node-rig/profiles/default/tsup.config.js",
+    "circular": "dpdm --ext ts --circular --output .rush/circular.json src",
+    "clean": "run-p clean:*",
+    "clean:heft": "heft clean --clear-cache",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint src --ext .ts --fix",
+    "lint:sort": "sort-package-json",
+    "typecheck": "tsc --noEmit",
+    "upgrade": "ncu -u --packageFile package.json"
+  },
+  "dependencies": {
+    "@nodesuite/is": "workspace:*",
+    "convict": "^6.2.3",
+    "tslib": "^2.4.1"
+  },
+  "devDependencies": {
+    "@nodesuite/eslint-config": "workspace:*",
+    "@nodesuite/node-rig": "workspace:*",
+    "@rushstack/eslint-config": "^3.1.1",
+    "@rushstack/heft": "^0.48.9",
+    "@rushstack/heft-jest-plugin": "^0.4.1",
+    "@types/convict": "^6.1.1",
+    "@types/heft-jest": "^1.0.3",
+    "@types/node": "^18.11.15",
+    "@typescript-eslint/parser": "^5.46.1",
+    "barrelsby": "^2.5.1",
+    "c8": "^7.12.0",
+    "dpdm": "^3.10.0",
+    "eslint": "8.22.0",
+    "npm-check-updates": "^15.3.4",
+    "npm-run-all": "^4.1.5",
+    "sort-package-json": "^2.1.0",
+    "tsup": "^6.5.0",
+    "typescript": "4.7.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
