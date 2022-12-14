@@ -8,17 +8,31 @@ A collection of utility packages for developing NodeJS TypeScript applications.
 
 ## Packages
 
-- `@nodesuite/case` String case utilities with type transformers.
-- `@nodesuite/cli` Simple command line class wrapper with args parser.
-- `@nodesuite/crypto` Simplified native encryption and decryption utilities.
-- `@nodesuite/defer` Deferred Promise extractor.
-- `@nodesuite/delay` Simple async timeout.
-- `@nodesuite/download` Zero-dependency file download utility.
-- `@nodesuite/is` Runtime type checking with type guards.
-- `@nodesuite/process` Enhanced Node child-process management.
-- `@nodesuite/schemas` Commonly required constants, types, and `Zod` parsing schemas.
-- `@nodesuite/timer` Simple performance timer utility.
-- `@nodesuite/websocket` Asynchronous websocket client.
+- [`@nodesuite/abort`](https://github.com/nodesuite/nodesuite/tree/main/libraries/abort) Wrapper for native 
+	`AbortController` utility.
+- [`@nodesuite/case`](https://github.com/nodesuite/nodesuite/tree/main/libraries/case) String case utilities with type 
+	transformers.
+- [`@nodesuite/cli`](https://github.com/nodesuite/nodesuite/tree/main/libraries/cli) Simple command line class wrapper 
+	with args parser.
+- [`@nodesuite/convict`](https://github.com/nodesuite/nodesuite/tree/main/libraries/convict) Additional formats for 
+	[Mozilla convict]() package.
+- [`@nodesuite/crypto`](https://github.com/nodesuite/nodesuite/tree/main/libraries/crypto) Simplified native encryption 
+	and decryption utilities.
+- [`@nodesuite/defer`](https://github.com/nodesuite/nodesuite/tree/main/libraries/defer) Deferred Promise extractor.
+- [`@nodesuite/delay`](https://github.com/nodesuite/nodesuite/tree/main/libraries/delay) Simple async timeout.
+- [`@nodesuite/download`](https://github.com/nodesuite/nodesuite/tree/main/libraries/download) Zero-dependency file 
+	download utility.
+- [`@nodesuite/is`](https://github.com/nodesuite/nodesuite/tree/main/libraries/is) Runtime type checking with type 
+	guards.
+- [`@nodesuite/process`](https://github.com/nodesuite/nodesuite/tree/main/libraries/process) Enhanced Node 
+	child-process management.
+- [`@nodesuite/schemas`](https://github.com/nodesuite/nodesuite/tree/main/libraries/schemas) Commonly required 
+	constants, 
+	types, and `Zod` parsing schemas.
+- [`@nodesuite/timer`](https://github.com/nodesuite/nodesuite/tree/main/libraries/timer) Simple performance timer 
+	utility.
+- [`@nodesuite/websocket`](https://github.com/nodesuite/nodesuite/tree/main/libraries/websocket) Asynchronous websocket 
+	client.
 
 ## Development Tooling
 - `@nodesuite/eslint-config` Opinionated eslint config builder.
