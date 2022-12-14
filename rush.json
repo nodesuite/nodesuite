@@ -98,13 +98,6 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@nodesuite/download",
-      "projectFolder": "libraries/download",
-      "reviewCategory": "libraries",
-      "versionPolicyName": "suite",
-      "shouldPublish": true
-    },
-    {
       "packageName": "@nodesuite/is",
       "projectFolder": "libraries/is",
       "reviewCategory": "libraries",
