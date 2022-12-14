@@ -14,19 +14,13 @@
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md"
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/*.d.ts",
+    "dist/**.d.ts"
   ],
   "scripts": {
     "barrels": "run-s barrels:*",

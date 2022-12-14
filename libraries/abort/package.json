@@ -3,15 +3,23 @@
   "name": "@nodesuite/abort",
   "version": "0.1.21",
   "description": "Native AbortController manager.",
+  "keywords": [
+    "abort",
+    "abort-controller",
+    "node-abort"
+  ],
   "homepage": "https://github.com/nodesuite/nodesuite",
   "bugs": "https://github.com/nodesuite/nodesuite/issues",
   "repository": "https://github.com/nodesuite/nodesuite",
   "license": "ISC",
   "author": "@nodesuite",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/*.d.ts",
+    "dist/**.d.ts"
   ],
   "scripts": {
     "barrels": "run-s barrels:*",
