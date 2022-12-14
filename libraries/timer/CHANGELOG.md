@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/timer
 
-This log was last generated on Wed, 14 Dec 2022 03:09:44 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Dec 2022 03:14:38 GMT and should not be manually modified.
+
+## 0.3.7
+Wed, 14 Dec 2022 03:14:38 GMT
+
+_Version update only_
 
 ## 0.3.6
 Wed, 14 Dec 2022 03:09:44 GMT
