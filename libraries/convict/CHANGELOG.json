@@ -2,6 +2,12 @@
   "name": "@nodesuite/convict",
   "entries": [
     {
+      "version": "0.3.8",
+      "tag": "@nodesuite/convict_v0.3.8",
+      "date": "Wed, 14 Dec 2022 23:34:41 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.7",
       "tag": "@nodesuite/convict_v0.3.7",
       "date": "Wed, 14 Dec 2022 03:14:38 GMT",
