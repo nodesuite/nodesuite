@@ -294,45 +294,6 @@ importers:
       tsup: 6.5.0_typescript@4.7.4
       typescript: 4.7.4
 
-  ../../libraries/download:
-    specifiers:
-      '@nodesuite/eslint-config': workspace:*
-      '@nodesuite/node-rig': workspace:*
-      '@rushstack/eslint-config': ^3.1.1
-      '@rushstack/heft': ^0.48.9
-      '@types/node': ^18.11.15
-      '@typescript-eslint/parser': ^5.46.1
-      ava: ^5.1.0
-      barrelsby: ^2.5.1
-      c8: ^7.12.0
-      dpdm: ^3.10.0
-      eslint: 8.22.0
-      npm-check-updates: ^15.3.4
-      npm-run-all: ^4.1.5
-      sort-package-json: ^2.1.0
-      tslib: ^2.4.1
-      tsup: ^6.5.0
-      typescript: 4.7.4
-    dependencies:
-      tslib: 2.4.1
-    devDependencies:
-      '@nodesuite/eslint-config': link:../../stack/eslint-config
-      '@nodesuite/node-rig': link:../../rigs/node-rig
-      '@rushstack/eslint-config': 3.1.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-      '@rushstack/heft': 0.48.9
-      '@types/node': 18.11.15
-      '@typescript-eslint/parser': 5.46.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-      ava: 5.1.0
-      barrelsby: 2.5.1
-      c8: 7.12.0
-      dpdm: 3.10.0
-      eslint: 8.22.0
-      npm-check-updates: 15.3.4
-      npm-run-all: 4.1.5
-      sort-package-json: 2.1.0
-      tsup: 6.5.0_typescript@4.7.4
-      typescript: 4.7.4
-
   ../../libraries/is:
     specifiers:
       '@nodesuite/eslint-config': workspace:*
@@ -405,6 +366,47 @@ importers:
       '@types/node': 18.11.15
       '@typescript-eslint/parser': 5.46.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       ava: 5.1.0
+      barrelsby: 2.5.1
+      c8: 7.12.0
+      dpdm: 3.10.0
+      eslint: 8.22.0
+      npm-check-updates: 15.3.4
+      npm-run-all: 4.1.5
+      sort-package-json: 2.1.0
+      tsup: 6.5.0_typescript@4.7.4
+      typescript: 4.7.4
+
+  ../../libraries/registry:
+    specifiers:
+      '@nodesuite/eslint-config': workspace:*
+      '@nodesuite/node-rig': workspace:*
+      '@rushstack/eslint-config': ^3.1.1
+      '@rushstack/heft': ^0.48.9
+      '@rushstack/heft-jest-plugin': ^0.4.1
+      '@types/heft-jest': ^1.0.3
+      '@types/node': ^18.11.15
+      '@typescript-eslint/parser': ^5.46.1
+      barrelsby: ^2.5.1
+      c8: ^7.12.0
+      dpdm: ^3.10.0
+      eslint: 8.22.0
+      npm-check-updates: ^15.3.4
+      npm-run-all: ^4.1.5
+      sort-package-json: ^2.1.0
+      tslib: ^2.4.1
+      tsup: ^6.5.0
+      typescript: 4.7.4
+    dependencies:
+      tslib: 2.4.1
+    devDependencies:
+      '@nodesuite/eslint-config': link:../../stack/eslint-config
+      '@nodesuite/node-rig': link:../../rigs/node-rig
+      '@rushstack/eslint-config': 3.1.1_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@rushstack/heft': 0.48.9
+      '@rushstack/heft-jest-plugin': 0.4.1_@rushstack+heft@0.48.9
+      '@types/heft-jest': 1.0.3
+      '@types/node': 18.11.15
+      '@typescript-eslint/parser': 5.46.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       barrelsby: 2.5.1
       c8: 7.12.0
       dpdm: 3.10.0

@@ -112,6 +112,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/registry",
+      "projectFolder": "libraries/registry",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/schemas",
       "projectFolder": "libraries/schemas",
       "reviewCategory": "libraries",
