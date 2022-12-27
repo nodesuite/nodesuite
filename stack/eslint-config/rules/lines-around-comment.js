@@ -11,5 +11,5 @@ module.exports = {
   allowObjectStart: true,
   allowObjectEnd: false,
   allowArrayStart: true,
-  allowArrayEnd: false
+  allowArrayEnd: true
 }
