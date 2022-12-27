@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/timer",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Light-weight performance timer.",
   "keywords": [
     "clock",
