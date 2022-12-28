@@ -91,6 +91,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "dotenv",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "dotenv-defaults",
       "allowedCategories": [ "libraries", "stack" ]
     },
@@ -125,6 +129,10 @@
     {
       "name": "eslint-plugin-tsdoc",
       "allowedCategories": [ "stack" ]
+    },
+    {
+      "name": "find-config",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "fs-extra",
