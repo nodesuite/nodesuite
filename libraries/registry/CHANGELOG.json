@@ -2,6 +2,12 @@
   "name": "@nodesuite/registry",
   "entries": [
     {
+      "version": "0.3.19",
+      "tag": "@nodesuite/registry_v0.3.19",
+      "date": "Sun, 01 Jan 2023 06:01:08 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.18",
       "tag": "@nodesuite/registry_v0.3.18",
       "date": "Sun, 01 Jan 2023 05:57:42 GMT",
