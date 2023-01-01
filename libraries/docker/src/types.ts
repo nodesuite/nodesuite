@@ -20,6 +20,9 @@ export interface Container extends EventEmitter {
   /** Unique container name. */
   readonly name: string
 
+  /** Final resolved port pairs. Will throw if not resolved. */
+  readonly ports: [number, number][]
+
   readonly process: ChildProcess | undefined
 
   /** Tests if named container is running. */
