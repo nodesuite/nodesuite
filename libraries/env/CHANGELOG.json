@@ -2,6 +2,12 @@
   "name": "@nodesuite/env",
   "entries": [
     {
+      "version": "0.3.16",
+      "tag": "@nodesuite/env_v0.3.16",
+      "date": "Sun, 01 Jan 2023 05:30:26 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.15",
       "tag": "@nodesuite/env_v0.3.15",
       "date": "Sun, 01 Jan 2023 05:26:09 GMT",
