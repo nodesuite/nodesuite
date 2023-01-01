@@ -1,19 +1,13 @@
 import { exec, spawn } from "node:child_process"
-import { randomInt } from "node:crypto"
 import { EventEmitter } from "node:events"
 import { resolve } from "node:path"
 import { setTimeout } from "node:timers/promises"
 import { promisify } from "node:util"
-import { check } from "tcp-port-used"
 import type { ChildProcess, ExecOptions } from "node:child_process"
 
-import { DEFAULT_TIMEOUT, MAX_PORT, MIN_PORT } from "./constants"
-import {
-  ContainerTimeoutError,
-  NoAvailablePortsError,
-  UndefinedPortError
-} from "./exceptions"
-import { debug } from "./support"
+import { DEFAULT_TIMEOUT } from "./constants"
+import { ContainerTimeoutError, UndefinedPortError } from "./exceptions"
+import { debug, findPort } from "./support"
 import {
   CLOSE_EVENT,
   CLOSING_STATE,
@@ -231,35 +225,6 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
   }
 
   /**
-   * Attempts to identify an available port.
-   *
-   * @remarks
-   * Attempts to find a port in range for 100 attempts.
-   * Will throw if no available ports can be found.
-   *
-   *
-   * @param min - Minimum port to search.
-   * @param max - Maximum port to search.
-   *
-   * @internal
-   */
-  public async findPort([min = MIN_PORT, max = MAX_PORT]: [
-    number,
-    number
-  ]): Promise<number> {
-    const attempts: number = 100
-    for (let i: number = 0; i < attempts; i++) {
-      const port: number = randomInt(min, max)
-      const isAvailable: boolean = !(await check(port))
-      if (isAvailable) {
-        return port
-      }
-    }
-
-    throw new NoAvailablePortsError(min, max, attempts)
-  }
-
-  /**
    * Starts a new container child process.
    *
    * @remarks
@@ -282,7 +247,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
     // Ensure all requested local ports are available.
     if (this.#options.ports) {
       await Promise.all(
-        this.#options.ports.map(async ([port]) => this.findPort([port, port]))
+        this.#options.ports.map(async ([port]) => findPort(port, port))
       )
     }
 

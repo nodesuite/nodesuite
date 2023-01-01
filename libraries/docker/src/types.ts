@@ -35,9 +35,6 @@ export interface Container extends EventEmitter {
 
   /** Attempts to kill named container. */
   kill(): Promise<boolean>
-
-  /** Checks or resolves a random port in a range. */
-  findPort(range: [number, number]): Promise<number>
 }
 
 /**
