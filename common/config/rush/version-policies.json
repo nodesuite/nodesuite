@@ -7,7 +7,7 @@
   {
     "definitionName": "lockStepVersion",
     "policyName": "suite",
-    "version": "0.3.15",
+    "version": "0.3.16",
     "nextBump": "patch"
   }
 ]
