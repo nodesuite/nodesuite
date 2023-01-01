@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/abort",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Native AbortController manager.",
   "keywords": [
     "abort",

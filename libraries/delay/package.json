@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/delay",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Simple async delay function with commonly used aliases.",
   "keywords": [
     "delay",

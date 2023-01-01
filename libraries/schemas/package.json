@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/schemas",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "A collection of common constants and validation schemas.",
   "keywords": [
     "constants",
