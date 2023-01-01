@@ -74,7 +74,11 @@ export type ContainerFactory<O extends ContainerOptions = ContainerOptions> = (
 export interface ContainerRegistryConfig<
   O extends ContainerOptions = ContainerOptions
 > {
+  /** Custom container factory. Defaults to base container. */
   create?: ContainerFactory<O>
+
+  /** Default timeout to wait for server response. */
+  timeout?: number
 }
 
 /**

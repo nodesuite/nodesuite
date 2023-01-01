@@ -24,20 +24,26 @@ export class ContainerRegistry<O extends ContainerOptions = ContainerOptions>
    *
    * @public
    */
-  public readonly timeout: number = DEFAULT_TIMEOUT
+  public readonly timeout: number
 
   /**
    * Constructor
    *
    * @public
    */
-  public constructor({ create }: ContainerRegistryConfig<O> = {}) {
+  public constructor({
+    create,
+    timeout = DEFAULT_TIMEOUT
+  }: ContainerRegistryConfig<O> = {}) {
     super({
       events: {
         /** Remove container from registry on "close" event. */
         unregister: "close"
       }
     })
+
+    // Set default timeout to wait for container responses.
+    this.timeout = timeout
 
     // Override default factory if a custom one is provided.
     if (create) {
@@ -78,10 +84,11 @@ export class ContainerRegistry<O extends ContainerOptions = ContainerOptions>
    */
   public async resolve(options: O): Promise<Container> {
     const name: string = options.name
+    const timeout: number = this.timeout
 
     // Check for existing named container or create a new one.
     const container: Container = this.has(name)
-      ? await this.waitForItem(name, { timeout: this.timeout })
+      ? await this.waitForItem(name, { timeout })
       : this.create(options)
 
     // Ensure start process has commenced.
