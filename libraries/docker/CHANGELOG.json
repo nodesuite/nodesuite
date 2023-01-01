@@ -1,0 +1,11 @@
+{
+  "name": "@nodesuite/docker",
+  "entries": [
+    {
+      "version": "0.3.14",
+      "tag": "@nodesuite/docker_v0.3.14",
+      "date": "Sun, 01 Jan 2023 04:39:20 GMT",
+      "comments": {}
+    }
+  ]
+}
