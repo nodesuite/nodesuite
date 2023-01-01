@@ -2,16 +2,22 @@ import { Registry } from "@nodesuite/registry"
 
 import { DEFAULT_TIMEOUT } from "./constants"
 import { ManagedContainer } from "./container"
-import type { Container, ContainerOptions, Containers } from "./types"
+import type { ContainerFactory } from "./types"
+import type {
+  Container,
+  ContainerOptions,
+  ContainerRegistryConfig,
+  Containers
+} from "./types"
 
 /**
  * Container lifecycle manager.
  *
  * @public
  */
-export class ContainerRegistry
+export class ContainerRegistry<O extends ContainerOptions = ContainerOptions>
   extends Registry<Container>
-  implements Containers
+  implements Containers<O>
 {
   /**
    * Default time to wait for new containers.
@@ -25,13 +31,18 @@ export class ContainerRegistry
    *
    * @public
    */
-  public constructor() {
+  public constructor({ create }: ContainerRegistryConfig<O> = {}) {
     super({
       events: {
         /** Remove container from registry on "close" event. */
         unregister: "close"
       }
     })
+
+    // Override default factory if a custom one is provided.
+    if (create) {
+      this.#create = create
+    }
   }
 
   /**
@@ -45,14 +56,14 @@ export class ContainerRegistry
    *
    * @public
    */
-  public create(options: ContainerOptions): Container {
+  public create(options: O): Container {
     const name: string = options.name
     const existing: Container | undefined = this.find(name)
     if (existing) {
       return existing
     } else {
       this.lock(name)
-      const container: Container = new ManagedContainer(options)
+      const container: Container = this.#create(options)
       this.register(name, container)
       return container
     }
@@ -65,7 +76,7 @@ export class ContainerRegistry
    *
    * @public
    */
-  public async resolve(options: ContainerOptions): Promise<Container> {
+  public async resolve(options: O): Promise<Container> {
     const name: string = options.name
 
     // Check for existing named container or create a new one.
@@ -78,4 +89,16 @@ export class ContainerRegistry
 
     return container
   }
+
+  /**
+   * New container factory.
+   *
+   * @remarks
+   * Can be provided at constructor for custom containers, or defaults to
+   * default container class.
+   *
+   * @internal
+   */
+  readonly #create: ContainerFactory<O> = (options: O): Container =>
+    new ManagedContainer(options)
 }

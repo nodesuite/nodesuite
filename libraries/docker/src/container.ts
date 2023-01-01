@@ -4,9 +4,7 @@ import { EventEmitter } from "node:events"
 import { resolve } from "node:path"
 import { setTimeout } from "node:timers/promises"
 import { promisify } from "node:util"
-import init from "debug"
 import { check } from "tcp-port-used"
-import type { Debugger } from "debug"
 import type { ChildProcess, ExecOptions } from "node:child_process"
 
 import { DEFAULT_TIMEOUT, MAX_PORT, MIN_PORT } from "./constants"
@@ -15,6 +13,7 @@ import {
   NoAvailablePortsError,
   UndefinedPortError
 } from "./exceptions"
+import { debug } from "./support"
 import {
   CLOSE_EVENT,
   CLOSING_STATE,
@@ -33,31 +32,20 @@ import type {
 } from "./types"
 
 /**
- * Access container debugger.
- *
- * @internal
- */
-const debug: Debugger = init("container")
-
-/**
- * Manages a named Flex container.
+ * Manages a named container as child process.
  *
  * @public
  */
-export class ManagedContainer extends EventEmitter implements Container {
+export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
+  extends EventEmitter
+  implements Container
+{
   /**
    * Container configuration.
    *
    * @internal
    */
-  readonly #options: ContainerOptions
-
-  /**
-   * Tracks the port of the container generated at launch.
-   *
-   * @internal
-   */
-  #port: number | undefined = undefined
+  readonly #options: O
 
   /**
    * Tracks the long-running child process.
@@ -78,7 +66,7 @@ export class ManagedContainer extends EventEmitter implements Container {
    *
    * @public
    */
-  public constructor(options: ContainerOptions) {
+  public constructor(options: O) {
     super()
     this.#options = options
   }
@@ -99,22 +87,6 @@ export class ManagedContainer extends EventEmitter implements Container {
    */
   public get process(): ChildProcess | undefined {
     return this.#process
-  }
-
-  /**
-   * Exposes resolved port.
-   *
-   * @remarks
-   * Will throw if no port as been resolved.
-   *
-   * @public
-   */
-  public get port(): number {
-    if (this.#port) {
-      return this.#port
-    }
-
-    throw new UndefinedPortError()
   }
 
   /**
@@ -156,7 +128,7 @@ export class ManagedContainer extends EventEmitter implements Container {
     timeout?: number
   ): Promise<boolean> {
     const isRunning: boolean = await this.isRunning()
-    if (!isRunning || !this.#port) {
+    if (!isRunning) {
       return false
     }
 
@@ -259,13 +231,32 @@ export class ManagedContainer extends EventEmitter implements Container {
   }
 
   /**
-   * Waits for server and returns endpoint.
+   * Attempts to identify an available port.
    *
-   * @public
+   * @remarks
+   * Attempts to find a port in range for 100 attempts.
+   * Will throw if no available ports can be found.
+   *
+   *
+   * @param min - Minimum port to search.
+   * @param max - Maximum port to search.
+   *
+   * @internal
    */
-  public async resolveEndpoint(): Promise<string> {
-    await this.run()
-    return new URL(`http://127.0.0.1:${this.port}`).href
+  public async findPort([min = MIN_PORT, max = MAX_PORT]: [
+    number,
+    number
+  ]): Promise<number> {
+    const attempts: number = 100
+    for (let i: number = 0; i < attempts; i++) {
+      const port: number = randomInt(min, max)
+      const isAvailable: boolean = !(await check(port))
+      if (isAvailable) {
+        return port
+      }
+    }
+
+    throw new NoAvailablePortsError(min, max, attempts)
   }
 
   /**
@@ -291,7 +282,7 @@ export class ManagedContainer extends EventEmitter implements Container {
     // Ensure all requested local ports are available.
     if (this.#options.ports) {
       await Promise.all(
-        this.#options.ports.map(async ([port]) => this.#findPort([port, port]))
+        this.#options.ports.map(async ([port]) => this.findPort([port, port]))
       )
     }
 
@@ -357,9 +348,7 @@ export class ManagedContainer extends EventEmitter implements Container {
       `--privileged`,
       `--name "${name}"`,
       `--user "${user}"`,
-      `--entrypoint "${internal(entrypoint)}"`,
-      `-p ${this.port}:19222`,
-      `-p 5900:15900`
+      `--entrypoint "${internal(entrypoint)}"`
     ]
 
     // 1. Add ports.
@@ -435,35 +424,6 @@ export class ManagedContainer extends EventEmitter implements Container {
     }
 
     return undefined
-  }
-
-  /**
-   * Attempts to identify an available port.
-   *
-   * @remarks
-   * Attempts to find a port in range for 100 attempts.
-   * Will throw if no available ports can be found.
-   *
-   *
-   * @param min - Minimum port to search.
-   * @param max - Maximum port to search.
-   *
-   * @internal
-   */
-  async #findPort([min = MIN_PORT, max = MAX_PORT]: [
-    number,
-    number
-  ]): Promise<number> {
-    const attempts: number = 100
-    for (let i: number = 0; i < attempts; i++) {
-      const port: number = randomInt(min, max)
-      const isAvailable: boolean = !(await check(port))
-      if (isAvailable) {
-        return port
-      }
-    }
-
-    throw new NoAvailablePortsError(min, max, attempts)
   }
 
   /**

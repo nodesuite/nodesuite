@@ -20,9 +20,6 @@ export interface Container extends EventEmitter {
   /** Unique container name. */
   readonly name: string
 
-  /** Unique container port. */
-  readonly port: number
-
   readonly process: ChildProcess | undefined
 
   /** Tests if named container is running. */
@@ -33,14 +30,14 @@ export interface Container extends EventEmitter {
   /** Polls the container on expected port until response. */
   waitForServer(portOrUrl: number | URL, timeout?: number): Promise<boolean>
 
-  /** Waits for container server and returns endpoint. */
-  resolveEndpoint(): Promise<string>
-
   /** Starts or awaits container and returns port. */
   run(): Promise<void>
 
   /** Attempts to kill named container. */
   kill(): Promise<boolean>
+
+  /** Checks or resolves a random port in a range. */
+  findPort(range: [number, number]): Promise<number>
 }
 
 /**
@@ -48,15 +45,36 @@ export interface Container extends EventEmitter {
  *
  * @public
  */
-export interface Containers extends EventfulRegistry<Container> {
+export interface Containers<O extends ContainerOptions = ContainerOptions>
+  extends EventfulRegistry<Container> {
   /** Default timeout to wait for a pending container. */
   readonly timeout: number
 
   /** Creates or retrieves a container. */
-  create(options: ContainerOptions): Container
+  create(options: O): Container
 
   /** Awaits a fully launched container. */
-  resolve(options: ContainerOptions): Promise<Container>
+  resolve(options: O): Promise<Container>
+}
+
+/**
+ * Factory function for creating new custom containers.
+ *
+ * @public
+ */
+export type ContainerFactory<O extends ContainerOptions = ContainerOptions> = (
+  options: O
+) => Container
+
+/**
+ * Optional config for custom containers.
+ *
+ * @public
+ */
+export interface ContainerRegistryConfig<
+  O extends ContainerOptions = ContainerOptions
+> {
+  create?: ContainerFactory<O>
 }
 
 /**
