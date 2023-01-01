@@ -35,6 +35,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nodesuite/registry",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nodesuite/timer",
       "allowedCategories": [ "libraries" ]
     },
@@ -84,6 +88,10 @@
     },
     {
       "name": "copy-anything",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "debug",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -152,6 +160,10 @@
     },
     {
       "name": "spectypes",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "tcp-port-used",
       "allowedCategories": [ "libraries" ]
     },
     {

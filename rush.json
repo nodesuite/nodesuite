@@ -98,6 +98,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@nodesuite/docker",
+      "projectFolder": "libraries/docker",
+      "reviewCategory": "libraries",
+      "versionPolicyName": "suite",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@nodesuite/env",
       "projectFolder": "libraries/env",
       "reviewCategory": "libraries",
