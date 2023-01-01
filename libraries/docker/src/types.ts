@@ -108,7 +108,19 @@ export interface ContainerOptions extends Record<string, unknown> {
   cwd?: string
 
   /** Ports to expose. */
-  ports?: [number, number][]
+  ports?: (number | [number, number] | ContainerPorts)[]
+}
+
+/**
+ * Complex port definition interface.
+ *
+ * @public
+ */
+export interface ContainerPorts {
+  /** Local port to connect into container. Can be explicit or random range. */
+  external: number | [number, number]
+  /** Internal container port to expose. */
+  internal: number
 }
 
 /**

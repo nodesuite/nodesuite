@@ -7,7 +7,7 @@ import type { ChildProcess, ExecOptions } from "node:child_process"
 
 import { DEFAULT_TIMEOUT } from "./constants"
 import { ContainerTimeoutError, UndefinedPortError } from "./exceptions"
-import { debug, findPort } from "./support"
+import { debug, extractPorts } from "./support"
 import {
   CLOSE_EVENT,
   CLOSING_STATE,
@@ -56,6 +56,13 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
   #readyState: ContainerReadyState = INITIAL_STATE
 
   /**
+   * All final fully resolved ports.
+   *
+   * @internal
+   */
+  #ports: [number, number][] | undefined = undefined
+
+  /**
    * Constructor
    *
    * @public
@@ -72,6 +79,22 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
    */
   public get name(): string {
     return this.#options.name
+  }
+
+  /**
+   * Attempt to expose final resolved port pairs.
+   *
+   * @remarks
+   * Throws if resolution has not completed.
+   *
+   * @public
+   */
+  public get ports(): [number, number][] {
+    if (this.#ports) {
+      return this.#ports
+    }
+
+    throw new UndefinedPortError()
   }
 
   /**
@@ -246,9 +269,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
 
     // Ensure all requested local ports are available.
     if (this.#options.ports) {
-      await Promise.all(
-        this.#options.ports.map(async ([port]) => findPort(port, port))
-      )
+      this.#ports = await Promise.all(this.#options.ports.map(extractPorts))
     }
 
     const args: string[] = this.#args()
@@ -294,7 +315,6 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
       env = {},
       image,
       name,
-      ports,
       tag,
       user,
       volumes = []
@@ -317,9 +337,9 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
     ]
 
     // 1. Add ports.
-    if (ports) {
+    if (this.#ports) {
       args.push(
-        ...ports.map(
+        ...this.#ports.map(
           ([externalPort, internalPort]) => `-p ${externalPort}:${internalPort}`
         )
       )

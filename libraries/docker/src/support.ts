@@ -5,6 +5,7 @@ import type { Debugger } from "debug"
 
 import { MAX_PORT, MIN_PORT } from "./constants"
 import { NoAvailablePortsError } from "./exceptions"
+import type { ContainerPorts } from "./types"
 
 /**
  * Container debugger.
@@ -40,4 +41,31 @@ export const findPort = async (
   }
 
   throw new NoAvailablePortsError(min, max, attempts)
+}
+
+/**
+ * Extracts a final port number from any of the possible external port
+ * definitions.
+ *
+ * @public
+ */
+export const extractPorts = async (
+  external: number | [number, number] | ContainerPorts,
+  internal?: number
+): Promise<[number, number]> => {
+  if (typeof external === "number") {
+    const port: number = await findPort(external, external)
+    return [port, internal ?? port]
+  }
+
+  if (Array.isArray(external)) {
+    const port: number = await findPort(external[0], external[1])
+    return [port, internal ?? port]
+  }
+
+  if (typeof external === "object") {
+    return await extractPorts(external, external.internal)
+  }
+
+  throw new Error(`Invalid port type provided.`)
 }
