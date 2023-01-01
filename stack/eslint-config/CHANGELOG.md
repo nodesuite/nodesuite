@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/eslint-config
 
-This log was last generated on Sun, 01 Jan 2023 05:30:26 GMT and should not be manually modified.
+This log was last generated on Sun, 01 Jan 2023 05:51:02 GMT and should not be manually modified.
+
+## 0.3.17
+Sun, 01 Jan 2023 05:51:02 GMT
+
+_Version update only_
 
 ## 0.3.16
 Sun, 01 Jan 2023 05:30:26 GMT
