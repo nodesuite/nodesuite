@@ -2,6 +2,12 @@
   "name": "@nodesuite/crypto",
   "entries": [
     {
+      "version": "0.3.22",
+      "tag": "@nodesuite/crypto_v0.3.22",
+      "date": "Mon, 02 Jan 2023 23:43:56 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.21",
       "tag": "@nodesuite/crypto_v0.3.21",
       "date": "Mon, 02 Jan 2023 23:19:28 GMT",

@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/cli
 
-This log was last generated on Mon, 02 Jan 2023 23:19:28 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jan 2023 23:43:56 GMT and should not be manually modified.
+
+## 0.3.22
+Mon, 02 Jan 2023 23:43:56 GMT
+
+_Version update only_
 
 ## 0.3.21
 Mon, 02 Jan 2023 23:19:28 GMT
