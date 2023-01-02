@@ -2,6 +2,12 @@
   "name": "@nodesuite/timer",
   "entries": [
     {
+      "version": "0.3.21",
+      "tag": "@nodesuite/timer_v0.3.21",
+      "date": "Mon, 02 Jan 2023 23:19:28 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.20",
       "tag": "@nodesuite/timer_v0.3.20",
       "date": "Mon, 02 Jan 2023 21:50:32 GMT",
