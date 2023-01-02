@@ -219,32 +219,38 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
       throw new UndefinedPortError()
     }
 
-    const url: URL =
-      portOrUrl instanceof URL
-        ? portOrUrl
-        : new URL(`http://127.0.0.1:${portOrUrl}`)
-    const limit: number = Date.now() + timeout
-    let attempt: number = 0
-    const backoff = (attempt: number): number => 100 + attempt * 100
+    // 1. Race a timeout.
+    const abort = async (): Promise<boolean> => setTimeout(timeout, false)
 
-    while (limit > Date.now()) {
-      try {
-        const { status } = await fetch(url.href, {
-          method: "GET"
-        })
-        if (status === 200) {
-          this.emit("listening")
-          debug("Container listening.")
-          return true
+    // 2. Poll remote endpoint.
+    const ping = async (): Promise<boolean> => {
+      const url: URL =
+        portOrUrl instanceof URL
+          ? portOrUrl
+          : new URL(`http://127.0.0.1:${portOrUrl}`)
+      const limit: number = Date.now() + timeout
+      let attempt: number = 0
+      while (limit > attempt) {
+        try {
+          const { status } = await fetch(url.href, {
+            method: "GET"
+          })
+          if (status === 200) {
+            this.emit("listening")
+            debug("Container listening.")
+            return true
+          }
+        } catch (error) {
+          // Ignore errors until timeout.
         }
-      } catch (error) {
-        // Ignore errors until timeout.
+        attempt++
+        await setTimeout(100)
       }
-      attempt++
-      await setTimeout(backoff(attempt))
+
+      throw new ContainerTimeoutError(portOrUrl)
     }
 
-    throw new ContainerTimeoutError(portOrUrl)
+    return await Promise.race([ping(), abort()])
   }
 
   /**
@@ -479,7 +485,6 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
         this.#process?.stdout?.removeAllListeners()
         this.#process?.stderr?.removeAllListeners()
         this.#process?.unref()
-        this.#process = undefined
         this.emit(CLOSE_EVENT)
       }
 
