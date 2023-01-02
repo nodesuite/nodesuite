@@ -2,6 +2,12 @@
   "name": "@nodesuite/case",
   "entries": [
     {
+      "version": "0.3.20",
+      "tag": "@nodesuite/case_v0.3.20",
+      "date": "Mon, 02 Jan 2023 21:50:32 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.3.19",
       "tag": "@nodesuite/case_v0.3.19",
       "date": "Sun, 01 Jan 2023 06:01:08 GMT",
