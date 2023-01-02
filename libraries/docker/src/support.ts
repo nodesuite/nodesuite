@@ -61,10 +61,8 @@ export const extractPorts = async (
   if (Array.isArray(external)) {
     const port: number = await findPort(external[0], external[1])
     return [port, internal ?? port]
-  }
-
-  if (typeof external === "object") {
-    return await extractPorts(external, external.internal)
+  } else if (typeof external === "object") {
+    return await extractPorts(external.external, external.internal)
   }
 
   throw new Error(`Invalid port type provided.`)
