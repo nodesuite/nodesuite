@@ -310,7 +310,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
 
     const {
       command,
-      cwd = `${process.cwd ?? __dirname}`,
+      cwd = process.cwd() ?? __dirname ?? ".",
       entrypoint,
       env = {},
       image,
@@ -347,9 +347,9 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
 
     // 2. Add environment variables.
     args.push(
-      ...Object.entries(env).map(
-        ([key, value]) => `-e '${key.trim().toUpperCase()}="${value}"'`
-      )
+      ...Object.entries(env)
+        .filter(([, value]) => value !== undefined)
+        .map(([key, value]) => `-e '${key.trim().toUpperCase()}="${value}"'`)
     )
 
     // 3. Add volumes.
