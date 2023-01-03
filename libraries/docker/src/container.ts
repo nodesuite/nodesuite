@@ -244,7 +244,8 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
           // Ignore errors until timeout.
         }
         attempt++
-        await setTimeout(100)
+        debug(`No response at ${url}, retrying...`)
+        await setTimeout(100 * (attempt / 2))
       }
 
       throw new ContainerTimeoutError(portOrUrl)
