@@ -228,14 +228,16 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
         portOrUrl instanceof URL
           ? portOrUrl
           : new URL(`http://127.0.0.1:${portOrUrl}`)
-      const limit: number = Date.now() + timeout
+      const limit: number = 100
       let attempt: number = 0
-      while (limit > attempt) {
+      let ok: boolean = false
+      while (limit > attempt && !ok) {
         try {
-          const { status } = await fetch(url.href, {
+          const response: Response = await fetch(url.href, {
             method: "GET"
           })
-          if (status === 200) {
+          if (response.ok) {
+            ok = response.ok
             this.emit("listening")
             debug("Container listening.")
             return true
@@ -244,7 +246,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
           // Ignore errors until timeout.
         }
         attempt++
-        debug(`No response at ${url}, retrying...`)
+        debug(`No response at ${url}, retrying (${attempt}/${limit})...`)
         await setTimeout(100 * (attempt / 2))
       }
 
