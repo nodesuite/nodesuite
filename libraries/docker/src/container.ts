@@ -121,7 +121,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
       ])
       const error: string | undefined = this.#parseErrors(result)
       if (error && !error.includes("No such")) {
-        debug(error)
+        debug.error(error)
         return false
       } else {
         return true
@@ -152,7 +152,6 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
     try {
       return await this.waitForServer(portOrUrl, timeout)
     } catch (error) {
-      debug(error)
       this.#onError(error)
       return false
     }
@@ -187,7 +186,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
         error &&
         ![`No such`, `Cannot kill`].some((partial) => error.includes(partial))
       ) {
-        debug(error)
+        debug.error(error)
         return false
       } else {
         return true
@@ -239,17 +238,17 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
           if (response.ok) {
             ok = response.ok
             this.emit("listening")
-            debug("Container listening.")
+            debug.info("Container listening.")
             return true
           } else {
-            debug(`Response ${response.status} ${response.statusText}.`)
+            debug.error(`Response ${response.status} ${response.statusText}.`)
           }
         } catch (error) {
           // Ignore errors until timeout.
-          debug(error.message)
+          debug.error(error.message)
         }
         attempt++
-        debug(`No response at ${url}, retrying (${attempt}/${limit})...`)
+        debug.error(`No response at ${url}, retrying (${attempt}/${limit})...`)
         await setTimeout(100 * (attempt / 2))
       }
 
@@ -318,7 +317,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
    * @internal
    */
   #args(): string[] {
-    debug("Generating container command line arguments.")
+    debug.info("Generating container command line arguments.")
 
     const {
       command,
@@ -375,7 +374,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
     // 4. Final commands.
     args.push(`${image}:${tag}`, internal(command))
 
-    debug(`Generated container arguments: ${args.join(" ")}`)
+    debug.info(`Generated container arguments: ${args.join(" ")}`)
 
     return args.filter((arg) => !!arg)
   }
@@ -396,7 +395,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
   ): Promise<ExecResult> {
     try {
       const command: string = [cmd, ...args].map((arg) => arg.trim()).join(" ")
-      debug(`Executing command: ${command}`)
+      debug.info(`Executing command: ${command}`)
       return await promisify(exec)(command, options)
     } catch (error) {
       return {
@@ -431,7 +430,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
    * @internal
    */
   #registerListeners(childProcess: ChildProcess): void {
-    debug("Attaching container listeners.")
+    debug.info("Attaching container listeners.")
     childProcess.once("error", this.#onError.bind(this))
     childProcess.once("kill", this.#onClose.bind(this))
     childProcess.stdout?.on("data", this.#onMessage.bind(this))
@@ -448,7 +447,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
   #onReady(): void {
     this.#readyState = LAUNCHED_STATE
     this.emit(LAUNCH_EVENT)
-    debug(`Container ready.`)
+    debug.info(`Container ready.`)
   }
 
   /**
@@ -465,9 +464,9 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
     // Handle debug output.
     const maxLength: number = 1000
     if (message.length > maxLength) {
-      debug(`${message.slice(0, maxLength)}...`)
+      debug.info(`${message.slice(0, maxLength)}...`)
     } else {
-      debug(message)
+      debug.info(message)
     }
   }
 
@@ -477,7 +476,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
    * @internal
    */
   #onClose(): void {
-    debug(`Closing container "${this.name}".`)
+    debug.info(`Closing container "${this.name}".`)
     if (this.#readyState >= CLOSING_STATE) {
       return
     }
@@ -512,6 +511,7 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
    * @internal
    */
   #onError(error: Error | string): void {
+    debug.error(error)
     this.emit(ERROR_EVENT, typeof error === "string" ? new Error(error) : error)
   }
 }

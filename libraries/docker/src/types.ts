@@ -1,4 +1,5 @@
 import type { EventfulRegistry } from "@nodesuite/registry"
+import type { Debugger } from "debug"
 import type { ChildProcess } from "node:child_process"
 import type { EventEmitter } from "node:events"
 
@@ -218,3 +219,13 @@ export const containerEvents = [
  * @public
  */
 export type ContainerEvent = typeof containerEvents[number]
+
+/**
+ * Split debugging output.
+ *
+ * @public
+ */
+export interface Debuggers {
+  info: Debugger
+  error: Debugger
+}

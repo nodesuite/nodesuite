@@ -1,18 +1,20 @@
 import { randomInt } from "node:crypto"
 import init from "debug"
 import { check } from "tcp-port-used"
-import type { Debugger } from "debug"
 
 import { MAX_PORT, MIN_PORT } from "./constants"
 import { NoAvailablePortsError } from "./exceptions"
-import type { ContainerPorts } from "./types"
+import type { ContainerPorts, Debuggers } from "./types"
 
 /**
  * Container debugger.
  *
  * @internal
  */
-export const debug: Debugger = init("container")
+export const debug: Debuggers = {
+  info: init("container:info"),
+  error: init("container:error")
+}
 
 /**
  * Attempts to identify an available port.

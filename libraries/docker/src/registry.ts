@@ -2,6 +2,7 @@ import { Registry } from "@nodesuite/registry"
 
 import { DEFAULT_TIMEOUT } from "./constants"
 import { ManagedContainer } from "./container"
+import { debug } from "./support"
 import type { ContainerFactory } from "./types"
 import type {
   Container,
@@ -66,11 +67,13 @@ export class ContainerRegistry<O extends ContainerOptions = ContainerOptions>
     const name: string = options.name
     const existing: Container | undefined = this.find(name)
     if (existing) {
+      debug.info(`Found existing container "${name}" in registry.`)
       return existing
     } else {
       this.lock(name)
       const container: Container = this.#create(options)
       this.register(name, container)
+      debug.info(`Locked and created container "${name}" in registry.`)
       return container
     }
   }
