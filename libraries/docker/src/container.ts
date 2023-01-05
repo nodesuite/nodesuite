@@ -241,9 +241,12 @@ export class ManagedContainer<O extends ContainerOptions = ContainerOptions>
             this.emit("listening")
             debug("Container listening.")
             return true
+          } else {
+            debug(`Response ${response.status} ${response.statusText}.`)
           }
         } catch (error) {
           // Ignore errors until timeout.
+          debug(error.message)
         }
         attempt++
         debug(`No response at ${url}, retrying (${attempt}/${limit})...`)
