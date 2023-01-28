@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@nodesuite/registry",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Eventful registry for lifecycle management of any stateful component set.",
   "keywords": [
     "registry",
