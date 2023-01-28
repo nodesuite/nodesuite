@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/process
 
-This log was last generated on Thu, 05 Jan 2023 03:17:01 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Jan 2023 01:11:23 GMT and should not be manually modified.
+
+## 0.3.27
+Sat, 28 Jan 2023 01:11:23 GMT
+
+_Version update only_
 
 ## 0.3.26
 Thu, 05 Jan 2023 03:17:01 GMT
