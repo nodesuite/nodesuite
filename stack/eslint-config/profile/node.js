@@ -6,6 +6,7 @@ const { ignorePatterns, parserOptions, plugins } = require("../options")
 const {
   linesAroundComment,
   preferArrowFunctions,
+  preventAbbreviations,
   tsNamingConvention,
   simpleImportSort
 } = require("../rules")
@@ -43,13 +44,13 @@ module.exports = {
   plugins,
   /* Main rule definitions used across all matched files. */
   rules: {
-    "@rushstack/no-new-null": "off",
+    "@rushstack/no-new-null": "warn",
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/naming-convention": ["warn", tsNamingConvention],
     "@typescript-eslint/no-floating-promises": when("test"),
     "@typescript-eslint/no-non-null-assertion": "warn",
     "@typescript-eslint/no-unused-vars": ["error"],
-    "@typescript-eslint/typedef": "off",
+    "@typescript-eslint/typedef": "warn",
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
     "filename-rules/match": [2, /^[a-z0-9.-]+$/],
@@ -64,9 +65,15 @@ module.exports = {
     "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": ["error", simpleImportSort],
-    "tsdoc/syntax": "error"
+    "tsdoc/syntax": "error",
+    "unicorn/catch-error-name": "error",
+    "unicorn/custom-error-definition": "error",
+    "unicorn/filename-case": "error",
+    "unicorn/prefer-switch": "error",
+    "unicorn/prefer-spread": "error",
+    "unicorn/template-indent": "error"
   },
-  /* Pattern specific overrides. */
+  /* Pattern specific overrides.  */
   overrides: [
     anyInTypes,
     barrels,

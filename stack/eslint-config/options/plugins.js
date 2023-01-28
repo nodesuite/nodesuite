@@ -4,5 +4,6 @@ module.exports = [
   "filename-rules",
   "folders",
   "prefer-arrow",
-  "simple-import-sort"
+  "simple-import-sort",
+  "unicorn"
 ]

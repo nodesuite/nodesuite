@@ -139,6 +139,10 @@
       "allowedCategories": [ "stack" ]
     },
     {
+      "name": "eslint-plugin-unicorn",
+      "allowedCategories": [ "stack" ]
+    },
+    {
       "name": "find-config",
       "allowedCategories": [ "libraries" ]
     },
