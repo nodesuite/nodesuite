@@ -70,8 +70,7 @@ module.exports = {
     "unicorn/custom-error-definition": "error",
     "unicorn/filename-case": "error",
     "unicorn/prefer-switch": "error",
-    "unicorn/prefer-spread": "error",
-    "unicorn/template-indent": "error"
+    "unicorn/prefer-spread": "error"
   },
   /* Pattern specific overrides.  */
   overrides: [
