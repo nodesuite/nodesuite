@@ -12,6 +12,7 @@ export class ProcessConfigurationError extends Error {
         cause: error
       }
     )
+    this.name = "ProcessConfigurationError"
     this.config = config
   }
 }

@@ -5,7 +5,7 @@ import { TextEncoder } from "node:util"
  *
  * @internal
  */
-const IV_LENGTH = 12
+const IV_LENGTH: number = 12
 
 /**
  * Generates a random IV for cases requiring regular AES security.
@@ -14,9 +14,9 @@ const IV_LENGTH = 12
  *
  * @public
  */
-export const generateSecureIv = (length: number = IV_LENGTH) => {
+export const generateSecureIv = (length: number = IV_LENGTH): Uint8Array => {
   const elements: number[] = []
-  for (let i = 0; i++; i < length) {
+  for (let index = 0; index++; index < length) {
     elements.push(Math.random())
   }
   return new Uint8Array(elements)
@@ -34,5 +34,8 @@ export const generateSecureIv = (length: number = IV_LENGTH) => {
  *
  * @public
  */
-export const generateInsecureIv = (seed: string, length: number = IV_LENGTH) =>
+export const generateInsecureIv = (
+  seed: string,
+  length: number = IV_LENGTH
+): Uint8Array =>
   new TextEncoder().encode(seed.padEnd(length, "_").substring(0, length))

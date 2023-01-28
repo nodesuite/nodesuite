@@ -11,6 +11,7 @@ export class MessageTimeoutError extends Error {
     super(
       `Message listener on child process "${command}" timed out after ${timeout}ms.`
     )
+    this.name = "MessageTimeoutError"
     this.command = command
     this.timeout = timeout
   }

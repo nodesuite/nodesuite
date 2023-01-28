@@ -7,6 +7,7 @@ export class ProcessTerminationError extends Error {
       `Encountered an error killing child process ${command}: ${error.message}`,
       { cause: error }
     )
+    this.name = "ProcessTerminationError"
     this.command = command
     this.error = error
   }

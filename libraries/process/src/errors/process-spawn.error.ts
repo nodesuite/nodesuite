@@ -3,6 +3,7 @@ export class ProcessSpawnError extends Error {
 
   public constructor(command: string, stderr?: string) {
     super(`Encountered an error spawning child process ${command}: ${stderr}`)
+    this.name = "ProcessSpawnError"
     this.command = command
   }
 }

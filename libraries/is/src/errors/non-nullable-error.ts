@@ -12,6 +12,7 @@ export class NonNullableError extends Error {
     super(
       `${reason} This error is thrown by the nonNullable() function when a value is required but not set.`
     )
+    this.name = "NonNullableError"
     this.reason = reason
   }
 }

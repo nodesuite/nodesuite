@@ -15,5 +15,6 @@ export class UnexpectedValueError extends Error {
         )}".`
       ].join(" ")
     )
+    this.name = "UnexpectedValueError"
   }
 }

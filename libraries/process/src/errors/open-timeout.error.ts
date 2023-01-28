@@ -11,6 +11,7 @@ export class OpenTimeoutError extends Error {
     super(
       `Open state listener on child process "${command}" timed out after ${timeout}ms.`
     )
+    this.name = "OpenTimeoutError"
     this.command = command
     this.timeout = timeout
   }

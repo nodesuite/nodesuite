@@ -12,6 +12,7 @@ export class NoAvailablePortsError extends Error {
         `This occurs when the "tcp-port-used" package cannot locate an unused port from the specified range.`
       ].join(" ")
     )
+    this.name = "NoAvailablePortsError"
   }
 }
 
@@ -29,6 +30,7 @@ export class ContainerTimeoutError extends Error {
         `To resolve, either set a longer timeout, or perform a local "docker pull" manually and allow the download to complete.`
       ].join(" ")
     )
+    this.name = "ContainerTimeoutError"
   }
 }
 
@@ -43,5 +45,6 @@ export class UndefinedPortError extends Error {
     super(
       `No port provided options or container factory unable to resolve a random port.`
     )
+    this.name = "UndefinedPortError"
   }
 }

@@ -8,6 +8,7 @@ export class IdConflictError extends Error {
 
   public constructor(id: string) {
     super(`Attempted to lock id "${id}",  but this id was already locked.`)
+    this.name = "IdConflictError"
     this.id = id
   }
 }
@@ -20,6 +21,7 @@ export class IdConflictError extends Error {
 export class AwaitedTimeoutError extends Error {
   public constructor(timeout: number) {
     super(`Timed out after "${timeout}" waiting for registry item.`)
+    this.name = "AwaitedTimeoutError"
   }
 }
 
@@ -31,5 +33,6 @@ export class AwaitedTimeoutError extends Error {
 export class AwaitedAbortError extends Error {
   public constructor() {
     super(`Aborted await listener before registration.`)
+    this.name = "AwaitedAbortError"
   }
 }

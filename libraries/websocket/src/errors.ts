@@ -20,6 +20,7 @@ export class UnexpectedCloseError extends Error {
    */
   public constructor(url: string) {
     super(`WebSocket closed unexpectedly when connecting to "${url}".`)
+    this.name = "UnexpectedCloseError"
     this.url = url
   }
 }
@@ -49,6 +50,7 @@ export class SerializationError extends Error {
     super(`Encountered error while serializing websocket message.`, {
       cause: error
     })
+    this.name = "SerializationError"
     this.data = data
   }
 }
@@ -78,6 +80,7 @@ export class DeserializationError extends Error {
     super(`Encountered error while deserializing raw websocket data.`, {
       cause: error
     })
+    this.name = "DeserializationError"
     this.data = data
   }
 }
