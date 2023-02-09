@@ -50,7 +50,6 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": when("test"),
     "@typescript-eslint/no-non-null-assertion": "warn",
     "@typescript-eslint/no-unused-vars": ["error"],
-    "@typescript-eslint/typedef": "warn",
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
     "filename-rules/match": [2, /^[a-z0-9.-]+$/],
