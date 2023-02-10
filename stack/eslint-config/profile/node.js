@@ -49,6 +49,7 @@ module.exports = {
     "@typescript-eslint/naming-convention": ["warn", tsNamingConvention],
     "@typescript-eslint/no-floating-promises": when("test"),
     "@typescript-eslint/no-non-null-assertion": "warn",
+    "@typescript-eslint/typedef": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "arrow-body-style": ["error", "as-needed"],
     "block-spacing": "error",
