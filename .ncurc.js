@@ -1,7 +1,8 @@
 module.exports = {
-  upgrade: true,
-  reject: ["typescript", "globby", "npm-check-updates", "eslint"],
+  errorLevel: 1,
   loglevel: "error",
+  reject: ["typescript", "globby", "eslint"],
+  target: "minor",
   timeout: 1000 * 60,
-  errorLevel: 1
+  upgrade: true
 }
