@@ -7,14 +7,6 @@
       "allowedCategories": [ "rigs" ]
     },
     {
-      "name": "@nodesuite/case",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@nodesuite/deep-object",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "@nodesuite/defer",
       "allowedCategories": [ "libraries" ]
     },
@@ -29,10 +21,6 @@
     {
       "name": "@nodesuite/node-rig",
       "allowedCategories": [ "libraries", "stack" ]
-    },
-    {
-      "name": "@nodesuite/notation",
-      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nodesuite/registry",
@@ -67,15 +55,7 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "ava",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "barrelsby",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "c8",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -87,15 +67,7 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "copy-anything",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "debug",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "dot-prop",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -111,8 +83,16 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "esbuild",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "esbuild-jest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "eslint",
-      "allowedCategories": [ "libraries", "rigs", "stack" ]
+      "allowedCategories": [ "libraries", "stack" ]
     },
     {
       "name": "eslint-plugin-filename-rules",
@@ -147,10 +127,6 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "fs-extra",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "npm-check-updates",
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
@@ -163,23 +139,7 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
-      "name": "spectypes",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "tcp-port-used",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "ts-deepmerge",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "ts-essentials",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "ts-pattern",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -188,7 +148,7 @@
     },
     {
       "name": "tsup",
-      "allowedCategories": [ "libraries", "rigs" ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "type-fest",
@@ -199,15 +159,7 @@
       "allowedCategories": [ "libraries", "rigs", "stack" ]
     },
     {
-      "name": "validator",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "ws",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "yaml",
       "allowedCategories": [ "libraries" ]
     },
     {
