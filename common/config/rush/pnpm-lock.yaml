@@ -431,49 +431,6 @@ importers:
       tsup: 6.6.2_typescript@4.9.5
       typescript: 4.9.5
 
-  ../../libraries/process:
-    specifiers:
-      '@nodesuite/defer': workspace:*
-      '@nodesuite/eslint-config': workspace:*
-      '@nodesuite/node-rig': workspace:*
-      '@nodesuite/timer': workspace:*
-      '@rushstack/eslint-config': ^3.2.0
-      '@rushstack/heft': ^0.49.7
-      '@rushstack/heft-jest-plugin': ^0.5.4
-      '@types/heft-jest': ^1.0.3
-      '@types/node': ^18.13.0
-      '@typescript-eslint/parser': ^5.51.0
-      barrelsby: ^2.5.1
-      dpdm: ^3.12.0
-      eslint: 8.34.0
-      npm-check-updates: ^15.3.4
-      npm-run-all: ^4.1.5
-      sort-package-json: ^2.4.1
-      tslib: ^2.5.0
-      tsup: ^6.6.2
-      typescript: 4.9.5
-    dependencies:
-      '@nodesuite/defer': link:../defer
-      '@nodesuite/timer': link:../timer
-      tslib: 2.5.0
-    devDependencies:
-      '@nodesuite/eslint-config': link:../../stack/eslint-config
-      '@nodesuite/node-rig': link:../../rigs/node-rig
-      '@rushstack/eslint-config': 3.2.0_7kw3g6rralp5ps6mg3uyzz6azm
-      '@rushstack/heft': 0.49.7_@types+node@18.13.0
-      '@rushstack/heft-jest-plugin': 0.5.4_x7q6ueuwppzscgav3x4jlpxohu
-      '@types/heft-jest': 1.0.3
-      '@types/node': 18.13.0
-      '@typescript-eslint/parser': 5.51.0_7kw3g6rralp5ps6mg3uyzz6azm
-      barrelsby: 2.5.1
-      dpdm: 3.12.0
-      eslint: 8.34.0
-      npm-check-updates: 15.3.4
-      npm-run-all: 4.1.5
-      sort-package-json: 2.4.1
-      tsup: 6.6.2_typescript@4.9.5
-      typescript: 4.9.5
-
   ../../libraries/registry:
     specifiers:
       '@nodesuite/eslint-config': workspace:*

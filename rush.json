@@ -119,13 +119,6 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@nodesuite/process",
-      "projectFolder": "libraries/process",
-      "reviewCategory": "libraries",
-      "versionPolicyName": "suite",
-      "shouldPublish": true
-    },
-    {
       "packageName": "@nodesuite/registry",
       "projectFolder": "libraries/registry",
       "reviewCategory": "libraries",
