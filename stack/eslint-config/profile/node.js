@@ -5,14 +5,11 @@ const { ignorePatterns, parserOptions, plugins } = require("../options")
 
 const {
   linesAroundComment,
-  preferArrowFunctions,
-  preventAbbreviations,
   tsNamingConvention,
   simpleImportSort
 } = require("../rules")
 
 const {
-  anyInTypes,
   barrels,
   javascript,
   markdown,
@@ -62,7 +59,6 @@ module.exports = {
     "no-return-await": "off",
     "no-unused-vars": "off",
     "object-curly-spacing": ["error", "always"],
-    "prefer-arrow/prefer-arrow-functions": ["error", preferArrowFunctions],
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": ["error", simpleImportSort],
     "tsdoc/syntax": "error",
@@ -73,12 +69,5 @@ module.exports = {
     "unicorn/prefer-spread": "error"
   },
   /* Pattern specific overrides.  */
-  overrides: [
-    anyInTypes,
-    barrels,
-    javascript,
-    markdown,
-    typeDefinitions,
-    typescript
-  ]
+  overrides: [barrels, javascript, markdown, typeDefinitions, typescript]
 }

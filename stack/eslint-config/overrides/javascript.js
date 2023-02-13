@@ -6,6 +6,8 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/naming-convention": "off",
+    "lines-around-comment": "off",
+    "semi-style": ["error", "last"],
     "tsdoc/syntax": "off"
   }
 }
