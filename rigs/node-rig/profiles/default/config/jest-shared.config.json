@@ -9,7 +9,7 @@
 
   "testURL": "http://localhost/",
 
-  "testMatch": ["<rootDir>/src/**/*.test.{ts,tsx}"],
+  "testMatch": ["<rootDir>/src/**/*.test.ts"],
   "testPathIgnorePatterns": ["/node_modules/"],
 
   "collectCoverage": true,
@@ -17,9 +17,9 @@
   "coverageDirectory": "<rootDir>/temp/coverage",
 
   "collectCoverageFrom": [
-    "src/**/*.{ts,tsx}",
+    "src/**/*.ts",
     "!src/**/*.d.ts",
-    "!src/**/*.test.{ts,tsx}",
+    "!src/**/*.test.ts",
     "!src/**/test/**",
     "!src/**/__tests__/**",
     "!src/**/__fixtures__/**",
@@ -30,7 +30,7 @@
   "transformIgnorePatterns": [],
 
   "transform": {
-    "\\.(ts|tsx)$": "../lib/exports/jest-build-transform.js",
+    "\\.(ts|tsx)$": "esbuild-jest",
 
     "\\.(css|sass|scss)$": "../lib/exports/jest-identity-mock-transform.js",
 
@@ -39,7 +39,7 @@
 
   "modulePathIgnorePatterns": [],
 
-  "moduleFileExtensions": ["ts", "tsx", "cjs", "js", "json", "node"],
+  "moduleFileExtensions": ["ts", "cjs", "js", "json", "node"],
 
   "setupFiles": ["../lib/exports/jest-global-setup.js"],
 
