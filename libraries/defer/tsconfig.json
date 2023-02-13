@@ -3,7 +3,8 @@
   "extends": "./node_modules/@nodesuite/node-rig/profiles/default/tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "types": ["node", "heft-jest"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

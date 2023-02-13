@@ -1,44 +1,12 @@
-import type { Callback, Deferral, DeferralBuilder } from "./types"
+import { DeferredPromise } from "./deferral"
+import type { Deferral } from "./types"
 
 /**
- * Default void callback.
+ * Provide a Deferred Promise instance.
  *
- * @internal
- */
-const NOOP =
-  <R>(): Callback<R> =>
-  (): R =>
-    undefined as unknown as R
-
-/**
- * Provide a deferred Promise object.
+ * @param signal - Optional abort signal to reject root promise.
  *
  * @public
  */
-export const defer = <R = void>(
-  onResolve: Callback<R> = NOOP()
-): Deferral<R> => {
-  let _isResolved: boolean = false
-
-  const deferral: Partial<DeferralBuilder<R>> = {
-    resolve: undefined,
-    reject: undefined,
-    promise: undefined,
-
-    isResolved: (): boolean => _isResolved
-  }
-
-  const promise: Promise<R> = new Promise<R>((resolve, reject) => {
-    deferral.resolve = () => {
-      _isResolved = true
-      resolve(onResolve())
-    }
-
-    deferral.reject = reject
-  })
-
-  deferral.promise = promise
-  deferral.untilResolved = async (): Promise<R> => await promise
-
-  return Object.freeze(deferral) as Deferral<R>
-}
+export const defer = <R = void>(signal?: AbortSignal): Deferral<R> =>
+  new DeferredPromise<R>(signal)

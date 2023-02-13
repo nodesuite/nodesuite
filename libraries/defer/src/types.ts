@@ -1,34 +1,38 @@
 /**
- * @public
- */
-export type Callback<R> = () => R
-
-/**
+ * Resolve method signature.
+ *
  * @public
  */
 export type Resolver<R = void> = (value: R) => void
 
 /**
+ * Reject method signature.
+ *
  * @public
  */
 export type Rejection = (reason?: string | Error | unknown) => void
 
 /**
+ * Abstract deferred promise.
+ *
  * @public
  */
-export interface DeferralBuilder<R = void> {
-  // Original promise to await.
-  promise: Promise<R>
-  // Internal resolve function.
-  resolve: Resolver<R>
-  // Internal reject function.
-  reject: Rejection
+export interface Deferral<R = void> {
+  /** Abort signal, if provided at construction. */
+  readonly signal?: AbortSignal
 
-  // Test if deferral has already been resolved.
-  isResolved(): boolean
+  /** Root promise instance. */
+  promise(): Promise<R>
 
-  // Sugar syntax to avoid using promise object.
+  /** Internal resolve function. */
+  resolve(value: R): void
+
+  /** Reject root promise. */
+  reject(reason?: string | Error | unknown): void
+
+  /** Alias to await root promise. */
   untilResolved(): Promise<R>
-}
 
-export type Deferral<R = void> = Readonly<DeferralBuilder<R>>
+  /** Test if deferral has already been resolved or rejected. */
+  isComplete(): boolean
+}
