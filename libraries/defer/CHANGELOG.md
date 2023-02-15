@@ -1,6 +1,11 @@
 # Change Log - @nodesuite/defer
 
-This log was last generated on Mon, 13 Feb 2023 02:09:05 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 00:52:39 GMT and should not be manually modified.
+
+## 0.3.32
+Wed, 15 Feb 2023 00:52:39 GMT
+
+_Version update only_
 
 ## 0.3.31
 Mon, 13 Feb 2023 02:09:05 GMT
